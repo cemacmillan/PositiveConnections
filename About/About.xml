@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Positive Connections</name>
+  <packageId>dilettante.PositiveConnections</packageId>
+  <author>cem</author>
+  <url>https://github.com</url>
+  <supportedVersions>
+    <li>1.4</li>
+  </supportedVersions>
+  <description>
+  [img][/img]Positive Connections: This mod adds a new layer of social interactions to the rich tapestry of Rimworld's pawn relationships. By focusing on mood-boosting interactions, this mod allows colonists to compliment each other, creating positive opinions and stronger bonds between your colonists. 
+
+  The mod introduces a new interaction called "Compliment". Pawns will randomly compliment each other, improving the mood of the recipient and the relationship between both parties. This interaction won't happen if they are rivals or if their relationship is very negative.
+
+  This mod doesn't add any new items or technologies but it creates a more complex and rewarding social system, encouraging your colonists to build a positive atmosphere in your colony which can make a significant difference in challenging situations.
+
+  Note: As of this release, there are no new means to acquire the "Compliment" interaction other than a pawn choosing to compliment another pawn based on their current mood and relationships. Future updates may introduce new ways to encourage or manipulate these interactions.
+
+  Please, visit the Github page for more information, updates, and to provide feedback.
+  </description>
+</ModMetaData>

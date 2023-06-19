@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <InteractionDef>
+        <defName>Compliment</defName>
+        <workerClass>PositiveConnections.InteractionWorker_Compliment</workerClass>
+        <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
+        <logRulesInitiator>
+            <rulesStrings>
+                <li>r_logentry->I complimented [RECIPIENT_nameDef].</li>
+            </rulesStrings>
+        </logRulesInitiator>
+        <logRulesRecipient>
+            <rulesStrings>
+                <li>r_logentry->[INITIATOR_nameDef] complimented me. I feel validated.</li>
+            </rulesStrings>
+        </logRulesRecipient>
+    </InteractionDef>
+    <InteractionDef>
+        <defName>SkillShare</defName>
+        <workerClass>PositiveConnections.InteractionWorker_SkillShare</workerClass>
+        <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
+        <logRulesInitiator>
+            <rulesStrings>
+                <li>r_logentry->[INITIATOR_nameDef] talked with [RECIPIENT_nameDef] and shared [INITIATOR_possessive] knowledge.</li>
+            </rulesStrings>
+        </logRulesInitiator>
+    </InteractionDef>
+    <InteractionDef>
+        <defName>DiscussIdeoligion</defName>
+        <label>discuss ideoligion</label>
+        <description>Pawns discussing their shared ideoligion.</description>
+        <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
+        <interactionMote>Mote_Speech</interactionMote>
+        <initiatorThought>IdeologicalDiscussion</initiatorThought>
+        <recipientThought>IdeologicalDiscussion</recipientThought>
+        <logRulesInitiator>
+            <rulesStrings>
+                <li>r_logentry->I had a thoughtful discussion about our ideoligion with [RECIPIENT_nameDef]. It was enlightening.</li>
+            </rulesStrings>
+        </logRulesInitiator>
+        <logRulesRecipient>
+            <rulesStrings>
+                <li>r_logentry->[INITIATOR_nameDef] and I had a deep conversation about our ideoligion. I feel a sense of belonging.</li>
+            </rulesStrings>
+        </logRulesRecipient>
+    </InteractionDef>
+    <ThoughtDef>
+        <defName>ReceivedCompliment</defName>
+        <durationDays>3</durationDays> 
+        <stackLimit>1</stackLimit>
+        <stages>
+            <li>
+                <label>received compliment</label>
+                <description>I received a compliment recently. It feels good to be appreciated!</description>
+                <baseMoodEffect>10</baseMoodEffect>
+                <baseOpinionOffset>10</baseOpinionOffset>
+            </li>
+        </stages>
+    </ThoughtDef>
+    <ThoughtDef>
+        <defName>ReceivedTeaching</defName>
+        <durationDays>7</durationDays>
+        <thoughtClass>Thought_MemorySocial</thoughtClass>
+        <stackLimit>5</stackLimit>
+        <stages>
+            <li>
+                <label>received teaching</label>
+                <baseMoodEffect>8</baseMoodEffect>
+                <baseOpinionOffset>10</baseOpinionOffset>
+                <description>I learned something new today!</description>
+            </li>
+        </stages>
+    </ThoughtDef>
+    <ThoughtDef>
+        <defName>IdeologicalDiscussion</defName>
+        <durationDays>7</durationDays>
+        <thoughtClass>Thought_MemorySocial</thoughtClass>
+        <stackLimit>1</stackLimit>
+        <stages>
+            <li>
+                <label>ideological discussion</label>
+                <baseMoodEffect>8</baseMoodEffect>
+                <baseOpinionOffset>5</baseOpinionOffset>
+                <description>I had a thought-provoking discussion!</description>
+            </li>
+        </stages>
+    </ThoughtDef>
+</Defs>
