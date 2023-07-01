@@ -11,6 +11,7 @@ namespace PositiveConnections
     {
         private const float BaseSelectionWeight = 0.0075f;
         private const float NonColonyPawnFactor = 0.05f;
+        private const int SkillDifferenceDivisor = 10;
 
         //private const float BaseSelectionWeight = 0.075f;
         //private const float NonColonyPawnFactor = 1.1f;
@@ -24,7 +25,7 @@ namespace PositiveConnections
             if (highestSkill != null && recipient.skills.GetSkill(highestSkill.def).Level < highestSkill.Level)
             {
                 // Weight is based on the difference in skill levels
-                float weight = (highestSkill.Level - recipient.skills.GetSkill(highestSkill.def).Level) * BaseSelectionWeight;
+                float weight = (highestSkill.Level - recipient.skills.GetSkill(highestSkill.def).Level)/SkillDifferenceDivisor * initiator.needs.mood.CurLevel * BaseSelectionWeight;
 
                 // If either the initiator or the recipient is not a colonist, reduce the weight
                 if (initiator.Faction != Faction.OfPlayer || recipient.Faction != Faction.OfPlayer)
