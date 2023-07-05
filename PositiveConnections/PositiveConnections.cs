@@ -9,7 +9,6 @@ namespace dIl_PositiveConnections
 
         public Mod_PositiveConnections(ModContentPack content) : base(content)
         {
-            // Initialize your mod here
             settings = GetSettings<ModSettings>();
         }
 

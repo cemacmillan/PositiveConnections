@@ -32,7 +32,7 @@ namespace PositiveConnections
 
         public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks, out string letterText, out string letterLabel, out LetterDef letterDef, out LookTargets lookTargets)
         {
-            string complimentMessage = GenerateComplimentMessage(initiator, recipient);
+            string complimentMessage = PositiveConnectionsUtility.GenerateComplimentMessage(initiator, recipient);
 
             Messages.Message(complimentMessage, recipient, MessageTypeDefOf.PositiveEvent);
 
@@ -51,16 +51,9 @@ namespace PositiveConnections
 
             if (factionA != null && factionB != null && factionA != factionB)
             {
-                FactionRelationsChanger.ChangeFactionRelations(factionA, factionB, 10);
+                PositiveConnectionsUtility.ChangeFactionRelations(factionA, factionB, 10);
             }
         }
 
-        private string GenerateComplimentMessage(Pawn initiator, Pawn recipient)
-        {
-            string[] compliments = { "social skills", "hard work", "bravery", "intelligence", "grace", "patience" };
-            string randomCompliment = compliments.RandomElement();
-
-            return $"{initiator.Name} compliments {recipient.Name} on their {randomCompliment}!";
-        }
     }
 }

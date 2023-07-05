@@ -5,7 +5,7 @@ using Verse;
 
 namespace dIl_PositiveConnections
 {
-    public static class FactionRelationsChanger
+    public static class PositiveConnectionsUtility
     {
         public static void ChangeFactionRelations(Faction factionA, Faction factionB, int goodwillChange)
         {
@@ -26,6 +26,14 @@ namespace dIl_PositiveConnections
 
             factionRelationA.CheckKindThresholds(factionA, canSendLetter: false, null, GlobalTargetInfo.Invalid, out _);
             factionRelationB.CheckKindThresholds(factionB, canSendLetter: false, null, GlobalTargetInfo.Invalid, out _);
+        }
+
+        public static string GenerateComplimentMessage(Pawn initiator, Pawn recipient)
+        {
+            string[] compliments = { "social skills", "hard work", "bravery", "intelligence", "grace", "patience" };
+            string randomCompliment = compliments.RandomElement();
+
+            return $"{initiator.Name} compliments {recipient.Name} on their {randomCompliment}!";
         }
     }
 }
