@@ -1,22 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using RimWorld;
 using Verse;
+using RimWorld;
 
 namespace dIl_PositiveConnections
 {
-    public class InteractionWorker_Compliment : InteractionWorker
+    public class InteractionWorker_Gift : InteractionWorker
     {
-        private const float BaseSelectionWeight = 0.015f;
+        private const float BaseSelectionWeight = 0.0050f;
+       
 
         public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
         {
-            if (initiator.relations.OpinionOf(recipient) < -15 || recipient.relations.OpinionOf(initiator) < -15)
+            if (initiator.relations.OpinionOf(recipient) < -5 || recipient.relations.OpinionOf(initiator) < -5)
             {
                 return 0f;
             }
 
             float baseWeight = initiator.needs.mood.CurLevel * BaseSelectionWeight;
+
+
+            if (recipient.story.traits.HasTrait(TraitDefOf.Beauty))
+            {
+                baseWeight *= 2;  // double the base weight if the recipient is Beautiful
+            }
 
             if (initiator.Faction == recipient.Faction)
             {
@@ -31,11 +38,11 @@ namespace dIl_PositiveConnections
 
         public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks, out string letterText, out string letterLabel, out LetterDef letterDef, out LookTargets lookTargets)
         {
-            string complimentMessage = PositiveConnectionsUtility.GenerateComplimentMessage(initiator, recipient);
+            string giftDescription = PositiveConnectionsUtility.GenerateGiftDescription(initiator, recipient);
 
-            Messages.Message(complimentMessage, recipient, MessageTypeDefOf.PositiveEvent);
+            Messages.Message(giftDescription, recipient, MessageTypeDefOf.PositiveEvent);
 
-            Thought_Memory memory = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("ReceivedCompliment"));
+            Thought_Memory memory = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("ReceivedGift"));
             memory.moodPowerFactor = 1f;
             recipient.needs.mood.thoughts.memories.TryGainMemory(memory);
 
@@ -53,6 +60,5 @@ namespace dIl_PositiveConnections
                 PositiveConnectionsUtility.ChangeFactionRelations(factionA, factionB, 10);
             }
         }
-
     }
 }

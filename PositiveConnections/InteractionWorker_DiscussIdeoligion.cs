@@ -3,7 +3,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace dIl_PositiveInteractions
+namespace dIl_PositiveConnnections
 {
     public class InteractionWorker_DiscussIdeoligion : InteractionWorker
     {

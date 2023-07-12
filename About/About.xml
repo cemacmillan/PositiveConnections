@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
   <name>Positive Connections</name>
-  <packageId>dilettante.PositiveConnections</packageId>
+  <packageId>cem.PositiveConnections</packageId>
   <author>cem</author>
   <url>https://github.com</url>
   <supportedVersions>
     <li>1.4</li>
   </supportedVersions>
   <description>
-  [img][/img]Positive Connections: This mod adds a new layer of social interactions to the rich tapestry of Rimworld's pawn relationships. By focusing on mood-boosting interactions, this mod allows colonists to compliment each other, creating positive opinions and stronger bonds between your colonists. 
+  Positive Connections: Are you tired of overseeing colonies where intense animosity prevails among your colonists? Despite enduring and conquering numerous shared perils, do they still view each other merely as "acquaintances"?
 
-  The mod introduces a new interaction called "Compliment". Pawns will randomly compliment each other, improving the mood of the recipient and the relationship between both parties. This interaction won't happen if they are rivals or if their relationship is very negative.
+If this resonates with you, then Positive Connections is the mod you've been waiting for.
 
-  This mod doesn't add any new items or technologies but it creates a more complex and rewarding social system, encouraging your colonists to build a positive atmosphere in your colony which can make a significant difference in challenging situations.
+Introducing six brand new interactions for your pawns:
 
-  Note: As of this release, there are no new means to acquire the "Compliment" interaction other than a pawn choosing to compliment another pawn based on their current mood and relationships. Future updates may introduce new ways to encourage or manipulate these interactions.
-
-  Please, visit the Github page for more information, updates, and to provide feedback.
-  </description>
+Compliment: Let your colonists express genuine appreciation and admiration for each other's skills and qualities.
+Knowledge Sharing: Foster a culture of learning and growth by encouraging your pawns to share their expertise and learn from one another.
+Gift Giving: Strengthen the bonds between your colonists by allowing them to exchange thoughtful gifts, fostering a sense of camaraderie.
+Mediation: Settle disputes and conflicts in a civilized manner, promoting harmony and preventing unnecessary tension.
+Shared Passions: Unite your colonists through shared hobbies and interests, allowing them to bond over their mutual passions.
+Discuss Ideology: Encourage meaningful conversations about ideology and belief systems, fostering understanding and empathy among your colonists.
+Naturally, rivalries, insults, and pawns stepping over fallen comrades will still occur, just as in the past. However, those who are capable of building positive connections will tend to do so, creating a more harmonious and cohesive colony.</description>
 </ModMetaData>

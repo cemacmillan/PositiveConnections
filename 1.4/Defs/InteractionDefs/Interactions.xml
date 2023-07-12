@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <InteractionDef>
+        <defName>Mediation</defName>
+        <workerClass>dIl_PositiveConnections.InteractionWorker_Mediation</workerClass>
+        <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
+        <logRulesInitiator>
+            <rulesStrings>
+                <li>r_logentry->I mediated a conflict involving [RECIPIENT_nameDef].</li>
+            </rulesStrings>
+        </logRulesInitiator>
+        <logRulesRecipient>
+            <rulesStrings>
+                <li>r_logentry->[INITIATOR_nameDef] mediated a conflict I was involved in.</li>
+            </rulesStrings>
+        </logRulesRecipient>
+    </InteractionDef>
+    <InteractionDef>
         <defName>Compliment</defName>
-        <workerClass>PositiveConnections.InteractionWorker_Compliment</workerClass>
+        <workerClass>dIl_PositiveConnections.InteractionWorker_Compliment</workerClass>
         <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
         <logRulesInitiator>
             <rulesStrings>
@@ -17,7 +32,7 @@
     </InteractionDef>
     <InteractionDef>
         <defName>SkillShare</defName>
-        <workerClass>PositiveConnections.InteractionWorker_SkillShare</workerClass>
+        <workerClass>dIl_PositiveConnections.InteractionWorker_SkillShare</workerClass>
         <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
         <logRulesInitiator>
             <rulesStrings>
@@ -44,45 +59,38 @@
             </rulesStrings>
         </logRulesRecipient>
     </InteractionDef>
-    <ThoughtDef>
-        <defName>ReceivedCompliment</defName>
-        <durationDays>3</durationDays> 
-        <stackLimit>1</stackLimit>
-        <stages>
-            <li>
-                <label>received compliment</label>
-                <description>I received a compliment recently. It feels good to be appreciated!</description>
-                <baseMoodEffect>10</baseMoodEffect>
-                <baseOpinionOffset>10</baseOpinionOffset>
-            </li>
-        </stages>
-    </ThoughtDef>
-    <ThoughtDef>
-        <defName>ReceivedTeaching</defName>
-        <durationDays>7</durationDays>
-        <thoughtClass>Thought_MemorySocial</thoughtClass>
-        <stackLimit>5</stackLimit>
-        <stages>
-            <li>
-                <label>received teaching</label>
-                <baseMoodEffect>8</baseMoodEffect>
-                <baseOpinionOffset>10</baseOpinionOffset>
-                <description>I learned something new today!</description>
-            </li>
-        </stages>
-    </ThoughtDef>
-    <ThoughtDef>
-        <defName>IdeologicalDiscussion</defName>
-        <durationDays>7</durationDays>
-        <thoughtClass>Thought_MemorySocial</thoughtClass>
-        <stackLimit>1</stackLimit>
-        <stages>
-            <li>
-                <label>ideological discussion</label>
-                <baseMoodEffect>8</baseMoodEffect>
-                <baseOpinionOffset>5</baseOpinionOffset>
-                <description>I had a thought-provoking discussion!</description>
-            </li>
-        </stages>
-    </ThoughtDef>
+    <InteractionDef>
+        <defName>GiveGift</defName>
+        <workerClass>dIl_PositiveConnections.InteractionWorker_Gift</workerClass>
+        <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
+        <logRulesInitiator>
+            <rulesStrings>
+                <li>r_logentry->I gave a small gift to [RECIPIENT_nameDef].</li>
+            </rulesStrings>
+        </logRulesInitiator>
+        <logRulesRecipient>
+            <rulesStrings>
+                <li>r_logentry->[INITIATOR_nameDef] gave me a gift.</li>
+            </rulesStrings>
+        </logRulesRecipient>
+    </InteractionDef>
+
+  <InteractionDef>
+    <defName>SharedPassion</defName>
+    <workerClass>dIl_PositiveConnections.InteractionWorker_SharedPassion</workerClass>
+    <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
+    <initiatorThought>SharedPassionActivity</initiatorThought>
+    <recipientThought>SharedPassionActivity</recipientThought>
+     <logRulesInitiator>
+            <rulesStrings>
+                <li>r_logentry->I discussed a shared passion with [RECIPIENT_nameDef].</li>
+            </rulesStrings>
+        </logRulesInitiator>
+        <logRulesRecipient>
+            <rulesStrings>
+                <li>r_logentry->[INITIATOR_nameDef] and I talked about a shared passion.</li>
+            </rulesStrings>
+        </logRulesRecipient>
+  </InteractionDef>
+
 </Defs>

@@ -5,7 +5,7 @@ using RimWorld;
 using Verse;
 
 
-namespace PositiveConnections
+namespace dIl_PositiveConnections
 {
     public class InteractionWorker_SkillShare : InteractionWorker
     {
