@@ -1,13 +1,13 @@
 ﻿using System;
 using RimWorld;
 
-namespace dIl_PositiveConnections
+namespace DIL_PositiveConnections
 {
     [DefOf]
     public static class ThoughtDefOfPositiveConnections
     {
-        public static ThoughtDef ReceivedTeaching;
-        public static ThoughtDef InMediationWith;
+        public static ThoughtDef DIL_ReceivedTeaching;
+        public static ThoughtDef DIL_InMediationWith;
     }
 
 }

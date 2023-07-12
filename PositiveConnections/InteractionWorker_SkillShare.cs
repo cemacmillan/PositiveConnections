@@ -5,7 +5,7 @@ using RimWorld;
 using Verse;
 
 
-namespace dIl_PositiveConnections
+namespace DIL_PositiveConnections
 {
     public class InteractionWorker_SkillShare : InteractionWorker
     {
@@ -55,8 +55,8 @@ namespace dIl_PositiveConnections
                 Messages.Message(teachingMessage, recipient, MessageTypeDefOf.PositiveEvent);
 
                 // Increase the recipient's mood
-                recipient.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOfPositiveConnections.ReceivedTeaching,initiator);
-                Log.Message("trying to gain memory.");
+                recipient.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOfPositiveConnections.DIL_ReceivedTeaching,initiator);
+                
             }
 
             // Clear out required 'out' parameters

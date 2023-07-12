@@ -7,7 +7,7 @@
         <ProjectGuid>{5F1D8C6D-E127-4001-A575-E56D99DF271F}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>dIl_PositiveConnections</RootNamespace>
+        <RootNamespace>DIL_PositiveConnections</RootNamespace>
         <AssemblyName>PositiveConnections</AssemblyName>
         <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>

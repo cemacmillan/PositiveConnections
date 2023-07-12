@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <ThoughtDef>
-        <defName>SuccessfulMediation</defName>
+        <defName>DIL_SuccessfulMediation</defName>
         <durationDays>5</durationDays>
         <stages>
             <li>
@@ -22,7 +22,7 @@
         </stages>
     </ThoughtDef>
     <ThoughtDef>
-        <defName>InMediationWith</defName>
+        <defName>DIL_InMediationWith</defName>
         <durationDays>5</durationDays>
         <stackLimit>10</stackLimit>
         <stages>
@@ -34,7 +34,7 @@
         </stages>
     </ThoughtDef>
     <ThoughtDef>
-    <defName>ReceivedGift</defName>
+    <defName>DIL_ReceivedGift</defName>
     <durationDays>3</durationDays>
     <stages>
         <li>
@@ -45,7 +45,7 @@
     </stages>
 </ThoughtDef>
  <ThoughtDef>
-        <defName>ReceivedCompliment</defName>
+        <defName>DIL_ReceivedCompliment</defName>
         <durationDays>3</durationDays> 
         <stackLimit>1</stackLimit>
         <stages>
@@ -58,21 +58,21 @@
         </stages>
     </ThoughtDef>
     <ThoughtDef>
-        <defName>ReceivedTeaching</defName>
+        <defName>DIL_ReceivedTeaching</defName>
         <durationDays>7</durationDays>
         <thoughtClass>Thought_MemorySocial</thoughtClass>
-        <stackLimit>5</stackLimit>
+        <stackLimit>1</stackLimit>
         <stages>
             <li>
                 <label>received teaching</label>
-                <baseMoodEffect>8</baseMoodEffect>
-                <baseOpinionOffset>10</baseOpinionOffset>
+                <baseMoodEffect>6</baseMoodEffect>
+                <baseOpinionOffset>6</baseOpinionOffset>
                 <description>I learned something new today!</description>
             </li>
         </stages>
     </ThoughtDef>
     <ThoughtDef>
-        <defName>IdeologicalDiscussion</defName>
+        <defName>DIL_IdeologicalDiscussion</defName>
         <durationDays>7</durationDays>
         <thoughtClass>Thought_MemorySocial</thoughtClass>
         <stackLimit>1</stackLimit>
@@ -87,7 +87,7 @@
     </ThoughtDef>
 
     <ThoughtDef>
-    <defName>SharedPassionActivity</defName>
+    <defName>DIL_SharedPassionActivity</defName>
     <durationDays>7</durationDays>
     <stages>
       <li>

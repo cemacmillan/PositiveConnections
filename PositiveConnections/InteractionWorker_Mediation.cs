@@ -6,7 +6,7 @@ using UnityEngine;
 using Verse;
 
 
-namespace dIl_PositiveConnections
+namespace DIL_PositiveConnections
 {
     public class InteractionWorker_Mediation : InteractionWorker
     {
@@ -107,21 +107,17 @@ namespace dIl_PositiveConnections
 
         private void ApplyMediationOutcome(Pawn initiator, Pawn recipient, Pawn conflictPawn, int mediationBonus)
         {
-            Log.Message("Applying mediation outcome");
+           
 
             // Convert mediationBonus into a range from 0 to 2
             int convertedBonus = (int)Mathf.Round(mediationBonus / (MAX_MEDIATION_BONUS / 2f));
             convertedBonus = Mathf.Clamp(convertedBonus, 0, 2); // Ensure the result is within the range 0 to 2
-            Log.Message("Converted mediation bonus: " + convertedBonus);
-
+           
             // Create a memory of the successful mediation
-            Thought_Memory memoryInitiator = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("SuccessfulMediation"));
-            Thought_Memory memoryRecipient = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("SuccessfulMediation"));
-            Thought_Memory memoryConflictPawn = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("SuccessfulMediation"));
-            Log.Message("Created memory for initiator: " + memoryInitiator);
-            Log.Message("Created memory for recipient: " + memoryRecipient);
-            Log.Message("Created memory for conflictPawn: " + memoryConflictPawn);
-
+            Thought_Memory memoryInitiator = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("DIL_SuccessfulMediation"));
+            Thought_Memory memoryRecipient = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("DIL_SuccessfulMediation"));
+            Thought_Memory memoryConflictPawn = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("DIL_SuccessfulMediation"));
+           
             // The moodPowerFactor is fixed, but we can modify the base mood effect directly
             memoryInitiator.SetForcedStage(convertedBonus);
             memoryRecipient.SetForcedStage(convertedBonus);
@@ -131,18 +127,14 @@ namespace dIl_PositiveConnections
             initiator.needs.mood.thoughts.memories.TryGainMemory(memoryInitiator);
             recipient.needs.mood.thoughts.memories.TryGainMemory(memoryRecipient);
             conflictPawn.needs.mood.thoughts.memories.TryGainMemory(memoryConflictPawn);
-            Log.Message("Initiator memories after assignment: " + initiator.needs.mood.thoughts.memories.Memories.Count);
-            Log.Message("Recipient memories after assignment: " + recipient.needs.mood.thoughts.memories.Memories.Count);
-            Log.Message("ConflictPawn memories after assignment: " + conflictPawn.needs.mood.thoughts.memories.Memories.Count);
-
-            Thought_Memory memoryShared = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDefOfPositiveConnections.InMediationWith);
+          
+            Thought_Memory memoryShared = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDefOfPositiveConnections.DIL_InMediationWith);
             memoryShared.SetForcedStage(0); // Set the thought stage based on mediation bonus
             recipient.needs.mood.thoughts.memories.TryGainMemory(memoryShared, conflictPawn);
             conflictPawn.needs.mood.thoughts.memories.TryGainMemory(memoryShared, recipient);
 
 
-            Log.Message("Recipient memories after shared thought assignment: " + recipient.needs.mood.thoughts.memories.Memories.Count);
-            Log.Message("ConflictPawn memories after shared thought assignment: " + conflictPawn.needs.mood.thoughts.memories.Memories.Count);
+          
         }
 
 

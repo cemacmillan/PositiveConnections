@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <InteractionDef>
-        <defName>Mediation</defName>
-        <workerClass>dIl_PositiveConnections.InteractionWorker_Mediation</workerClass>
+        <defName>DIL_Mediation</defName>
+        <workerClass>DIL_PositiveConnections.InteractionWorker_Mediation</workerClass>
         <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
         <logRulesInitiator>
             <rulesStrings>
@@ -16,8 +16,8 @@
         </logRulesRecipient>
     </InteractionDef>
     <InteractionDef>
-        <defName>Compliment</defName>
-        <workerClass>dIl_PositiveConnections.InteractionWorker_Compliment</workerClass>
+        <defName>DIL_Compliment</defName>
+        <workerClass>DIL_PositiveConnections.InteractionWorker_Compliment</workerClass>
         <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
         <logRulesInitiator>
             <rulesStrings>
@@ -31,8 +31,8 @@
         </logRulesRecipient>
     </InteractionDef>
     <InteractionDef>
-        <defName>SkillShare</defName>
-        <workerClass>dIl_PositiveConnections.InteractionWorker_SkillShare</workerClass>
+        <defName>DIL_SkillShare</defName>
+        <workerClass>DIL_PositiveConnections.InteractionWorker_SkillShare</workerClass>
         <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
         <logRulesInitiator>
             <rulesStrings>
@@ -41,13 +41,13 @@
         </logRulesInitiator>
     </InteractionDef>
     <InteractionDef>
-        <defName>DiscussIdeoligion</defName>
+        <defName>DIL_DiscussIdeoligion</defName>
         <label>discuss ideoligion</label>
         <description>Pawns discussing their shared ideoligion.</description>
         <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
         <interactionMote>Mote_Speech</interactionMote>
-        <initiatorThought>IdeologicalDiscussion</initiatorThought>
-        <recipientThought>IdeologicalDiscussion</recipientThought>
+        <initiatorThought>DIL_IdeologicalDiscussion</initiatorThought>
+        <recipientThought>DIL_IdeologicalDiscussion</recipientThought>
         <logRulesInitiator>
             <rulesStrings>
                 <li>r_logentry->I had a thoughtful discussion about our ideoligion with [RECIPIENT_nameDef]. It was enlightening.</li>
@@ -60,8 +60,8 @@
         </logRulesRecipient>
     </InteractionDef>
     <InteractionDef>
-        <defName>GiveGift</defName>
-        <workerClass>dIl_PositiveConnections.InteractionWorker_Gift</workerClass>
+        <defName>DIL_GiveGift</defName>
+        <workerClass>DIL_PositiveConnections.InteractionWorker_Gift</workerClass>
         <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
         <logRulesInitiator>
             <rulesStrings>
@@ -76,11 +76,11 @@
     </InteractionDef>
 
   <InteractionDef>
-    <defName>SharedPassion</defName>
-    <workerClass>dIl_PositiveConnections.InteractionWorker_SharedPassion</workerClass>
+    <defName>DIL_SharedPassion</defName>
+    <workerClass>DIL_PositiveConnections.InteractionWorker_SharedPassion</workerClass>
     <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
-    <initiatorThought>SharedPassionActivity</initiatorThought>
-    <recipientThought>SharedPassionActivity</recipientThought>
+    <initiatorThought>DIL_SharedPassionActivity</initiatorThought>
+    <recipientThought>DIL_SharedPassionActivity</recipientThought>
      <logRulesInitiator>
             <rulesStrings>
                 <li>r_logentry->I discussed a shared passion with [RECIPIENT_nameDef].</li>

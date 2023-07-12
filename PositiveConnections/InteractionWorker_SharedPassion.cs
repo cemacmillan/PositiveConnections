@@ -3,7 +3,7 @@ using RimWorld;
 using System.Collections.Generic;
 using Verse;
 
-namespace dIl_PositiveConnections
+namespace DIL_PositiveConnections
 {
     public class InteractionWorker_SharedPassion : InteractionWorker
     {
@@ -49,7 +49,7 @@ namespace dIl_PositiveConnections
                 Messages.Message(passionMessage, recipient, MessageTypeDefOf.PositiveEvent);
 
 
-                Thought_Memory memory = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("SharedPassionActivity"));
+                Thought_Memory memory = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("DIL_SharedPassionActivity"));
                 memory.moodPowerFactor = 1f;
                 initiator.needs.mood.thoughts.memories.TryGainMemory(memory);
                 recipient.needs.mood.thoughts.memories.TryGainMemory(memory);

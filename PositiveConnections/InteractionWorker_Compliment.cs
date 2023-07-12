@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace dIl_PositiveConnections
+namespace DIL_PositiveConnections
 {
     public class InteractionWorker_Compliment : InteractionWorker
     {
@@ -35,7 +35,7 @@ namespace dIl_PositiveConnections
 
             Messages.Message(complimentMessage, recipient, MessageTypeDefOf.PositiveEvent);
 
-            Thought_Memory memory = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("ReceivedCompliment"));
+            Thought_Memory memory = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("DIL_ReceivedCompliment"));
             memory.moodPowerFactor = 1f;
             recipient.needs.mood.thoughts.memories.TryGainMemory(memory);
 

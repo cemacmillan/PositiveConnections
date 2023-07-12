@@ -3,7 +3,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace dIl_PositiveConnnections
+namespace DIL_PositiveConnnections
 {
     public class InteractionWorker_DiscussIdeoligion : InteractionWorker
     {
@@ -22,7 +22,7 @@ namespace dIl_PositiveConnnections
         public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks, out string letterText, out string letterLabel, out LetterDef letterDef, out LookTargets lookTargets)
         {
             // Define the ThoughtDef for a positive ideoligion discussion
-            ThoughtDef positiveDiscussion = ThoughtDef.Named("PositiveIdeoligionDiscussion");
+            ThoughtDef positiveDiscussion = ThoughtDef.Named("DIL_PositiveIdeoligionDiscussion");
 
             // Add the memory to both pawns
             initiator.needs?.mood?.thoughts?.memories?.TryGainMemory((Thought_Memory)ThoughtMaker.MakeThought(positiveDiscussion), recipient);

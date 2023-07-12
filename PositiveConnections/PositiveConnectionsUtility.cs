@@ -4,7 +4,7 @@ using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 
-namespace dIl_PositiveConnections
+namespace DIL_PositiveConnections
 {
     public static class PositiveConnectionsUtility
     {
@@ -91,10 +91,10 @@ namespace dIl_PositiveConnections
                     actionPhrase = "discussing mining and minerals";
                     break;
                 case "shooting":
-                    actionPhrase = "shooting practice";
+                    actionPhrase = "discussing the ins and outs of marksmanship";
                     break;
                 case "melee":
-                    actionPhrase = "practicing melee combat";
+                    actionPhrase = "talking about melee combat";
                     break;
                 case "intellectual":
                     actionPhrase = "having an intellectual conversation";

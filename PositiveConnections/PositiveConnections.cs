@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace dIl_PositiveConnections
+namespace DIL_PositiveConnections
 {
     public class Mod_PositiveConnections : Mod
     {
