@@ -8,17 +8,36 @@
     <li>1.4</li>
   </supportedVersions>
   <description>
-  Positive Connections: Are you tired of overseeing colonies where intense animosity prevails among your colonists? Despite enduring and conquering numerous shared perils, do they still view each other merely as "acquaintances"?
+    Positive Connections: Are you tired of overseeing colonies where intense animosity prevails among your colonists? Despite enduring and conquering numerous shared perils, do they still view each other merely as "acquaintances"?
+
 
 If this resonates with you, then Positive Connections is the mod you've been waiting for.
 
 Introducing six brand new interactions for your pawns:
 
 Compliment: Let your colonists express genuine appreciation and admiration for each other's skills and qualities.
+
 Knowledge Sharing: Foster a culture of learning and growth by encouraging your pawns to share their expertise and learn from one another.
+
 Gift Giving: Strengthen the bonds between your colonists by allowing them to exchange thoughtful gifts, fostering a sense of camaraderie.
+
 Mediation: Settle disputes and conflicts in a civilized manner, promoting harmony and preventing unnecessary tension.
+
 Shared Passions: Unite your colonists through shared hobbies and interests, allowing them to bond over their mutual passions.
+
 Discuss Ideology: Encourage meaningful conversations about ideology and belief systems, fostering understanding and empathy among your colonists.
-Naturally, rivalries, insults, and pawns stepping over fallen comrades will still occur, just as in the past. However, those who are capable of building positive connections will tend to do so, creating a more harmonious and cohesive colony.</description>
+
+Naturally, rivalries, insults, and pawns stepping over fallen comrades will still occur, just as in the past. However, those who are capable of building positive connections will tend to do so, creating a more harmonious and cohesive colony.
+
+Some of these interactions may occur with pawns from other factions as well, possibly improving diplomatic relations.
+
+Note: There are no graphics or other visible changes, only the log messages visible in the upper left hand corner will tell you these interactions are taking place for they use the same motes as chit chat, etc. and any memories or mood buffs gained by the recipient or initiator of the interaction.
+
+Some interactions will appear in clusters, don't worry about this. Things will calm back down shortly, it is simply that one pawn was sufficiently inspired to instigate their own interaction causing virtuous chains of good will.
+
+Note that "gifts" are ephemeral objects and will not appear in your pawn's inventory.
+
+Play tested hundreds of hours already but there can always be bugs. Your time in reporting them is appreciated as are your suggestions.
+
+Art by Poulpe Voulant.</description>
 </ModMetaData>

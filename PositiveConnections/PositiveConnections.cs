@@ -5,11 +5,14 @@ namespace DIL_PositiveConnections
 {
     public class Mod_PositiveConnections : Mod
     {
-        private ModSettings settings;
+        public static Mod_PositiveConnections Instance;
+
+        public PositiveConnectionsModSettings settings; // Update the type here
 
         public Mod_PositiveConnections(ModContentPack content) : base(content)
         {
-            settings = GetSettings<ModSettings>();
+            Instance = this;
+            settings = GetSettings<PositiveConnectionsModSettings>(); // Update the type here
         }
 
         public override void DoSettingsWindowContents(Rect inRect)
@@ -28,6 +31,11 @@ namespace DIL_PositiveConnections
         public override string SettingsCategory()
         {
             return "Positive Connections";
+        }
+
+        static void Mod_PositiveConnections_PostInit()
+        {
+
         }
     }
 }

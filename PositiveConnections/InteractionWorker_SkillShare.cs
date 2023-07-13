@@ -12,6 +12,8 @@ namespace DIL_PositiveConnections
         private const float BaseSelectionWeight = 0.0075f;
         private const float NonColonyPawnFactor = 0.05f;
         private const int SkillDifferenceDivisor = 10;
+        PositiveConnectionsModSettings modSettings = Mod_PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
+
 
         //private const float BaseSelectionWeight = 0.075f;
         //private const float NonColonyPawnFactor = 1.1f;
@@ -51,8 +53,13 @@ namespace DIL_PositiveConnections
                 // Generate the teaching message
                 string teachingMessage = $"{initiator.Name} taught {recipient.Name} about {highestSkill.def.label}.";
 
-                // Feedback
-                Messages.Message(teachingMessage, recipient, MessageTypeDefOf.PositiveEvent);
+                if(!modSettings.DisableAllMessages)
+                {
+                    // Feedback
+                    Messages.Message(teachingMessage, recipient, MessageTypeDefOf.PositiveEvent);
+
+                }
+                
 
                 // Increase the recipient's mood
                 recipient.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOfPositiveConnections.DIL_ReceivedTeaching,initiator);

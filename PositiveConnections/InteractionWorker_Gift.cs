@@ -7,6 +7,8 @@ namespace DIL_PositiveConnections
 {
     public class InteractionWorker_Gift : InteractionWorker
     {
+
+        PositiveConnectionsModSettings modSettings = Mod_PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
         private const float BaseSelectionWeight = 0.0050f;
        
 
@@ -36,11 +38,16 @@ namespace DIL_PositiveConnections
         }
 
 
+
         public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks, out string letterText, out string letterLabel, out LetterDef letterDef, out LookTargets lookTargets)
         {
             string giftDescription = PositiveConnectionsUtility.GenerateGiftDescription(initiator, recipient);
 
-            Messages.Message(giftDescription, recipient, MessageTypeDefOf.PositiveEvent);
+            if(!modSettings.DisableAllMessages) {
+
+                Messages.Message(giftDescription, recipient, MessageTypeDefOf.PositiveEvent);
+
+            }
 
             Thought_Memory memory = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("DIL_ReceivedGift"));
             memory.moodPowerFactor = 1f;

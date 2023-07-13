@@ -6,10 +6,9 @@ namespace DIL_PositiveConnections
     public class PositiveConnectionsModSettingsWindow : Window
     {
         private Vector2 scrollPosition;
+        public PositiveConnectionsModSettings modSettings; // Updated the type here
 
-        private ModSettings modSettings;
-
-        public PositiveConnectionsModSettingsWindow(ModSettings settings)
+        public PositiveConnectionsModSettingsWindow(PositiveConnectionsModSettings settings) // Updated the parameter type here
         {
             // Set the window properties
             doCloseX = true;
@@ -35,6 +34,10 @@ namespace DIL_PositiveConnections
 
             // Add a checkbox for the gender adjustment setting
             listing.CheckboxLabeled("Enable Gender Adjustment", ref modSettings.EnableGenderAdjustment);
+
+            // Add a checkbox for disabling all messages
+            listing.CheckboxLabeled("Hardcore: Disable all messages (player notifications) from this mod", ref modSettings.DisableAllMessages);
+
 
             listing.End();
             Widgets.EndScrollView();

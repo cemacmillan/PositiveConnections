@@ -7,7 +7,10 @@ namespace DIL_PositiveConnections
 {
     public class InteractionWorker_Compliment : InteractionWorker
     {
+
         private const float BaseSelectionWeight = 0.015f;
+
+        PositiveConnectionsModSettings modSettings = Mod_PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
 
         public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
         {
@@ -32,8 +35,15 @@ namespace DIL_PositiveConnections
         public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks, out string letterText, out string letterLabel, out LetterDef letterDef, out LookTargets lookTargets)
         {
             string complimentMessage = PositiveConnectionsUtility.GenerateComplimentMessage(initiator, recipient);
+          
 
-            Messages.Message(complimentMessage, recipient, MessageTypeDefOf.PositiveEvent);
+            if (!modSettings.DisableAllMessages)
+            {
+
+                Messages.Message(complimentMessage, recipient, MessageTypeDefOf.PositiveEvent);
+
+            }
+
 
             Thought_Memory memory = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("DIL_ReceivedCompliment"));
             memory.moodPowerFactor = 1f;

@@ -7,6 +7,8 @@ namespace DIL_PositiveConnections
 {
     public class InteractionWorker_SharedPassion : InteractionWorker
     {
+
+        PositiveConnectionsModSettings modSettings = Mod_PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
         private const float BaseSelectionWeight = 0.005f;
         private const int PassionLevelFactor = 2;  // Increase selection weight based on passion level
 
@@ -46,7 +48,11 @@ namespace DIL_PositiveConnections
                 //string passionMessage = $"{initiator.Name.ToStringShort} and {recipient.Name.ToStringShort} enjoyed {sharedPassion.def.skillLabel} together";
                 string passionMessage = PositiveConnectionsUtility.GenerateSharedPassionMessage(initiator, recipient, sharedPassion);
 
-                Messages.Message(passionMessage, recipient, MessageTypeDefOf.PositiveEvent);
+                if(!modSettings.DisableAllMessages) {
+
+                    Messages.Message(passionMessage, recipient, MessageTypeDefOf.PositiveEvent);
+                }
+               
 
 
                 Thought_Memory memory = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("DIL_SharedPassionActivity"));

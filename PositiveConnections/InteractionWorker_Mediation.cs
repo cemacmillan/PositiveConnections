@@ -8,6 +8,7 @@ using Verse;
 
 namespace DIL_PositiveConnections
 {
+
     public class InteractionWorker_Mediation : InteractionWorker
     {
         private const int NEGATIVE_RELATIONSHIP_THRESHOLD = -10;
@@ -16,6 +17,8 @@ namespace DIL_PositiveConnections
         private const int MAX_MEDIATION_BONUS = 20;
         private float BASE_SELECTION_WEIGHT = 0.01f;
         //private float BASE_SELECTION_WEIGHT = 0.9f;
+
+        PositiveConnectionsModSettings modSettings = Mod_PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
 
         public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
         {
@@ -69,7 +72,14 @@ namespace DIL_PositiveConnections
             Log.Message($"[Positive Connections] {initiator.Name.ToStringShort} mediated a conflict between {recipient.Name.ToStringShort} and {conflictPawn.Name.ToStringShort}. Their relationship improved by {mediationBonus}.");
             // Tell the player about it duh
             string mediationMessage = string.Format("{0} mediated a conflict between {1} and {2}. Their relationship improved by {3}.", initiator.LabelShort, recipient.LabelShort, conflictPawn.LabelShort, mediationBonus);
-            Messages.Message(mediationMessage, new LookTargets(new Pawn[] { initiator, recipient, conflictPawn }), MessageTypeDefOf.PositiveEvent);
+
+            if(!modSettings.DisableAllMessages)
+            {
+
+                Messages.Message(mediationMessage, new LookTargets(new Pawn[] { initiator, recipient, conflictPawn }), MessageTypeDefOf.PositiveEvent);
+
+            }
+           
 
 
         }
