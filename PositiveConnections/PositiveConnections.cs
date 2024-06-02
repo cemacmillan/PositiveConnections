@@ -3,16 +3,24 @@ using Verse;
 
 namespace DIL_PositiveConnections
 {
-    public class Mod_PositiveConnections : Mod
+    public class PositiveConnections : Mod
     {
-        public static Mod_PositiveConnections Instance;
+        public static PositiveConnections Instance;
+        public static bool IsMindMattersActive;
 
         public PositiveConnectionsModSettings settings; // Update the type here
 
-        public Mod_PositiveConnections(ModContentPack content) : base(content)
+        public PositiveConnections(ModContentPack content) : base(content)
         {
             Instance = this;
             settings = GetSettings<PositiveConnectionsModSettings>(); // Update the type here
+            Log.Message("Positive connections v1.5.0");
+            IsMindMattersActive = ModsConfig.IsActive("cem.mindmatters");
+
+            if(IsMindMattersActive)
+            {
+                Log.Message("Mind Matters detected!");
+            }
         }
 
         public override void DoSettingsWindowContents(Rect inRect)

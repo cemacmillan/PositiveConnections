@@ -5,21 +5,25 @@ using RimWorld;
 using Verse;
 
 
+
 namespace DIL_PositiveConnections
 {
     public class InteractionWorker_SkillShare : InteractionWorker
     {
-        private const float BaseSelectionWeight = 0.0075f;
+        private const float BaseSelectionWeight = 0.0005f;
         private const float NonColonyPawnFactor = 0.05f;
         private const int SkillDifferenceDivisor = 10;
-        PositiveConnectionsModSettings modSettings = Mod_PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
-
-
-        //private const float BaseSelectionWeight = 0.075f;
-        //private const float NonColonyPawnFactor = 1.1f;
+        private PositiveConnectionsModSettings modSettings = PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
+        public static event Action<Pawn, float, string, int> OnPositiveInteraction;
 
         public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
         {
+
+            if (initiator.Faction != Faction.OfPlayer && recipient.Faction != Faction.OfPlayer)
+            {
+                return 0f;
+            }
+
             // Get the highest skill of the initiator using Verse's MaxBy
             SkillRecord highestSkill = Verse.GenCollection.MaxBy(initiator.skills.skills, s => s.Level);
 
@@ -27,7 +31,7 @@ namespace DIL_PositiveConnections
             if (highestSkill != null && recipient.skills.GetSkill(highestSkill.def).Level < highestSkill.Level)
             {
                 // Weight is based on the difference in skill levels
-                float weight = (highestSkill.Level - recipient.skills.GetSkill(highestSkill.def).Level)/SkillDifferenceDivisor * initiator.needs.mood.CurLevel * BaseSelectionWeight;
+                float weight = (highestSkill.Level - recipient.skills.GetSkill(highestSkill.def).Level) / SkillDifferenceDivisor * initiator.needs.mood.CurLevel * BaseSelectionWeight;
 
                 // If either the initiator or the recipient is not a colonist, reduce the weight
                 if (initiator.Faction != Faction.OfPlayer || recipient.Faction != Faction.OfPlayer)
@@ -35,10 +39,11 @@ namespace DIL_PositiveConnections
                     weight *= NonColonyPawnFactor;
                 }
 
-                return weight;
+                return weight * modSettings.BaseInteractionFrequency;
             }
             return 0f;
         }
+
 
         public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks, out string letterText, out string letterLabel, out LetterDef letterDef, out LookTargets lookTargets)
         {
@@ -63,7 +68,8 @@ namespace DIL_PositiveConnections
 
                 // Increase the recipient's mood
                 recipient.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOfPositiveConnections.DIL_ReceivedTeaching,initiator);
-                
+
+                OnPositiveInteraction?.Invoke(initiator, 0.1f, "PositiveInteraction", (int)ExperienceValency.Positive);
             }
 
             // Clear out required 'out' parameters
@@ -71,6 +77,8 @@ namespace DIL_PositiveConnections
             letterLabel = null;
             letterDef = null;
             lookTargets = null;
+
+           
         }
 
 

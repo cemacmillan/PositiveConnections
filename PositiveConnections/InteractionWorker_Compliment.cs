@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
+
 namespace DIL_PositiveConnections
 {
     public class InteractionWorker_Compliment : InteractionWorker
     {
 
-        private const float BaseSelectionWeight = 0.015f;
+        public static event Action<Pawn, float, string, int> OnPositiveInteraction;
 
-        PositiveConnectionsModSettings modSettings = Mod_PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
+        private const float BaseSelectionWeight = 0.0125f;
+
+        PositiveConnectionsModSettings modSettings = PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
 
         public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
         {
@@ -19,7 +22,12 @@ namespace DIL_PositiveConnections
                 return 0f;
             }
 
-            float baseWeight = initiator.needs.mood.CurLevel * BaseSelectionWeight;
+            if (initiator.Faction != Faction.OfPlayer && recipient.Faction != Faction.OfPlayer)
+            {
+                return 0f;
+            }
+
+            float baseWeight = initiator.needs.mood.CurLevel * BaseSelectionWeight * modSettings.BaseInteractionFrequency;
 
             if (initiator.Faction == recipient.Faction)
             {
@@ -47,7 +55,7 @@ namespace DIL_PositiveConnections
 
             Thought_Memory memory = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("DIL_ReceivedCompliment"));
             memory.moodPowerFactor = 1f;
-            recipient.needs.mood.thoughts.memories.TryGainMemory(memory);
+            recipient.needs.mood.thoughts.memories.TryGainMemory(memory,initiator);
 
             letterText = null;
             letterLabel = null;
@@ -62,6 +70,14 @@ namespace DIL_PositiveConnections
             {
                 PositiveConnectionsUtility.ChangeFactionRelations(factionA, factionB, 10);
             }
+
+
+            OnPositiveInteraction?.Invoke(initiator, 0.1f, "PositiveInteraction", (int)ExperienceValency.Positive);
+
+
+
+
+            // !roll
         }
 
     }

@@ -8,12 +8,19 @@ namespace DIL_PositiveConnections
     public class InteractionWorker_SharedPassion : InteractionWorker
     {
 
-        PositiveConnectionsModSettings modSettings = Mod_PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
-        private const float BaseSelectionWeight = 0.005f;
+        private PositiveConnectionsModSettings modSettings = PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
+        private const float BaseSelectionWeight = 0.0025f;
         private const int PassionLevelFactor = 2;  // Increase selection weight based on passion level
+        public static event Action<Pawn, float, string, int> OnPositiveInteraction;
 
         public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
         {
+
+            if (initiator.Faction != Faction.OfPlayer && recipient.Faction != Faction.OfPlayer)
+            {
+                return 0f;
+            }
+
             // Both pawns should have a shared skill with burning passion
             var sharedPassion = initiator.skills.skills
                 .FirstOrDefault(s => recipient.skills.skills.Any(rs => rs.def == s.def && (int)rs.passion > 0 && (int)s.passion > 0));
@@ -28,13 +35,14 @@ namespace DIL_PositiveConnections
             if (initiator.Faction == recipient.Faction)
             {
                 // Increase the weight based on passion level
-                return baseWeight * ((int)sharedPassion.passion * PassionLevelFactor);
+                return baseWeight * ((int)sharedPassion.passion * PassionLevelFactor) * modSettings.BaseInteractionFrequency;
             }
             else
             {
-                return baseWeight * 0.2f; // 1/5 as likely
+                return baseWeight * 0.05f * modSettings.BaseInteractionFrequency; // 1/20 as likely
             }
         }
+
 
         public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks, out string letterText, out string letterLabel, out LetterDef letterDef, out LookTargets lookTargets)
         {
@@ -57,8 +65,8 @@ namespace DIL_PositiveConnections
 
                 Thought_Memory memory = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("DIL_SharedPassionActivity"));
                 memory.moodPowerFactor = 1f;
-                initiator.needs.mood.thoughts.memories.TryGainMemory(memory);
-                recipient.needs.mood.thoughts.memories.TryGainMemory(memory);
+                initiator.needs.mood.thoughts.memories.TryGainMemory(memory,recipient);
+                recipient.needs.mood.thoughts.memories.TryGainMemory(memory,initiator);
             }
 
             letterText = null;
@@ -74,6 +82,9 @@ namespace DIL_PositiveConnections
             {
                 PositiveConnectionsUtility.ChangeFactionRelations(factionA, factionB, 10);
             }
+
+            OnPositiveInteraction?.Invoke(initiator, 0.1f, "PositiveInteraction", (int)ExperienceValency.Positive);
+
         }
     }
 

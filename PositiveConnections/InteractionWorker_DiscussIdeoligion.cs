@@ -1,26 +1,44 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DIL_PositiveConnections;
 using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace DIL_PositiveConnnections
+namespace DIL_PositiveConnections
 {
     public class InteractionWorker_DiscussIdeoligion : InteractionWorker
     {
-        PositiveConnectionsModSettings modSettings = Mod_PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
+        PositiveConnectionsModSettings modSettings = PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
+
+        public static event Action<Pawn, float, string, int> OnPositiveInteraction;
 
         public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
         {
-            // If both pawns have the same ideoligion, return the base selection weight
-            if (initiator.Ideo == recipient.Ideo)
+            if (initiator.Faction != Faction.OfPlayer && recipient.Faction != Faction.OfPlayer)
             {
-                return 0.025f; // Adjust this weight according to your needs
+                return 0f;
             }
 
-            // If they have different ideoligions, return zero to prevent this interaction
-            return 0.0f;
+            // Check for null ideology
+            if (initiator.Ideo == null || recipient.Ideo == null)
+            {
+                return 0f;
+            }
+
+            // Define base selection weight
+            float baseSelectionWeight = 0.025f * modSettings.BaseInteractionFrequency;
+
+            // If both pawns have the same ideology, return the base selection weight
+            if (initiator.Ideo == recipient.Ideo)
+            {
+                return baseSelectionWeight;
+            }
+
+            // If they have different ideologies, return 1/5 of the base selection weight
+            return baseSelectionWeight * 0.2f;
         }
+
 
         public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks, out string letterText, out string letterLabel, out LetterDef letterDef, out LookTargets lookTargets)
         {
@@ -46,6 +64,9 @@ namespace DIL_PositiveConnnections
             letterLabel = null;
             letterDef = null;
             lookTargets = null;
+
+            OnPositiveInteraction?.Invoke(initiator, 0.1f, "PositiveInteraction", (int)ExperienceValency.Positive);
+
         }
     }
 }

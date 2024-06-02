@@ -5,15 +5,15 @@
   <author>cem</author>
   <url>https://github.com</url>
   <supportedVersions>
-    <li>1.4</li>
+    <li>1.5</li>
   </supportedVersions>
   <description>
-    Positive Connections: Are you tired of overseeing colonies where intense animosity prevails among your colonists? Despite enduring and conquering numerous shared perils, do they still view each other merely as "acquaintances"?
+  Positive Connections: Are you tired of overseeing colonies where intense animosity prevails among your colonists? Despite enduring and conquering numerous shared perils, do they still view each other merely as "acquaintances"?
 
 
 If this resonates with you, then Positive Connections is the mod you've been waiting for.
 
-Introducing six brand new interactions for your pawns:
+Introducing seven brand new interactions for your pawns:
 
 Compliment: Let your colonists express genuine appreciation and admiration for each other's skills and qualities.
 
@@ -27,6 +27,8 @@ Shared Passions: Unite your colonists through shared hobbies and interests, allo
 
 Discuss Ideology: Encourage meaningful conversations about ideology and belief systems, fostering understanding and empathy among your colonists.
 
+Comfort: A kind colonist, or one in a good mood at the very least will seek out another who isn't doing so well and have a chat with them just to see how they are holding up after whatever horors the Rim has shown them.
+
 Naturally, rivalries, insults, and pawns stepping over fallen comrades will still occur, just as in the past. However, those who are capable of building positive connections will tend to do so, creating a more harmonious and cohesive colony.
 
 Some of these interactions may occur with pawns from other factions as well, possibly improving diplomatic relations.
@@ -38,6 +40,28 @@ Some interactions will appear in clusters, don't worry about this. Things will c
 Note that "gifts" are ephemeral objects and will not appear in your pawn's inventory.
 
 Play tested hundreds of hours already but there can always be bugs. Your time in reporting them is appreciated as are your suggestions.
+
+[b]Frequently asked questions[/b]
+
+Q: Where are these gifts my colonists are giving each other? 
+A: Gifts in Positive Connections are virtual. It's the thought that counts. 
+
+Q: Does Positive Connections interact with mod XYZ?
+A: No, Positive Connections uses simple interactions and is agnostic about other mods or DLC.
+
+Q: What does this gender adjustment switch do?
+A: It should equalize the chances of men or women initiating relationships if activated.
+
+Q: Doesn't this make the game too easy/This barely changes anything?
+A: Everything depends on play style. But you can now reduce or increase the frequency of interactions from 1/4 to 10x as likely via mod settings. Recommended value is 1.
+
+Q: Is it possible to request new interactions/a feature where...?
+A: Sure! This mod is under active development and feature requests will be taken into consideration.
+
+Bugs are a natural and inevitable part of software development. If you see any please be kind and signal them!
+
+
+Support my work on [url=https://ko-fi.com/N4N4NFFPZ]Support my work via ko-fi.com[/url].
 
 Art by Poulpe Voulant.</description>
 </ModMetaData>

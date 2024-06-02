@@ -6,6 +6,14 @@ using Verse;
 
 namespace DIL_PositiveConnections
 {
+
+    public enum ExperienceValency
+    {
+        Positive,
+        Negative,
+        Neutral
+    }
+
     public static class PositiveConnectionsUtility
     {
         public static void ChangeFactionRelations(Faction factionA, Faction factionB, int goodwillChange)
@@ -28,6 +36,8 @@ namespace DIL_PositiveConnections
             factionRelationA.CheckKindThresholds(factionA, canSendLetter: false, null, GlobalTargetInfo.Invalid, out _);
             factionRelationB.CheckKindThresholds(factionB, canSendLetter: false, null, GlobalTargetInfo.Invalid, out _);
         }
+
+       
 
         public static string GenerateComplimentMessage(Pawn initiator, Pawn recipient)
         {

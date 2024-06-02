@@ -8,23 +8,40 @@ namespace DIL_PositiveConnections
     public class InteractionWorker_Gift : InteractionWorker
     {
 
-        PositiveConnectionsModSettings modSettings = Mod_PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
+        PositiveConnectionsModSettings modSettings = PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
         private const float BaseSelectionWeight = 0.0050f;
-       
+        public static event Action<Pawn, float, string, int> OnPositiveInteraction;
+
 
         public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
         {
+            if (initiator.Faction != Faction.OfPlayer && recipient.Faction != Faction.OfPlayer)
+            {
+                return 0f;
+            }
+
             if (initiator.relations.OpinionOf(recipient) < -5 || recipient.relations.OpinionOf(initiator) < -5)
             {
                 return 0f;
             }
 
-            float baseWeight = initiator.needs.mood.CurLevel * BaseSelectionWeight;
+           
+            float baseWeight = initiator.needs.mood.CurLevel * BaseSelectionWeight * modSettings.BaseInteractionFrequency;
 
+            // Because life is unfair
+            float prettiness = recipient.GetStatValue(StatDefOf.PawnBeauty);
 
-            if (recipient.story.traits.HasTrait(TraitDefOf.Beauty))
+            if (prettiness < 0f)
             {
-                baseWeight *= 2;  // double the base weight if the recipient is Beautiful
+                baseWeight *= 0.3f;  // found unattractive factor
+            }
+            else if (prettiness > 0f)
+            {
+                baseWeight *= 2.3f;  // found attractive factor
+            }
+            else
+            {
+                baseWeight *= 1f;  // average factor
             }
 
             if (initiator.Faction == recipient.Faction)
@@ -51,7 +68,7 @@ namespace DIL_PositiveConnections
 
             Thought_Memory memory = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("DIL_ReceivedGift"));
             memory.moodPowerFactor = 1f;
-            recipient.needs.mood.thoughts.memories.TryGainMemory(memory);
+            recipient.needs.mood.thoughts.memories.TryGainMemory(memory,initiator);
 
             letterText = null;
             letterLabel = null;
@@ -66,6 +83,9 @@ namespace DIL_PositiveConnections
             {
                 PositiveConnectionsUtility.ChangeFactionRelations(factionA, factionB, 10);
             }
+
+            OnPositiveInteraction?.Invoke(initiator, 0.1f, "PositiveInteraction", (int)ExperienceValency.Positive);
+
         }
     }
 }
