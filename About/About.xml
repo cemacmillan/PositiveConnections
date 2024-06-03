@@ -3,65 +3,95 @@
   <name>Positive Connections</name>
   <packageId>cem.PositiveConnections</packageId>
   <author>cem</author>
-  <url>https://github.com</url>
+  <url>https://github.com/cemacmillan/PositiveConnections</url>
   <supportedVersions>
+    <li>1.4</li>
     <li>1.5</li>
   </supportedVersions>
-  <description>
-  Positive Connections: Are you tired of overseeing colonies where intense animosity prevails among your colonists? Despite enduring and conquering numerous shared perils, do they still view each other merely as "acquaintances"?
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <description>[h1]Positive Connections[/h1]
+[img]https://imgur.com/a/zPeXYCK.png[/img]
+Thanks to all the patient fans of this mod! 
 
+- Positive Connections is now 1.5 compatible, with or without Anomaly. 
+- The 1.4 version has also been brought up to date.
+- Fixed frequency of interaction slider which wasn't saving. Probably not fixed in 1.4 (sorry 1.4 folks)
+- The dependency on Harmony is now explicit.
+- Remains compatible with other social interaction mods on several popular lists (thanks you, listkeepers and curators!)
+- Please check the Discussions section for announcements about my other mods which complement or extend this mod.
+
+[img]https://imgur.com/a/5yCxeEs.png[/img]
+Are you tired of overseeing colonies where intense animosity prevails among your colonists? 
+Despite enduring and conquering numerous shared perils, do they still view each other merely as [i]acquaintances[/i]?
 
 If this resonates with you, then Positive Connections is the mod you've been waiting for.
 
-Introducing seven brand new interactions for your pawns:
 
-Compliment: Let your colonists express genuine appreciation and admiration for each other's skills and qualities.
 
-Knowledge Sharing: Foster a culture of learning and growth by encouraging your pawns to share their expertise and learn from one another.
+[img]https://imgur.com/a/cVswYEM.png[/img]
+[h2]Introducing seven brand new interactions for your pawns:[/h2]
 
-Gift Giving: Strengthen the bonds between your colonists by allowing them to exchange thoughtful gifts, fostering a sense of camaraderie.
-
-Mediation: Settle disputes and conflicts in a civilized manner, promoting harmony and preventing unnecessary tension.
-
-Shared Passions: Unite your colonists through shared hobbies and interests, allowing them to bond over their mutual passions.
-
-Discuss Ideology: Encourage meaningful conversations about ideology and belief systems, fostering understanding and empathy among your colonists.
-
-Comfort: A kind colonist, or one in a good mood at the very least will seek out another who isn't doing so well and have a chat with them just to see how they are holding up after whatever horors the Rim has shown them.
+[list]
+[*]Compliment: Let your colonists express genuine appreciation and admiration for each other's skills and qualities.
+[*]Knowledge Sharing: Foster a culture of learning and growth by rewarding your pawns with recognition for sharing their knowledge.
+[*]Gift Giving: Strengthen the bonds between your colonists by allowing them to exchange thoughtful gifts, fostering a sense of camaraderie.
+[*]Mediation: Settle disputes and conflicts in a civilized manner, promoting harmony and preventing unnecessary tension.
+[*]Shared Passions: Unite your colonists through shared hobbies and interests, allowing them to bond over their mutual passions.
+[*]Discuss Ideology: Encourage meaningful conversations about ideology and belief systems, fostering understanding and empathy among your colonists.
+[*]Comfort: A kind colonist, or one in a good mood at the very least, will seek out another who isn't doing so well and have a chat with them just to see how they are holding up after whatever horrors the Rim has shown them.
+[/list]
 
 Naturally, rivalries, insults, and pawns stepping over fallen comrades will still occur, just as in the past. However, those who are capable of building positive connections will tend to do so, creating a more harmonious and cohesive colony.
 
-Some of these interactions may occur with pawns from other factions as well, possibly improving diplomatic relations.
+Some of these interactions may occur with pawns from other factions as well, possibly improving diplomatic relations (note: effects on relations are only partly implemented).
 
-Note: There are no graphics or other visible changes, only the log messages visible in the upper left hand corner will tell you these interactions are taking place for they use the same motes as chit chat, etc. and any memories or mood buffs gained by the recipient or initiator of the interaction.
+[h2]Note:[/h2]
 
-Some interactions will appear in clusters, don't worry about this. Things will calm back down shortly, it is simply that one pawn was sufficiently inspired to instigate their own interaction causing virtuous chains of good will.
+This mod doesn't add any new graphics - only the messages (upper left hand corner) and the pawn's interaction log, memories and mood buffs will tell you what's taking place.
+
+Interactions will sometimes appear in clusters, especially the first few which are triggered. Don't worry. Things will calm back down shortly; it is often transient virtuous-cycles of freshly inspired or uplifted-feeling pawns initiating their own interactions.
 
 Note that "gifts" are ephemeral objects and will not appear in your pawn's inventory.
 
-Play tested hundreds of hours already but there can always be bugs. Your time in reporting them is appreciated as are your suggestions.
+[h2]Playtesting:[/h2]
 
-[b]Frequently asked questions[/b]
+Play-tested [strike]hundreds[/strike] many thousands of hours already, but there can always be bugs. Your time in reporting them is appreciated, as are your suggestions.
 
-Q: Where are these gifts my colonists are giving each other? 
-A: Gifts in Positive Connections are virtual. It's the thought that counts. 
+Future pre-releases of this and my other mods will be mentioned in a Discussion thread for those who enjoy unstable code where literally [i]anything[/i] might happen.
 
-Q: Does Positive Connections interact with mod XYZ?
+[img]https://imgur.com/a/uj8Oz5P.png[/img]
+[h2]Frequently Asked Questions[/h2]
+
+[b]Q: Where are these gifts my colonists are giving each other?[/b]
+A: Gifts in Positive Connections are virtual. It's the thought that counts.
+
+[b]Q: Does Positive Connections interact with mod XYZ?[/b]
 A: No, Positive Connections uses simple interactions and is agnostic about other mods or DLC.
 
-Q: What does this gender adjustment switch do?
+[b]Q: What does this gender adjustment switch do?[/b]
 A: It should equalize the chances of men or women initiating relationships if activated.
 
-Q: Doesn't this make the game too easy/This barely changes anything?
+[b]Q: Doesn't this make the game too easy/This barely changes anything?[/b]
 A: Everything depends on play style. But you can now reduce or increase the frequency of interactions from 1/4 to 10x as likely via mod settings. Recommended value is 1.
 
-Q: Is it possible to request new interactions/a feature where...?
+[b]Q: Is it possible to request new interactions/a feature where...?[/b]
 A: Sure! This mod is under active development and feature requests will be taken into consideration.
 
-Bugs are a natural and inevitable part of software development. If you see any please be kind and signal them!
 
+[img]https://imgur.com/a/V0crOoQ.png[/img]
+Bugs are a natural and inevitable part of software development. If you see any, please be kind and signal them!
 
-Support my work on [url=https://ko-fi.com/N4N4NFFPZ]Support my work via ko-fi.com[/url].
+Support my work on [url=https://ko-fi.com/N4N4NFFPZ]ko-fi.com[/url].
 
-Art by Poulpe Voulant.</description>
+[url=https://ko-fi.com/N4N4NFFPZ][img]https://imgur.com/a/rvnRcUz.png[/img][/url]
+
+Art by Poulpe Voulant.
+  </description>
 </ModMetaData>
