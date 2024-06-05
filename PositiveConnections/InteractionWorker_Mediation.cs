@@ -5,32 +5,29 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-
 namespace DIL_PositiveConnections
 {
-
     public class InteractionWorker_Mediation : InteractionWorker
     {
-        private const int NegativeRelationshipThreshold = -10;
+        private const int NegativeRelationshipThreshold = -5;
         private const int MinSocialSkillRequired = 6;
         private const int MinMediationBonus = 6;
         private const int MaxMediationBonus = 20;
-        private const float BaseSelectionWeight = 0.01f;
-        //private const float BaseSelectionWeight = 0.9f;
+        private const float BaseSelectionWeight = 0.02f; // Increased base weight
         public static event Action<Pawn, float, string, int> OnPositiveInteraction;
 
         private PositiveConnectionsModSettings modSettings = PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
 
         public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
         {
-
-            if (initiator.Faction != Faction.OfPlayer && recipient.Faction != Faction.OfPlayer)
+            // Only consider colonists
+            if (initiator.Faction != Faction.OfPlayer || recipient.Faction != Faction.OfPlayer)
             {
                 return 0f;
             }
 
             // If the initiator's social skill is less than the minimum required, this interaction should not occur.
-            if (initiator.skills.GetSkill(SkillDefOf.Social).Level < MinSocialSkillRequired||initiator.Faction != recipient.Faction)
+            if (initiator.skills.GetSkill(SkillDefOf.Social).Level < MinSocialSkillRequired || initiator.Faction != recipient.Faction)
             {
                 return 0f;
             }
@@ -50,8 +47,6 @@ namespace DIL_PositiveConnections
             // If there are no potential conflicts, return a weight of zero.
             return 0f;
         }
-
-
 
         public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks, out string letterText, out string letterLabel, out LetterDef letterDef, out LookTargets lookTargets)
         {
@@ -78,20 +73,17 @@ namespace DIL_PositiveConnections
 
             // Log the interaction for debugging purposes
             Log.Message($"[Positive Connections] {initiator.Name.ToStringShort} mediated a conflict between {recipient.Name.ToStringShort} and {conflictPawn.Name.ToStringShort}. Their relationship improved by {mediationBonus}.");
-            // Tell the player about it duh
+
+            // Generate a mediation message
             string mediationMessage = string.Format("{0} mediated a conflict between {1} and {2}. Their relationship improved by {3}.", initiator.LabelShort, recipient.LabelShort, conflictPawn.LabelShort, mediationBonus);
 
-            if(!modSettings.DisableAllMessages)
+            if (!modSettings.DisableAllMessages)
             {
-
                 Messages.Message(mediationMessage, new LookTargets(new Pawn[] { initiator, recipient, conflictPawn }), MessageTypeDefOf.PositiveEvent);
-
             }
 
             OnPositiveInteraction?.Invoke(initiator, 0.1f, "PositiveInteraction", (int)ExperienceValency.Positive);
         }
-
-
 
         private Pawn FindConflictPawn(Pawn recipient)
         {
@@ -107,7 +99,6 @@ namespace DIL_PositiveConnections
 
             return null;
         }
-
 
         private int CalculateMediationBonus(Pawn initiator)
         {
@@ -141,12 +132,4 @@ namespace DIL_PositiveConnections
             conflictPawn.needs.mood.thoughts.memories.TryGainMemory(memoryShared, recipient);
         }
     }
-
-
-
-
-
-
 }
-
-

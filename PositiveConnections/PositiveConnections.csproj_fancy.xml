@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-    
-    <!-- Global properties -->
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -13,11 +11,7 @@
         <AssemblyName>PositiveConnections</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
-        <OutputPath>bin\$(Configuration)\</OutputPath> <!-- Default OutputPath -->
-        <ReleaseVersion>1.5</ReleaseVersion>
     </PropertyGroup>
-
-    <!-- Properties for Debug1.4 configuration -->
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug1.4|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
         <DebugSymbols>true</DebugSymbols>
@@ -28,8 +22,6 @@
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
-
-    <!-- Properties for Release1.4 configuration -->
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release1.4|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
         <DebugType>pdbonly</DebugType>
@@ -39,8 +31,6 @@
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
-
-    <!-- Properties for Debug1.5 configuration -->
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug1.5|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
         <DebugSymbols>true</DebugSymbols>
@@ -51,8 +41,6 @@
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
-
-    <!-- Properties for Release1.5 configuration -->
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release1.5|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
         <DebugType>pdbonly</DebugType>
@@ -62,8 +50,6 @@
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
-
-    <!-- Reference external libraries -->
     <ItemGroup>
         <Reference Include="System" />
         <Reference Include="System.Core" />
@@ -74,45 +60,37 @@
         </Reference>
         <Reference Include="Assembly-CSharp">
             <HintPath>..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.CoreModule">
-            <HintPath>..\..\..\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-        </Reference>
-        <Reference Include="0Harmony">
-            <HintPath>..\..\..\RimWorldWin64_Data\Managed\0Harmony.dll</HintPath>
-        </Reference>
-    </ItemGroup>
-
-    <!-- Include source files -->
-    <ItemGroup>
-        <Compile Include="InteractionWorker_Compliment.cs" />
-        <Compile Include="InteractionWorker_SkillShare.cs" />
-        <Compile Include="PositiveConnections.cs" />
-        <Compile Include="ThoughtDefOfPositiveConnections.cs" />
-        <Compile Include="InteractionWorker_DiscussIdeoligion.cs" />
-        <Compile Include="HarmonyPatches\MarriageProposalPatch.cs" />
-        <Compile Include="ModSettings.cs" />
-        <Compile Include="ModSettingsWindow.cs" />
-        <Compile Include="PositiveConnectionsUtility.cs" />
-        <Compile Include="InteractionWorker_Mediation.cs" />
-        <Compile Include="InteractionWorker_Gift.cs" />
-        <Compile Include="InteractionWorker_SharedPassion.cs" />
-        <Compile Include="InteractionWorker_GiveComfort.cs" />
-        <Compile Include="TraitDefOfPositiveConnections.cs" />
-    </ItemGroup>
-
-    <!-- Import C# targets -->
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-
-    <!-- Package references -->
-    <ItemGroup>
-        <PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4104" />
-        <PackageReference Include="Lib.Harmony" Version="2.3.3" />
-    </ItemGroup>
-
-    <!-- Include folders -->
-    <ItemGroup>
-       <Folder Include="Properties\" />
-       <Folder Include="HarmonyPatches\" />
-    </ItemGroup>
+        </    <Reference Include="UnityEngine.CoreModule">
+        <HintPath>..\..\..\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="0Harmony">
+        <HintPath>..\..\..\RimWorldWin64_Data\Managed\0Harmony.dll</HintPath>
+    </Reference>
+</ItemGroup>
+<ItemGroup>
+    <Compile Include="InteractionWorker_Compliment.cs" />
+    <Compile Include="InteractionWorker_SkillShare.cs" />
+    <Compile Include="PositiveConnections.cs" />
+    <Compile Include="ThoughtDefOfPositiveConnections.cs" />
+    <Compile Include="InteractionWorker_DiscussIdeoligion.cs" />
+    <Compile Include="HarmonyPatches\MarriageProposalPatch.cs" />
+    <Compile Include="ModSettings.cs" />
+    <Compile Include="ModSettingsWindow.cs" />
+    <Compile Include="PositiveConnectionsUtility.cs" />
+    <Compile Include="InteractionWorker_Mediation.cs" />
+    <Compile Include="InteractionWorker_Gift.cs" />
+    <Compile Include="InteractionWorker_SharedPassion.cs" />
+    <Compile Include="InteractionWorker_GiveComfort.cs" />
+    <Compile Include="TraitDefOfPositiveConnections.cs" />
+</ItemGroup>
+<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+<ItemGroup>
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4104" />
+    <PackageReference Include="Lib.Harmony" Version="2.3.3" />
+</ItemGroup>
+<ItemGroup>
+   <Folder Include="Properties\" />
+   <Folder Include="HarmonyPatches\" />
+</ItemGroup>
 </Project>
+

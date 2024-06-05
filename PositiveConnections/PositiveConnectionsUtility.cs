@@ -6,7 +6,6 @@ using Verse;
 
 namespace DIL_PositiveConnections
 {
-
     public enum ExperienceValency
     {
         Positive,
@@ -36,8 +35,6 @@ namespace DIL_PositiveConnections
             factionRelationA.CheckKindThresholds(factionA, canSendLetter: false, null, GlobalTargetInfo.Invalid, out _);
             factionRelationB.CheckKindThresholds(factionB, canSendLetter: false, null, GlobalTargetInfo.Invalid, out _);
         }
-
-       
 
         public static string GenerateComplimentMessage(Pawn initiator, Pawn recipient)
         {
@@ -95,7 +92,7 @@ namespace DIL_PositiveConnections
                     actionPhrase = "discussing crafting techniques";
                     break;
                 case "growing":
-                    actionPhrase = "talking about agricultural technique";
+                    actionPhrase = "talking about agricultural techniques";
                     break;
                 case "mining":
                     actionPhrase = "discussing mining and minerals";
@@ -119,8 +116,5 @@ namespace DIL_PositiveConnections
 
             return $"{pawnA.Name} and {pawnB.Name} enjoyed {actionPhrase} together.";
         }
-
-
     }
 }
-

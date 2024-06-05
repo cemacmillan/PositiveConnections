@@ -91,9 +91,9 @@
     <durationDays>7</durationDays>
     <stages>
       <li>
-        <label>shared hobby</label>
+        <label>shared passion</label>
         <baseMoodEffect>12</baseMoodEffect>
-        <description>I recently spent some time enjoying my hobby with someone who appreciates it as much as I do.</description>
+        <description>I recently spent some time enjoying my passion with someone who appreciates it as much as I do.</description>
       </li>
     </stages>
   </ThoughtDef>
