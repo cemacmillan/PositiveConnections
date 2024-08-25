@@ -10,24 +10,11 @@
   <description>
 [h1]Positive Connections[/h1]
 
-Thanks to all the patient fans of this mod! 
-
-[img]https://i.imgur.com/u1fcsrC.png[/img]
-- Positive Connections is now 1.5 compatible, with or without Anomaly. 
-- The 1.4 version has also been brought up to date.
-- Fixed frequency of interaction slider which wasn't saving. Probably not fixed in 1.4 (sorry 1.4 folks)
-- The dependency on Harmony is now explicit.
-- Remains compatible with other social interaction mods on several popular lists (thanks you, listkeepers and curators!)
-- Please check the Discussions section for announcements about my other mods which complement or extend this mod.
-
-[img]https://i.imgur.com/UP2htR8.png[/img]
 Are you tired of overseeing colonies where intense animosity prevails among your colonists? 
 Despite enduring and conquering numerous shared perils, do they still view each other merely as [i]acquaintances[/i]?
 
 If this resonates with you, then Positive Connections is the mod you've been waiting for.
 
-
-[img]https://i.imgur.com/RPuL0EC.png[/img]
 [h2]Introducing seven brand new interactions for your pawns:[/h2]
 
 [list]
@@ -52,37 +39,57 @@ Interactions will sometimes appear in clusters, especially the first few which a
 
 Note that "gifts" are ephemeral objects and will not appear in your pawn's inventory.
 
-[h2]Playtesting:[/h2]
+[h2]Playtesting and Compatibility:[/h2]
 
 Play-tested [strike]hundreds[/strike] many thousands of hours already, but there can always be bugs. Your time in reporting them is appreciated, as are your suggestions.
 
-Future pre-releases of this and my other mods will be mentioned in a Discussion thread for those who enjoy unstable code where literally [i]anything[/i] might happen.
+Combat Extended: Yep.
 
-[img]https://i.imgur.com/QGPHorI.png[/img]
 [h2]Frequently Asked Questions[/h2]
+[b]Q: WTFBBQ Storytelling (red error)?[/b]
+[strike]A: I'll have a fix out within 24 hours. I have the bug itself fixed but I want to fix the Storytelling interaction instead of disabling it. This [b]feature[/b] was released by accident, and shouldn't have leaked out until I finished testing.[/strike] 
+A: Fixed!
 
 [b]Q: Where are these gifts my colonists are giving each other?[/b]
 A: Gifts in Positive Connections are virtual. It's the thought that counts.
 
 [b]Q: Does Positive Connections interact with mod XYZ?[/b]
-A: No, Positive Connections uses simple interactions and is agnostic about other mods or DLC.
+A: No, Positive Connections uses simple interactions and is agnostic about other mods or DLC (except for our own mods).
 
 [b]Q: What does this gender adjustment switch do?[/b]
-A: It should equalize the chances of men or women initiating relationships if activated.
+A: It should equalize the chances of men or women initiating relationships if activated. This is corrected in the base game now, but we've left it out of nostalgia.
 
 [b]Q: Doesn't this make the game too easy/This barely changes anything?[/b]
-A: Everything depends on play style. But you can now reduce or increase the frequency of interactions from 1/4 to 10x as likely via mod settings. Recommended value is 1.
+A: Everything depends on play style. You can reduce or increase the frequency of interactions from 1/4 to 10x as likely via mod settings. Recommended value is 1. Positive Connections might also encourage you to explore more challenging difficulty settings. For me it allows me to play 1 level higher while still concentrating on building. 
+
+And now you can [b]stop all interactions[/b] via mod options if you feel they are still too frequent [b]without disabling[/b] Positive Connections. 
+
+According to your feedback we'll continue to improve the granularity of control you have over the mod's effects on your game.
+
+[b]Wait... Modders don't play RimWorld anymore, what do you mean 'it allows me to play'?[/b]
+A: Yes, I still play every chance I get!
+
+RimWorld is by far my favorite game and favorite game to mod.
 
 [b]Q: Is it possible to request new interactions/a feature where...?[/b]
-A: Sure! This mod is under active development and feature requests will be taken into consideration.
+A: Sure! This mod is under active development and feature requests will be taken into consideration. Most feature additions since the beginning have been due to community suggestions.
+
+We want to build new stuff that will make play be more enjoyable, pawns more expressive deep and complex while keeping performance impact trimmed.
+
+[h2]Bugs and Their Ilk[/h2]
+
+Bugs are a natural and inevitable part of software development. If you see any, please be kind and signal them in the appropriate discussion!
 
 
-[imghttps://i.imgur.com/9hvN0fR.png[/img]
-Bugs are a natural and inevitable part of software development. If you see any, please be kind and signal them!
+[h2]Last Section I Swear...[/h2]
+
+Detailed changes are in the change notes. Briefly: Storytelling gathering, interaction frequency scaling down with colony size and the reactivation of a couple of interactions which became impossibly rare inadvertantly. Also, 1.4 is working once again.
 
 It's possible to support our work on [url=https://ko-fi.com/N4N4NFFPZ]ko-fi.com[/url].
 
 [url=https://ko-fi.com/N4N4NFFPZ][img]https://i.imgur.com/MFApogq.png[/img][/url]
+
+(I clearly have no idea about how to use Steam's BB Code for creating a mod description. Your ideas are welcome!)
 
 Art by Poulpe Voulant.
 </description>

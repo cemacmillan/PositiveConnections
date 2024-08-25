@@ -8,9 +8,9 @@ namespace DIL_PositiveConnections
 {
     public class InteractionWorker_SkillShare : InteractionWorker
     {
-        private const float BaseSelectionWeight = 0.01f; // Increased base weight
-        private const float NonColonyPawnFactor = 0.5f; // Increased factor for non-colony pawns
-        private const int SkillDifferenceDivisor = 5; // Reduced divisor for skill difference
+        private const float BaseSelectionWeight = 0.005f; // Halved base weight
+        private const float NonColonyPawnFactor = 0.2f; // Adjusted factor for non-colony pawns
+        private const int SkillDifferenceDivisor = 10; // Increased divisor for skill difference
         private PositiveConnectionsModSettings modSettings = PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
         public static event Action<Pawn, float, string, int> OnPositiveInteraction;
 
@@ -41,46 +41,50 @@ namespace DIL_PositiveConnections
             // If the recipient's skill level in the same area is less, allow teaching
             if (highestSkill != null && recipient.skills.GetSkill(highestSkill.def).Level < highestSkill.Level)
             {
-                // Weight is based on the difference in skill levels
+                int colonySize = initiator.Map.mapPawns.FreeColonistsCount;
+                float adjustedFrequency = PositiveConnectionsUtility.AdjustInteractionFrequency(colonySize, modSettings);
+
                 float weight = (highestSkill.Level - recipient.skills.GetSkill(highestSkill.def).Level) / SkillDifferenceDivisor * initiator.needs.mood.CurLevel * BaseSelectionWeight;
 
-                // If either the initiator or the recipient is not a colonist, reduce the weight
                 if (initiator.Faction != Faction.OfPlayer || recipient.Faction != Faction.OfPlayer)
                 {
                     weight *= NonColonyPawnFactor;
                 }
 
-                return weight * modSettings.BaseInteractionFrequency;
+                float finalWeight = weight * adjustedFrequency * modSettings.BaseInteractionFrequency;
+
+                return finalWeight;
             }
             return 0f;
         }
 
         public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks, out string letterText, out string letterLabel, out LetterDef letterDef, out LookTargets lookTargets)
         {
-            // Get the highest skill of the initiator using Verse's MaxBy
             SkillRecord highestSkill = Verse.GenCollection.MaxBy(initiator.skills.skills, s => s.Level);
 
             if (highestSkill != null)
             {
-                // Increase the recipient's corresponding skill level
                 recipient.skills.GetSkill(highestSkill.def).Learn(200f);
 
-                // Select a random teaching message
                 string teachingMessage = string.Format(TeachingMessages.RandomElement(), initiator.Name, recipient.Name, highestSkill.def.label);
 
-                if(!modSettings.DisableAllMessages)
+                if (!modSettings.DisableAllMessages)
                 {
-                    // Feedback
                     Messages.Message(teachingMessage, recipient, MessageTypeDefOf.PositiveEvent);
                 }
 
-                // Increase the recipient's mood
-                recipient.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOfPositiveConnections.DIL_ReceivedTeaching, initiator);
+                recipient.needs.mood.thoughts.memories.TryGainMemory(PositiveConnectionsThoughtDefOf.DIL_ReceivedTeaching, initiator);
 
-                OnPositiveInteraction?.Invoke(initiator, 0.1f, "PositiveInteraction", (int)ExperienceValency.Positive);
+                OnPositiveInteraction?.Invoke(initiator, 0.2f, "PositiveInteraction", (int)ExperienceValency.Positive);
+
+                // New logging
+                if (modSettings.EnableLogging)
+                {
+                    string logMessage = $"<color=#00FF7F>[Positive Connections]</color> SkillShare - Weight: {RandomSelectionWeight(initiator, recipient)} - Initiator: {initiator.Name.ToStringShort}, Recipient: {recipient.Name.ToStringShort}, Skill: {highestSkill.def.defName}";
+                    Log.Message(logMessage);
+                }
             }
 
-            // Clear out required 'out' parameters
             letterText = null;
             letterLabel = null;
             letterDef = null;

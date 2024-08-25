@@ -1,58 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <ThoughtDef>
+    <defName>DIL_ComfortReceived</defName>
+        <durationDays>3</durationDays>
+        <stackLimit>1</stackLimit>
+        <thoughtClass>Thought_MemorySocial</thoughtClass>
+        <stages>
+            <li>
+                <label>comforted</label>
+                <description>I was comforted by someone when I was feeling down.</description>
+                <baseMoodEffect>6</baseMoodEffect>
+            </li>
+        </stages>
+    </ThoughtDef>
+    <ThoughtDef>
         <defName>DIL_SuccessfulMediation</defName>
         <durationDays>5</durationDays>
         <stages>
             <li>
                 <label>mediation successful (minor)</label>
                 <description>I'm relieved that the argument was resolved peacefully, even if it didn't make a huge difference.</description>
-                <baseMoodEffect>6</baseMoodEffect>
+                <baseMoodEffect>4</baseMoodEffect>
             </li>
             <li>
                 <label>mediation successful (moderate)</label>
                 <description>That mediation really helped cool things down. It feels good to get along better now.</description>
-                <baseMoodEffect>12</baseMoodEffect>
+                <baseMoodEffect>8</baseMoodEffect>
             </li>
             <li>
                 <label>mediation successful (major)</label>
                 <description>That was an amazing mediation! It's like a weight has been lifted and we can all get along again.</description>
-                <baseMoodEffect>20</baseMoodEffect>
+                <baseMoodEffect>12</baseMoodEffect>
             </li>
         </stages>
     </ThoughtDef>
     <ThoughtDef>
         <defName>DIL_InMediationWith</defName>
         <durationDays>5</durationDays>
-        <stackLimit>10</stackLimit>
+        <stackLimit>1</stackLimit>
+         <thoughtClass>Thought_MemorySocial</thoughtClass>
         <stages>
             <li>
                 <label>in mediation with {0}</label>
                 <description>I'm glad we had a chance to talk things out in mediation with {0}. I feel like we understand each other better now.</description>
-                <baseOpinionOffset>10</baseOpinionOffset>
+                <baseOpinionOffset>8</baseOpinionOffset>
             </li>
         </stages>
     </ThoughtDef>
     <ThoughtDef>
     <defName>DIL_ReceivedGift</defName>
-    <durationDays>3</durationDays>
-    <stages>
-        <li>
-            <label>received a gift</label>
-            <description>Someone gave me a gift and while it was a small thing, I was moved by the gesture.</description>
-            <baseMoodEffect>5</baseMoodEffect>
-        </li>
-    </stages>
-</ThoughtDef>
- <ThoughtDef>
+        <durationDays>3</durationDays>
+        <stackLimit>1</stackLimit>
+        <thoughtClass>Thought_MemorySocial</thoughtClass>
+        <stages>
+            <li>
+                <label>received a gift</label>
+                <description>Someone gave me a gift and while it was a small thing, I was moved by the gesture.</description>
+                <baseMoodEffect>5</baseMoodEffect>
+                <baseOpinionOffset>8</baseOpinionOffset>
+            </li>
+        </stages>
+    </ThoughtDef>
+     <ThoughtDef>
         <defName>DIL_ReceivedCompliment</defName>
         <durationDays>3</durationDays> 
         <stackLimit>1</stackLimit>
+        <thoughtClass>Thought_MemorySocial</thoughtClass>
         <stages>
             <li>
                 <label>received compliment</label>
                 <description>I received a compliment recently. It feels good to be appreciated!</description>
-                <baseMoodEffect>10</baseMoodEffect>
+                <baseMoodEffect>8</baseMoodEffect>
                 <baseOpinionOffset>10</baseOpinionOffset>
             </li>
         </stages>
@@ -65,7 +83,7 @@
         <stages>
             <li>
                 <label>received teaching</label>
-                <baseMoodEffect>6</baseMoodEffect>
+                <baseMoodEffect>3</baseMoodEffect>
                 <baseOpinionOffset>6</baseOpinionOffset>
                 <description>I learned something new today!</description>
             </li>
@@ -73,14 +91,14 @@
     </ThoughtDef>
     <ThoughtDef>
         <defName>DIL_IdeologicalDiscussion</defName>
-        <durationDays>7</durationDays>
+        <durationDays>3</durationDays>
         <thoughtClass>Thought_MemorySocial</thoughtClass>
         <stackLimit>1</stackLimit>
         <stages>
             <li>
                 <label>ideological discussion</label>
-                <baseMoodEffect>8</baseMoodEffect>
-                <baseOpinionOffset>5</baseOpinionOffset>
+                <baseMoodEffect>3</baseMoodEffect>
+                <baseOpinionOffset>3</baseOpinionOffset>
                 <description>I had a thought-provoking discussion!</description>
             </li>
         </stages>
@@ -88,14 +106,89 @@
 
     <ThoughtDef>
     <defName>DIL_SharedPassionActivity</defName>
-    <durationDays>7</durationDays>
+    <durationDays>3</durationDays>
+     <stackLimit>1</stackLimit>
     <stages>
       <li>
         <label>shared passion</label>
-        <baseMoodEffect>12</baseMoodEffect>
+        <baseMoodEffect>6</baseMoodEffect>
         <description>I recently spent some time enjoying my passion with someone who appreciates it as much as I do.</description>
       </li>
     </stages>
   </ThoughtDef>
 
+<ThoughtDef>
+    <defName>DIL_Thought_StorytellingAttendee</defName>
+    <durationDays>3</durationDays>
+    <stages>
+        <li>
+            <label>heard a story</label>
+            <description>It was nice to hear a story. I feel a little closer to the storyteller.</description>
+            <baseMoodEffect>4</baseMoodEffect>
+        </li>
+    </stages>
+</ThoughtDef>
+<ThoughtDef>
+    <defName>DIL_Thought_StorytellingOrganizer</defName>
+    <durationDays>3</durationDays>
+    <stages>
+        <li>
+            <label>told a story</label>
+            <description>Sharing my story was a nice moment. I hope others enjoyed it too.</description>
+            <baseMoodEffect>5</baseMoodEffect>
+        </li>
+    </stages>
+</ThoughtDef>
+<TaleDef>
+  <defName>DIL_Tale_StorytellingOrganizer</defName>
+  <label>organized storytelling</label>
+  <taleClass>Tale_DoublePawn</taleClass>
+  <type>Volatile</type>
+  <firstPawnSymbol>ORGANIZER</firstPawnSymbol>
+  <secondPawnSymbol>ATTENDER</secondPawnSymbol>
+  <baseInterest>1</baseInterest>
+  <rulePack>
+    <rulesStrings>
+      <li>tale_noun->[ORGANIZER_nameDef] telling stories to [ATTENDER_nameDef]</li>
+      <li>tale_noun->[ORGANIZER_nameDef] sharing tales with [ATTENDER_nameDef]</li>
+      <li>image->[ORGANIZER_nameFull] narrating an exciting story to [ATTENDER_nameFull] [circumstance_group]</li>
+      <li>image->[ORGANIZER_nameFull] captivating [ATTENDER_nameFull] with a tale [circumstance_group]</li>
+      <li>image->[ORGANIZER_nameFull] engaging [ATTENDER_nameFull] with a story [circumstance_group]</li>
+      <li>circumstance_phrase->with a vivid description</li>
+      <li>circumstance_phrase->with dramatic gestures</li>
+      <li>circumstance_phrase->while sitting around the campfire</li>
+      <li>circumstance_phrase->under the starry sky</li>
+      <li>circumstance_phrase->with everyone gathered closely</li>
+      <li>desc_sentence->[Quantity_adjphrase] [PersonJob]s are listening attentively.</li>
+      <li>desc_sentence->The area is illuminated by the flickering light of the campfire.</li>
+      <li>desc_sentence->[Quantity_adjphrase] [Animal]s are quietly resting nearby.</li>
+    </rulesStrings>
+  </rulePack>
+</TaleDef>
+
+<TaleDef>
+  <defName>DIL_Tale_StorytellingAttendee</defName>
+  <label>attended storytelling</label>
+  <taleClass>Tale_DoublePawn</taleClass>
+  <type>Volatile</type>
+  <firstPawnSymbol>ATTENDER</firstPawnSymbol>
+  <secondPawnSymbol>ORGANIZER</secondPawnSymbol>
+  <baseInterest>1</baseInterest>
+  <rulePack>
+    <rulesStrings>
+      <li>tale_noun->[ATTENDER_nameDef] listening to [ORGANIZER_nameDef]'s story</li>
+      <li>tale_noun->[ATTENDER_nameDef] enjoying tales from [ORGANIZER_nameDef]</li>
+      <li>image->[ATTENDER_nameFull] being entertained by [ORGANIZER_nameFull] [circumstance_group]</li>
+      <li>image->[ATTENDER_nameFull] captivated by [ORGANIZER_nameFull]'s story [circumstance_group]</li>
+      <li>image->[ATTENDER_nameFull] engrossed in a tale from [ORGANIZER_nameFull] [circumstance_group]</li>
+      <li>circumstance_phrase->with rapt attention</li>
+      <li>circumstance_phrase->while sitting around the campfire</li>
+      <li>circumstance_phrase->under the starry sky</li>
+      <li>circumstance_phrase->with everyone gathered closely</li>
+      <li>desc_sentence->[Quantity_adjphrase] [PersonJob]s are listening attentively.</li>
+      <li>desc_sentence->The area is illuminated by the flickering light of the campfire.</li>
+      <li>desc_sentence->[Quantity_adjphrase] [Animal]s are quietly resting nearby.</li>
+    </rulesStrings>
+  </rulePack>
+</TaleDef>
 </Defs>

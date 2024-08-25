@@ -1,0 +1,295 @@
+--- /dev/fd/63	2024-08-15 00:01:58
++++ /dev/fd/62	2024-08-15 00:01:58
+@@ -644,9 +644,16 @@
+     {
+         protected override LordJob CreateLordJob(IntVec3 spot, Pawn organizer)
+         {
++            if (def == null)
++            {
++                Log.Error("[DIL_PositiveConnections] def is null in CreateLordJob. This should not happen.");
++                return null;
++            }
++
+             return new LordJob_Joinable_Storytelling(spot, organizer, def);
+         }
+ 
++
+         protected override bool TryFindGatherSpot(Pawn organizer, out IntVec3 spot)
+         {
+             bool enjoyableOutside = JoyUtility.EnjoyableOutsideNow(organizer);
+@@ -663,36 +670,36 @@
+             return false;
+         }
+ 
+-        public override bool CanExecute(Map map, Pawn organizer = null)
+-        {
+-            // Check if the map is valid before proceeding
+-            if (map == null)
+-            {
+-                Log.Warning("[DIL_PositiveConnections] CanExecute called with null map.");
+-                return false;
+-            }
++       public override bool CanExecute(Map map, Pawn organizer = null)
++       {
++           if (map == null)
++           {
++               Log.Warning("[DIL_PositiveConnections] CanExecute called with null map.");
++               return false;
++           }
+ 
+-            // If no organizer is provided, try to find one
+-            if (organizer == null)
+-            {
+-                organizer = FindOrganizer(map);
+-                if (organizer == null)
+-                {
+-                    Log.Warning("[DIL_PositiveConnections] CanExecute called with null organizer and no suitable organizer found.");
+-                    return false;
+-                }
+-            }
++           organizer ??= FindOrganizer(map);
++           if (organizer == null)
++           {
++               Log.Warning("[DIL_PositiveConnections] CanExecute called with null organizer and no suitable organizer found.");
++               return false;
++           }
+ 
+-            // Ensure the map is fully initialized before trying to execute a gathering
+-            if (!map.IsPlayerHome || map.ParentFaction == null || !map.ParentFaction.IsPlayer)
+-            {
+-                Log.Warning("[DIL_PositiveConnections] CanExecute called on non-player home map.");
+-                return false;
+-            }
++           if (!map.IsPlayerHome || map.ParentFaction == null || !map.ParentFaction.IsPlayer)
++           {
++               Log.Warning("[DIL_PositiveConnections] CanExecute called on non-player home map.");
++               return false;
++           }
+ 
+-            return base.CanExecute(map, organizer);
+-        }
++           if (!TryFindGatherSpot(organizer, out IntVec3 spot))
++           {
++               Log.Warning("[DIL_PositiveConnections] CanExecute failed to find a gathering spot.");
++               return false;
++           }
+ 
++           return true;  // No call to base.CanExecute
++       }
++       
+         // Override SendLetter to send a message instead
+         protected override void SendLetter(IntVec3 spot, Pawn organizer)
+         {
+@@ -1390,7 +1397,7 @@
+     public class LordJob_Joinable_Storytelling : LordJob_Joinable_Gathering
+     {
+         public override bool AllowStartNewGatherings => false;
+-        private int durationTicks;
++        private new int durationTicks;
+ 
+         // Mind Matters Bridge
+         public static event Action<Pawn, float, string, int> OnPositiveInteraction;
+@@ -1411,6 +1418,10 @@
+         {
+             durationTicks = Rand.RangeInclusive(5000, 10000);  // Customize duration as needed
+             Log.Message($"[DIL_PositiveConnections] Constructor called for LordJob_Joinable_Storytelling with durationTicks = {durationTicks}");
++            if (gatheringDef == null)
++            {
++                Log.Error("[DIL_PositiveConnections] gatheringDef is null in LordJob_Joinable_Storytelling constructor. This should not happen.");
++            }
+         }
+ 
+         public override string GetReport(Pawn pawn)
+@@ -1421,8 +1432,8 @@
+ 
+         protected override LordToil CreateGatheringToil(IntVec3 spot, Pawn organizer, GatheringDef gatheringDef)
+         {
+-            Log.Message($"[DIL_PositiveConnections] CreateGatheringToil called with spot = {spot}, organizer = {organizer.LabelShort}, gatheringDef = {gatheringDef.defName}");
+-            return new LordToil_Storytelling(spot, gatheringDef);
++            Log.Message($"[DIL_PositiveConnections] CreateGatheringToil called with spot = {spot}, organizer = {organizer.LabelShort}, gatheringDef = {gatheringDef?.defName ?? "null"}");
++            return new LordToil_Storytelling(spot, gatheringDef);  // Ensure organizer is passed correctly // nope, do not do so.
+         }
+ 
+         public override StateGraph CreateGraph()
+@@ -1432,6 +1443,9 @@
+             var storytellingToil = (LordToil_Storytelling)CreateGatheringToil(spot, organizer, gatheringDef);
+             stateGraph.AddToil(storytellingToil);
+ 
++            // Ensure the correct duties are assigned immediately after adding the toil
++            storytellingToil.UpdateAllDuties();
++
+             var lordToilEnd = new LordToil_End();
+             stateGraph.AddToil(lordToilEnd);
+ 
+@@ -1509,52 +1523,33 @@
+     public class LordToil_Storytelling : LordToil_Gathering
+     {
+         private const int UpdateIntervalTicks = 100;  // Interval to update actions
++        // private float storytellingEffectPerTick = 0.001f;  // Example effect, replace with actual logic
+ 
+         public LordToil_Storytelling(IntVec3 spot, GatheringDef gatheringDef)
+             : base(spot, gatheringDef)
+         {
++           
+         }
+ 
+-        public override void UpdateAllDuties()
+-{
+-    base.UpdateAllDuties();
+-    foreach (Pawn pawn in lord.ownedPawns)
+-    {
+-        if (pawn == lord.ownedPawns[0])  // Assuming the first pawn is the organizer
+-        {
+-            pawn.mindState.duty = new PawnDuty(PositiveConnectionsDutyDefOf.DIL_Duty_Storytelling_Organizer, spot);
+-        }
+-        else
+-        {
+-            pawn.mindState.duty = new PawnDuty(PositiveConnectionsDutyDefOf.DIL_Duty_Storytelling_Attendee, spot);
+-        }
+-    }
+-}
+-
+         public override void LordToilTick()
+         {
+             base.LordToilTick();
+-            if (Find.TickManager.TicksGame % UpdateIntervalTicks == 0)
++            List<Pawn> ownedPawns = lord.ownedPawns;
++            for (int i = 0; i < ownedPawns.Count; i++)
+             {
+-                List<Pawn> ownedPawns = lord.ownedPawns;
+-
+-                for (int i = 0; i < ownedPawns.Count; i++)
++                Pawn pawn = ownedPawns[i];
++                if (GatheringsUtility.InGatheringArea(pawn.Position, spot, base.Map))
+                 {
+-                    Pawn pawn = ownedPawns[i];
+-                    if (pawn.CurJob == null || pawn.CurJob.def != PositiveConnectionsJobDefOf.TellStory && pawn.CurJob.def != PositiveConnectionsJobDefOf.ListenToStory)
+-                    {
+-                        if (pawn == lord.ownedPawns[0])
+-                        {
+-                            pawn.jobs.StartJob(new Job(PositiveConnectionsJobDefOf.TellStory, spot), JobCondition.InterruptForced);
+-                        }
+-                        else
+-                        {
+-                            pawn.jobs.StartJob(new Job(PositiveConnectionsJobDefOf.ListenToStory, spot), JobCondition.InterruptForced);
+-                        }
+-                    }
++                    ApplyStorytellingEffect(pawn);  // Custom effect during storytelling
+                 }
+             }
+         }
++
++        private void ApplyStorytellingEffect(Pawn pawn)
++        {
++            // Example effect, replace with custom logic
++            pawn.needs.mood?.thoughts.memories.TryGainMemory(PositiveConnectionsThoughtDefOf.DIL_Thought_StorytellingAttendee);
++        }
+     }
+ }﻿using UnityEngine;
+ using Verse;
+@@ -1727,5 +1722,103 @@
+         __result = 0.4f;
+ 
+         return true;
++    }
++}
++// JobDriver_TellStory.cs
++using System.Collections.Generic;
++using RimWorld;
++using Verse;
++using Verse.AI;
++
++namespace DIL_PositiveConnections
++{
++    public class JobDriver_TellStory : JobDriver
++    {
++        private const TargetIndex SpotInd = TargetIndex.A;
++
++        public override bool TryMakePreToilReservations(bool errorOnFailed)
++        {
++            bool result = pawn.Reserve(job.GetTarget(SpotInd), job, errorOnFailed: errorOnFailed);
++            Log.Message($"[DIL_PositiveConnections] {pawn.Name.ToStringShort} reserved spot for telling story: {result}");
++            return result;
++        }
++
++        protected override IEnumerable<Toil> MakeNewToils()
++        {
++            this.EndOnDespawnedOrNull(SpotInd);
++
++            yield return Toils_Goto.GotoCell(SpotInd, PathEndMode.OnCell);
++
++            Toil tellStory = new Toil
++            {
++                initAction = () =>
++                {
++                    Log.Message($"[DIL_PositiveConnections] {pawn.Name.ToStringShort} started telling a story at {TargetA.Cell}");
++                },
++                tickAction = () =>
++                {
++                    pawn.rotationTracker.FaceCell(job.GetTarget(SpotInd).Cell);
++                    pawn.GainComfortFromCellIfPossible();
++                    if (pawn.IsHashIntervalTick(100))
++                    {
++                        pawn.jobs.CheckForJobOverride();
++                        Log.Message($"[DIL_PositiveConnections] {pawn.Name.ToStringShort} is telling a story...");
++                    }
++                },
++                defaultCompleteMode = ToilCompleteMode.Never,
++                handlingFacing = true
++            };
++            yield return tellStory;
++        }
++    }
++}//  JobDriver_ListenToStory.cs
++
++using System.Collections.Generic;
++using RimWorld;
++using Verse;
++using Verse.AI;
++
++namespace DIL_PositiveConnections
++{
++    public class JobDriver_ListenToStory : JobDriver
++    {
++        private const TargetIndex SpotInd = TargetIndex.A;
++        private const TargetIndex WatchTargetInd = TargetIndex.B;
++
++        public override bool TryMakePreToilReservations(bool errorOnFailed)
++        {
++            bool result = pawn.ReserveSittableOrSpot(job.GetTarget(SpotInd).Cell, job, errorOnFailed);
++            Log.Message($"[DIL_PositiveConnections] {pawn.Name.ToStringShort} reserved spot for spectating storytelling: {result}");
++            return result;
++        }
++
++        protected override IEnumerable<Toil> MakeNewToils()
++        {
++            if (job.GetTarget(TargetIndex.C).HasThing)
++            {
++                this.EndOnDespawnedOrNull(TargetIndex.C);
++            }
++            yield return Toils_Goto.GotoCell(SpotInd, PathEndMode.OnCell);
++            Toil spectate = new Toil
++            {
++                initAction = () =>
++                {
++                    Log.Message($"[DIL_PositiveConnections] {pawn.Name.ToStringShort} started spectating a story at {TargetA.Cell}");
++                },
++                tickAction = () =>
++                {
++                    pawn.rotationTracker.FaceCell(job.GetTarget(WatchTargetInd).Cell);
++                    pawn.GainComfortFromCellIfPossible();
++                    if (pawn.IsHashIntervalTick(100))
++                    {
++                        pawn.jobs.CheckForJobOverride();
++                        Log.Message($"[DIL_PositiveConnections] {pawn.Name.ToStringShort} is spectating a story...");
++                    }
++                },
++                defaultCompleteMode = ToilCompleteMode.Never,
++                handlingFacing = true
++            };
++            yield return spectate;
++        }
+     }
+-}
++}
+\ No newline at end of file

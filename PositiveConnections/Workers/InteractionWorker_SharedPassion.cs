@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using RimWorld;
 using System.Collections.Generic;
@@ -8,16 +8,13 @@ namespace DIL_PositiveConnections
 {
     public class InteractionWorker_SharedPassion : InteractionWorker
     {
-        private const float BaseSelectionWeight = 0.01f; // Increased base weight
-        private const int PassionLevelFactor = 2;  // Increase selection weight based on passion level
-        private const float NonColonyPawnFactor = 0.05f; // Reduced weight for non-colony pawns
         public static event Action<Pawn, float, string, int> OnPositiveInteraction;
 
         private PositiveConnectionsModSettings modSettings = PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
 
         public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
         {
-            if (initiator.Faction != Faction.OfPlayer && recipient.Faction != Faction.OfPlayer)
+            if (!PositiveConnectionsUtility.ArePawnsRelevant(initiator, recipient))
             {
                 return 0f;
             }
@@ -31,17 +28,20 @@ namespace DIL_PositiveConnections
                 return 0f;
             }
 
-            float baseWeight = (initiator.needs.mood.CurLevel + recipient.needs.mood.CurLevel) / 2 * BaseSelectionWeight;
+            // Calculate the base weight using the utility method and tuning class
+            float baseWeight = PositiveConnectionsUtility.CalculateBaseWeight(initiator, PositiveConnectionsTuning.BaseSelectionWeight_SharedPassion, modSettings, applyMoodModifier: true);
 
             if (initiator.Faction == recipient.Faction)
             {
                 // Increase the weight based on passion level
-                return baseWeight * ((int)sharedPassion.passion * PassionLevelFactor) * modSettings.BaseInteractionFrequency;
+                float finalWeight = baseWeight * ((int)sharedPassion.passion * PositiveConnectionsTuning.PassionLevelFactor_SharedPassion) * modSettings.BaseInteractionFrequency;
+                return finalWeight;
             }
             else
             {
                 // Reduced weight for interactions with non-colony pawns
-                return baseWeight * NonColonyPawnFactor * modSettings.BaseInteractionFrequency;
+                float finalWeight = baseWeight * PositiveConnectionsTuning.NonColonyPawnFactor_SharedPassion * modSettings.BaseInteractionFrequency;
+                return finalWeight;
             }
         }
 
@@ -82,7 +82,14 @@ namespace DIL_PositiveConnections
                     PositiveConnectionsUtility.ChangeFactionRelations(factionA, factionB, relationImpact);
                 }
 
-                OnPositiveInteraction?.Invoke(initiator, 0.1f, "PositiveInteraction", (int)ExperienceValency.Positive);
+                OnPositiveInteraction?.Invoke(initiator, 0.2f, "PositiveInteraction", (int)ExperienceValency.Positive);
+
+                // New logging
+                if (modSettings.EnableLogging)
+                {
+                    string logMessage = $"<color=#00FF7F>[Positive Connections]</color> SharedPassion - Weight: {RandomSelectionWeight(initiator, recipient)} - Initiator: {initiator.Name.ToStringShort}, Recipient: {recipient.Name.ToStringShort}, SharedPassion: {sharedPassion.def.defName}";
+                    Log.Message(logMessage);
+                }
             }
 
             letterText = null;

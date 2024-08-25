@@ -15,6 +15,47 @@ namespace DIL_PositiveConnections
 
     public static class PositiveConnectionsUtility
     {
+        // Check if both pawns are relevant to the player's colony
+        public static bool ArePawnsRelevant(Pawn initiator, Pawn recipient)
+        {
+            return initiator.Faction == Faction.OfPlayer || recipient.Faction == Faction.OfPlayer;
+        }
+
+      public static float CalculateBaseWeight(Pawn initiator, float baseSelectionWeight, PositiveConnectionsModSettings settings, bool applyMoodModifier = false)
+      {
+          int colonySize = initiator.Map.mapPawns.FreeColonistsCount;
+          float adjustedFrequency = AdjustInteractionFrequency(colonySize, settings);
+
+          // Calculate base weight with or without the mood modifier
+          float weight = baseSelectionWeight * adjustedFrequency * settings.BaseInteractionFrequency;
+
+          if (applyMoodModifier)
+          {
+              weight *= initiator.needs.mood.CurLevel;
+          }
+
+          return weight;
+      }
+
+        // Adjust interaction frequency based on colony size, called above
+        public static float AdjustInteractionFrequency(int colonySize, PositiveConnectionsModSettings settings)
+        {
+            if (settings.StopInteractions)
+            {
+                return 0.00001f; // Effectively stops interactions
+            }
+
+            float maxFrequency = settings.MaxInteractionFrequency;
+            float minFrequency = settings.MinInteractionFrequency;
+
+            // Inverse scaling function
+            float scalingFactor = maxFrequency * 2 / Mathf.Sqrt(colonySize);
+
+            // Clamp the value between min and max frequencies
+            return Mathf.Clamp(scalingFactor, minFrequency, maxFrequency);
+        }
+
+    
         public static void ChangeFactionRelations(Faction factionA, Faction factionB, int goodwillChange)
         {
             if (goodwillChange == 0)

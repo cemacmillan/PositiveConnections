@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using RimWorld;
 using System.Collections.Generic;
 using Verse;
@@ -7,40 +7,41 @@ namespace DIL_PositiveConnections
 {
     public class InteractionWorker_GiveComfort : InteractionWorker
     {
-        private const int MinMoodForComfort = 45;
-        private const int MinSocialSkillRequired = 6;
-        private float BaseSelectionWeight = 0.01f;
         public static event Action<Pawn, float, string, int> OnPositiveInteraction;
 
         private PositiveConnectionsModSettings modSettings = PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
 
         public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
         {
-            if (initiator.Faction != Faction.OfPlayer && recipient.Faction != Faction.OfPlayer)
+            // Ensure the initiator and recipient are relevant to the player's colony
+            if (!PositiveConnectionsUtility.ArePawnsRelevant(initiator, recipient))
             {
                 return 0f;
             }
 
-            if (initiator.skills.GetSkill(SkillDefOf.Social).Level < MinSocialSkillRequired
+            // Check if the initiator has the required social skill or the Kind trait
+            if (initiator.skills.GetSkill(SkillDefOf.Social).Level < PositiveConnectionsTuning.MinSocialSkillRequired_GiveComfort
             && !initiator.story.traits.HasTrait(TraitDefOf.Kind))
             {
                 return 0f;
             }
 
-            // If the recipient's mood is not low enough, this interaction should not occur.
-            if (recipient.needs.mood.CurLevelPercentage * 100 >= MinMoodForComfort)
+            // Check if the recipient's mood is low enough
+            if (recipient.needs.mood.CurLevelPercentage * 100 >= PositiveConnectionsTuning.MinMoodForComfort)
             {
                 return 0f;
             }
 
-            // really rare to cross faction lines
+            // Calculate the base weight using the utility method and tuning class, without applying the mood modifier
+            float baseWeight = PositiveConnectionsUtility.CalculateBaseWeight(initiator, PositiveConnectionsTuning.BaseSelectionWeight_GiveComfort, modSettings, applyMoodModifier: false);
+
+            // Adjust weight for cross-faction interactions
             if (recipient.Faction != initiator.Faction)
             {
-                BaseSelectionWeight *= 0.05f;
+                baseWeight *= 0.05f;
             }
 
-            // If the conditions are met, return the base selection weight.
-            return BaseSelectionWeight * modSettings.BaseInteractionFrequency;
+            return baseWeight;
         }
 
         public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks, out string letterText, out string letterLabel, out LetterDef letterDef, out LookTargets lookTargets)
@@ -57,9 +58,6 @@ namespace DIL_PositiveConnections
             // Add the memory to the recipient
             recipient.needs.mood.thoughts.memories.TryGainMemory(memoryRecipient, initiator);
 
-            // Log the interaction for debugging purposes
-            Log.Message($"[Positive Connections] {initiator.Name.ToStringShort} comforted {recipient.Name.ToStringShort}.");
-
             // Notify the player
             string comfortMessage = string.Format("{0} comforted {1}.", initiator.LabelShort, recipient.LabelShort);
 
@@ -70,8 +68,12 @@ namespace DIL_PositiveConnections
 
             OnPositiveInteraction?.Invoke(initiator, 0.1f, "PositiveInteraction", (int)ExperienceValency.Positive);
 
+            // New logging
+            if (modSettings.EnableLogging)
+            {
+                string logMessage = $"<color=#00FF7F>[Positive Connections]</color> GiveComfort - Weight: {RandomSelectionWeight(initiator, recipient)} - Initiator: {initiator.Name.ToStringShort}, Recipient: {recipient.Name.ToStringShort}";
+                Log.Message(logMessage);
+            }
         }
     }
-
 }
-

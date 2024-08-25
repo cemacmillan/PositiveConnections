@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using DIL_PositiveConnections;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -15,7 +14,8 @@ namespace DIL_PositiveConnections
 
         public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
         {
-            if (initiator.Faction != Faction.OfPlayer && recipient.Faction != Faction.OfPlayer)
+            // Ensure the initiator and recipient are relevant to the player's colony
+            if (!PositiveConnectionsUtility.ArePawnsRelevant(initiator, recipient))
             {
                 return 0f;
             }
@@ -26,38 +26,32 @@ namespace DIL_PositiveConnections
                 return 0f;
             }
 
-            // Define base selection weight
-            float baseSelectionWeight = 0.025f * modSettings.BaseInteractionFrequency;
+            // Calculate the base weight using the utility method and tuning class
+            float baseWeight = PositiveConnectionsUtility.CalculateBaseWeight(initiator, PositiveConnectionsTuning.BaseSelectionWeight_DiscussIdeoligion, modSettings);
 
-            // If both pawns have the same ideology, return the base selection weight
-            if (initiator.Ideo == recipient.Ideo)
-            {
-                return baseSelectionWeight;
-            }
+            // Adjust based on ideology match
+            float finalWeight = initiator.Ideo == recipient.Ideo ? baseWeight : baseWeight * 0.2f;
 
-            // If they have different ideologies, return 1/5 of the base selection weight
-            return baseSelectionWeight * 0.2f;
+            return finalWeight;
         }
-
 
         public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks, out string letterText, out string letterLabel, out LetterDef letterDef, out LookTargets lookTargets)
         {
             // Define the ThoughtDef for a positive ideoligion discussion
-            ThoughtDef positiveDiscussion = ThoughtDef.Named("DIL_PositiveIdeoligionDiscussion");
+            ThoughtDef positiveDiscussion = ThoughtDef.Named("DIL_IdeologicalDiscussion");
 
             // Add the memory to both pawns
             initiator.needs?.mood?.thoughts?.memories?.TryGainMemory((Thought_Memory)ThoughtMaker.MakeThought(positiveDiscussion), recipient);
             recipient.needs?.mood?.thoughts?.memories?.TryGainMemory((Thought_Memory)ThoughtMaker.MakeThought(positiveDiscussion), initiator);
 
-            // Set the message text
-            string message = "A positive discussion about ideoligion has taken place.";
+            // Create a narrative message for the player
+            string message = $"{initiator.LabelShort} and {recipient.LabelShort} had a positive discussion about ideoligions.";
 
-            if(!modSettings.DisableAllMessages) {
-
+            if (!modSettings.DisableAllMessages)
+            {
                 // Show the message to the recipient
                 Messages.Message(message, recipient, MessageTypeDefOf.PositiveEvent);
             }
-           
 
             // Set the other output variables to null or default values
             letterText = null;
@@ -67,6 +61,12 @@ namespace DIL_PositiveConnections
 
             OnPositiveInteraction?.Invoke(initiator, 0.1f, "PositiveInteraction", (int)ExperienceValency.Positive);
 
+            // New logging
+            if (modSettings.EnableLogging)
+            {
+                string logMessage = $"<color=#00FF7F>[Positive Connections]</color> DiscussIdeoligion - Weight: {RandomSelectionWeight(initiator, recipient)} - Initiator: {initiator.Name.ToStringShort}, Recipient: {recipient.Name.ToStringShort}";
+                Log.Message(logMessage);
+            }
         }
     }
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!--
+  <DutyDef>
+    <defName>DIL_Duty_Storytelling_Organizer</defName>
+    <label>storytelling (organizer)</label>
+    <hook>MediumPriority</hook>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="ThinkNode_ConditionalInGatheringArea">
+          <subNodes>
+            <li Class="DIL_PositiveConnections.JobGiver_TellStory" />
+          </subNodes>
+        </li>
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+  <DutyDef>
+    <defName>DIL_Duty_Storytelling_Attendee</defName>
+    <label>storytelling (attendee)</label>
+    <hook>MediumPriority</hook>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="ThinkNode_ConditionalInGatheringArea">
+          <subNodes>
+            <li Class="DIL_PositiveConnections.JobGiver_ListenToStory" />
+          </subNodes>
+        </li>
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+
+
+  <DutyDef>
+    <defName>DIL_Duty_Storytelling</defName>
+    <label>storytelling</label>
+    <hook>HighPriority</hook>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="ThinkNode_ConditionalInGatheringArea">
+          <subNodes>
+            <li Class="DIL_PositiveConnections.JobGiver_TellStory" />
+            <li Class="DIL_PositiveConnections.JobGiver_ListenToStory" />
+          </subNodes>
+        </li>
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+-->
+</Defs>

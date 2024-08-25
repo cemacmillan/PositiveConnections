@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+<RoomRoleDef>
+    <defName>DIL_PurposeSpaces_Den</defName>
+    <label>den</label>
+    <workerClass>DIL_PositiveConnections.RoomRoleWorker_Den</workerClass>
+    <relatedStats>
+        <li>Beauty</li>
+        <li>Cleanliness</li>
+        <li>Space</li>
+    </relatedStats>
+</RoomRoleDef>
+</Defs>

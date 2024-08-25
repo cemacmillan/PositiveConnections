@@ -28,7 +28,7 @@ namespace DIL_PositiveConnections
             listing.Begin(contentRect);
 
             listing.CheckboxLabeled("Enable Gender Adjustment", ref modSettings.EnableGenderAdjustment);
-            listing.CheckboxLabeled("Hardcore: Disable all output from this mod except to pawn logs", ref modSettings.DisableAllMessages);
+            listing.CheckboxLabeled("Hardcore: Disable notifications and messages from this mod (but enable all other effects)", ref modSettings.DisableAllMessages);
 
             listing.Label("Base Interaction Frequency");
 
@@ -41,6 +41,11 @@ namespace DIL_PositiveConnections
 
             listing.Label(modSettings.BaseInteractionFrequency.ToString("F2"));
 
+            // Add the new checkboxes
+            listing.CheckboxLabeled("Stop All Pawn Interactions From This Mod", ref modSettings.StopInteractions);
+            listing.CheckboxLabeled("Enable Rare Interactions", ref modSettings.EnableRareInteractions);
+            listing.CheckboxLabeled("Disable Certain Interactions", ref modSettings.DisableCertainInteractions);
+            listing.CheckboxLabeled("Enable Debugging Logs", ref modSettings.EnableLogging);
             listing.End();
             Widgets.EndScrollView();
 

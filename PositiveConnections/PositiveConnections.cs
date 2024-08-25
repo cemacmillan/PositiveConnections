@@ -14,12 +14,12 @@ namespace DIL_PositiveConnections
         {
             Instance = this;
             settings = GetSettings<PositiveConnectionsModSettings>(); // Update the type here
-            Log.Message("Positive connections v1.5.0");
+            Log.Message("<color=#00FF7F>[Positive Connections]</color>v1.5.3 icanzhasfly");
             IsMindMattersActive = ModsConfig.IsActive("cem.mindmatters");
 
             if(IsMindMattersActive)
             {
-                Log.Message("Mind Matters detected!");
+                Log.Message("<color=#00FF7F>[Positive Connections]</color>Mind Matters detected!");
             }
         }
 
@@ -45,5 +45,6 @@ namespace DIL_PositiveConnections
         {
 
         }
+
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
@@ -9,11 +9,6 @@ namespace DIL_PositiveConnections
 {
     public class InteractionWorker_Mediation : InteractionWorker
     {
-        private const int NegativeRelationshipThreshold = -5;
-        private const int MinSocialSkillRequired = 6;
-        private const int MinMediationBonus = 6;
-        private const int MaxMediationBonus = 20;
-        private const float BaseSelectionWeight = 0.02f; // Increased base weight
         public static event Action<Pawn, float, string, int> OnPositiveInteraction;
 
         private PositiveConnectionsModSettings modSettings = PositiveConnections.Instance.GetSettings<PositiveConnectionsModSettings>();
@@ -21,30 +16,33 @@ namespace DIL_PositiveConnections
         public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
         {
             // Only consider colonists
-            if (initiator.Faction != Faction.OfPlayer || recipient.Faction != Faction.OfPlayer)
+            if (!PositiveConnectionsUtility.ArePawnsRelevant(initiator, recipient))
             {
                 return 0f;
             }
 
-            // If the initiator's social skill is less than the minimum required, this interaction should not occur.
-            if (initiator.skills.GetSkill(SkillDefOf.Social).Level < MinSocialSkillRequired || initiator.Faction != recipient.Faction)
+            // If the initiator's social skill is less than the minimum required, this interaction should not occur
+            if (initiator.skills.GetSkill(SkillDefOf.Social).Level < PositiveConnectionsTuning.MinSocialSkillRequired_Mediation || initiator.Faction != recipient.Faction)
             {
                 return 0f;
             }
 
-            // Get list of all colony pawns
+            // Get the list of all colony pawns
             IEnumerable<Pawn> colonyPawns = recipient.Map.mapPawns.FreeColonists;
 
-            // Look for potential conflicts that the initiator could mediate.
+            // Look for potential conflicts that the initiator could mediate
             foreach (Pawn pawn in colonyPawns)
             {
-                if (recipient != pawn && recipient.relations.OpinionOf(pawn) < NegativeRelationshipThreshold)
+                if (recipient != pawn && recipient.relations.OpinionOf(pawn) < PositiveConnectionsTuning.NegativeRelationshipThreshold_Mediation)
                 {
-                    return BaseSelectionWeight * modSettings.BaseInteractionFrequency;
+                    // Calculate the base weight using the utility method and tuning class
+                    float baseWeight = PositiveConnectionsUtility.CalculateBaseWeight(initiator, PositiveConnectionsTuning.BaseSelectionWeight_Mediation, modSettings, applyMoodModifier: false);
+
+                    return baseWeight;
                 }
             }
 
-            // If there are no potential conflicts, return a weight of zero.
+            // If there are no potential conflicts, return a weight of zero
             return 0f;
         }
 
@@ -59,7 +57,7 @@ namespace DIL_PositiveConnections
             // Locate a suitable conflict for the initiator to mediate
             var conflictPawn = FindConflictPawn(recipient);
 
-            // If no suitable conflict pawn is found, return early.
+            // If no suitable conflict pawn is found, return early
             if (conflictPawn == null)
             {
                 return;
@@ -71,18 +69,22 @@ namespace DIL_PositiveConnections
             // Apply the mediation bonus to the conflict pawn and recipient
             ApplyMediationOutcome(initiator, recipient, conflictPawn, mediationBonus);
 
-            // Log the interaction for debugging purposes
-            Log.Message($"[Positive Connections] {initiator.Name.ToStringShort} mediated a conflict between {recipient.Name.ToStringShort} and {conflictPawn.Name.ToStringShort}. Their relationship improved by {mediationBonus}.");
-
             // Generate a mediation message
-            string mediationMessage = string.Format("{0} mediated a conflict between {1} and {2}. Their relationship improved by {3}.", initiator.LabelShort, recipient.LabelShort, conflictPawn.LabelShort, mediationBonus);
+            string mediationMessage = string.Format("{0} mediated a conflict between {1} and {2}.", initiator.LabelShort, recipient.LabelShort, conflictPawn.LabelShort);
 
             if (!modSettings.DisableAllMessages)
             {
                 Messages.Message(mediationMessage, new LookTargets(new Pawn[] { initiator, recipient, conflictPawn }), MessageTypeDefOf.PositiveEvent);
             }
 
-            OnPositiveInteraction?.Invoke(initiator, 0.1f, "PositiveInteraction", (int)ExperienceValency.Positive);
+            OnPositiveInteraction?.Invoke(initiator, 0.25f, "PositiveInteraction", (int)ExperienceValency.Positive);
+
+            // New logging
+            if (modSettings.EnableLogging)
+            {
+                string logMessage = $"<color=#00FF7F>[Positive Connections]</color> Mediation - Weight: {RandomSelectionWeight(initiator, recipient)} - Initiator: {initiator.Name.ToStringShort}, Recipient: {recipient.Name.ToStringShort}, ConflictPawn: {conflictPawn.Name.ToStringShort}, MediationBonus: {mediationBonus}";
+                Log.Message(logMessage);
+            }
         }
 
         private Pawn FindConflictPawn(Pawn recipient)
@@ -91,7 +93,7 @@ namespace DIL_PositiveConnections
 
             foreach (var pawn in colonyPawns)
             {
-                if (recipient != pawn && recipient.relations.OpinionOf(pawn) < NegativeRelationshipThreshold)
+                if (recipient != pawn && recipient.relations.OpinionOf(pawn) < PositiveConnectionsTuning.NegativeRelationshipThreshold_Mediation)
                 {
                     return pawn;
                 }
@@ -104,14 +106,14 @@ namespace DIL_PositiveConnections
         {
             int socialSkill = initiator.skills.GetSkill(SkillDefOf.Social).Level;
             float randomFactor = Rand.Value;
-            int mediationBonus = (int)(MinMediationBonus + (MaxMediationBonus - MinMediationBonus) * randomFactor * socialSkill / 20f);
+            int mediationBonus = (int)(PositiveConnectionsTuning.MinMediationBonus + (PositiveConnectionsTuning.MaxMediationBonus - PositiveConnectionsTuning.MinMediationBonus) * randomFactor * socialSkill / 20f);
 
             return mediationBonus;
         }
 
         private void ApplyMediationOutcome(Pawn initiator, Pawn recipient, Pawn conflictPawn, int mediationBonus)
         {
-            int convertedBonus = (int)Mathf.Round(mediationBonus / (MaxMediationBonus / 2f));
+            int convertedBonus = (int)Mathf.Round(mediationBonus / (PositiveConnectionsTuning.MaxMediationBonus / 2f));
             convertedBonus = Mathf.Clamp(convertedBonus, 0, 2);
 
             Thought_Memory memoryInitiator = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("DIL_SuccessfulMediation"));
@@ -126,7 +128,7 @@ namespace DIL_PositiveConnections
             recipient.needs.mood.thoughts.memories.TryGainMemory(memoryRecipient);
             conflictPawn.needs.mood.thoughts.memories.TryGainMemory(memoryConflictPawn);
 
-            Thought_Memory memoryShared = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDefOfPositiveConnections.DIL_InMediationWith);
+            Thought_Memory memoryShared = (Thought_Memory)ThoughtMaker.MakeThought(PositiveConnectionsThoughtDefOf.DIL_InMediationWith);
             memoryShared.SetForcedStage(0);
             recipient.needs.mood.thoughts.memories.TryGainMemory(memoryShared, conflictPawn);
             conflictPawn.needs.mood.thoughts.memories.TryGainMemory(memoryShared, recipient);
