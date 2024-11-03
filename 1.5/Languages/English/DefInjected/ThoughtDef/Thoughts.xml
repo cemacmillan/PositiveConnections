@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <!-- DIL_ComfortReceived -->
+    <DIL_ComfortReceived.label>comforted</DIL_ComfortReceived.label>
+    <DIL_ComfortReceived.stages.0.label>comforted</DIL_ComfortReceived.stages.0.label>
+    <DIL_ComfortReceived.stages.0.description>I was comforted by someone when I was feeling down.</DIL_ComfortReceived.stages.0.description>
+    
+    <!-- DIL_SuccessfulMediation -->
+    <DIL_SuccessfulMediation.label>mediation successful</DIL_SuccessfulMediation.label>
+    <DIL_SuccessfulMediation.stages.0.label>mediation successful (minor)</DIL_SuccessfulMediation.stages.0.label>
+    <DIL_SuccessfulMediation.stages.0.description>I'm relieved that the argument was resolved peacefully, even if it didn't make a huge difference.</DIL_SuccessfulMediation.stages.0.description>
+    <DIL_SuccessfulMediation.stages.1.label>mediation successful (moderate)</DIL_SuccessfulMediation.stages.1.label>
+    <DIL_SuccessfulMediation.stages.1.description>That mediation really helped cool things down. It feels good to get along better now.</DIL_SuccessfulMediation.stages.1.description>
+    <DIL_SuccessfulMediation.stages.2.label>mediation successful (major)</DIL_SuccessfulMediation.stages.2.label>
+    <DIL_SuccessfulMediation.stages.2.description>That was an amazing mediation! It's like a weight has been lifted and we can all get along again.</DIL_SuccessfulMediation.stages.2.description>
+    <DIL_InMediationWith.label>mediated conflict</DIL_InMediationWith.label>
+    <DIL_InMediationWith.stages.0.label>mediated conflict</DIL_InMediationWith.stages.0.label>
+    
+    <!-- DIL_InMediationWith -->
+    <DIL_InMediationWith.label>in mediation with {0}</DIL_InMediationWith.label>
+    <DIL_InMediationWith.description>I'm glad we had a chance to talk things out in mediation with {0}. I feel like we understand each other better now.</DIL_InMediationWith.description>
+
+    <!-- DIL_ReceivedGift -->
+    <DIL_ReceivedGift.label>received a gift</DIL_ReceivedGift.label>
+    <DIL_ReceivedGift.description>Someone gave me a gift and while it was a small thing, I was moved by the gesture.</DIL_ReceivedGift.description>
+
+    <!-- DIL_ReceivedCompliment -->
+    <DIL_ReceivedCompliment.label>received compliment</DIL_ReceivedCompliment.label>
+    <DIL_ReceivedCompliment.description>I received a compliment recently. It feels good to be appreciated!</DIL_ReceivedCompliment.description>
+
+    <!-- DIL_ReceivedTeaching -->
+    <DIL_ReceivedTeaching.label>received teaching</DIL_ReceivedTeaching.label>
+    <DIL_ReceivedTeaching.description>I learned something new today!</DIL_ReceivedTeaching.description>
+
+    <!-- DIL_IdeologicalDiscussion -->
+    <DIL_IdeologicalDiscussion.label>ideological discussion</DIL_IdeologicalDiscussion.label>
+    <DIL_IdeologicalDiscussion.description>I had a thought-provoking discussion!</DIL_IdeologicalDiscussion.description>
+
+    <!-- DIL_SharedPassionActivity -->
+    <DIL_SharedPassionActivity.label>shared passion</DIL_SharedPassionActivity.label>
+    <DIL_SharedPassionActivity.description>I recently spent some time enjoying my passion with someone who appreciates it as much as I do.</DIL_SharedPassionActivity.description>
+
+    <!-- DIL_Thought_StorytellingAttendee -->
+    <DIL_Thought_StorytellingAttendee.label>heard a story</DIL_Thought_StorytellingAttendee.label>
+    <DIL_Thought_StorytellingAttendee.description>It was nice to hear a story. I feel a little closer to the storyteller.</DIL_Thought_StorytellingAttendee.description>
+
+    <!-- DIL_Thought_StorytellingOrganizer -->
+    <DIL_Thought_StorytellingOrganizer.label>told a story</DIL_Thought_StorytellingOrganizer.label>
+    <DIL_Thought_StorytellingOrganizer.description>Sharing my story was a nice moment. I hope others enjoyed it too.</DIL_Thought_StorytellingOrganizer.description>
+</LanguageData>

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace DIL_PositiveConnections
+namespace PositiveConnectionsNmSpc
 {
     public class PositiveConnectionsModSettingsWindow : Window
     {

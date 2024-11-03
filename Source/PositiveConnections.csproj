@@ -80,6 +80,7 @@
         <Compile Include="HarmonyPatches\MarriageProposalPatch.cs" />
         <Compile Include="ModSettings.cs" />
         <Compile Include="ModSettingsWindow.cs" />
+        <Compile Include="PositiveConnectionsTraitMgr.cs" />
         <Compile Include="PositiveConnectionsUtility.cs" />
         <Compile Include="PositiveConnectionsTraitDefOf.cs" />
         <Compile Include="Workers\InteractionWorker_Compliment.cs" />
@@ -94,6 +95,9 @@
         <Compile Include="PositiveConnectionsThoughtDefOf.cs" />
         <Compile Include="Workers\InteractionWorker_Storytelling.cs" />
         <Compile Include="PositiveConnectionsTuning.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove=".gitignore" />
     </ItemGroup>
     
 </Project>

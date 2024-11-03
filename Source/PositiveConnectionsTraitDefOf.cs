@@ -1,7 +1,7 @@
 using RimWorld;
 using Verse;
 
-namespace DIL_PositiveConnections
+namespace PositiveConnectionsNmSpc
 {
     [DefOf]
     public static class TraitDefOf

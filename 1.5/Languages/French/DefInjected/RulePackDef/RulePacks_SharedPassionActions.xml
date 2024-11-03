@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_SharedPassionAction.rulePack.rulesStrings>
+        <!-- Translated action phrases mapped to skills -->
+        <li>actionPhrase->[action_{passionSkill}]</li>
+        <li>action_Animals->discuter de l'élevage des animaux</li>
+        <li>action_Artistic->parler d'art et de créativité</li>
+        <li>action_Construction->discuter d'architecture</li>
+        <li>action_Cooking->parler de cuisine</li>
+        <li>action_Crafting->discuter de techniques d'artisanat</li>
+        <li>action_Plants->parler de techniques agricoles</li>
+        <li>action_Mining->discuter de l'exploitation minière et des minéraux</li>
+        <li>action_Shooting->discuter du tir de précision</li>
+        <li>action_Melee->parler de combat rapproché</li>
+        <li>action_Intellectual->avoir une conversation intellectuelle</li>
+        <li>action_Social->socialiser</li>
+        <li>action_Medical->discuter de pratiques médicales</li>
+        <!-- Default action phrase -->
+        <li>action_default->partager leur passion</li>
+    </PositiveConnections_SharedPassionAction.rulePack.rulesStrings>
+</LanguageData>

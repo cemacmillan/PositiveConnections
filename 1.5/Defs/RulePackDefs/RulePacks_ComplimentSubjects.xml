@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <RulePackDef>
+        <defName>PositiveConnections_ComplimentSubject</defName>
+        <rulePack>
+            <rulesStrings>
+                <!-- Compliment subjects -->
+                <li>complimentSubject->social skills</li>
+                <li>complimentSubject->hard work</li>
+                <li>complimentSubject->bravery</li>
+                <li>complimentSubject->intelligence</li>
+                <li>complimentSubject->grace</li>
+                <li>complimentSubject->patience</li>
+                <li>complimentSubject->kindness</li>
+                <li>complimentSubject->creativity</li>
+                <li>complimentSubject->sense of humor</li>
+                <li>complimentSubject->dedication</li>
+                <li>complimentSubject->leadership</li>
+                <li>complimentSubject->problem-solving skills</li>
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
+</Defs>

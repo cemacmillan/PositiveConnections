@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_ComplimentSubject.rulePack.rulesStrings>
+        <!-- Translated compliment subjects -->
+        <li>complimentSubject->compétences sociales</li>
+        <li>complimentSubject->travail acharné</li>
+        <li>complimentSubject->bravoure</li>
+        <li>complimentSubject->intelligence</li>
+        <li>complimentSubject->grâce</li>
+        <li>complimentSubject->patience</li>
+        <li>complimentSubject->gentillesse</li>
+        <li>complimentSubject->créativité</li>
+        <li>complimentSubject->sens de l'humour</li>
+        <li>complimentSubject->dévouement</li>
+        <li>complimentSubject->leadership</li>
+        <li>complimentSubject->compétences en résolution de problèmes</li>
+    </PositiveConnections_ComplimentSubject.rulePack.rulesStrings>
+</LanguageData>

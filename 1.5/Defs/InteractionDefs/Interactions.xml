@@ -2,7 +2,7 @@
 <Defs>
     <InteractionDef>
     <defName>DIL_GiveComfort</defName>
-    <workerClass>DIL_PositiveConnections.InteractionWorker_GiveComfort</workerClass>
+    <workerClass>PositiveConnectionsNmSpc.InteractionWorker_GiveComfort</workerClass>
     <symbol>Things/Mote/SpeechSymbols/KindWords</symbol>
     <logRulesInitiator>
         <rulesStrings>
@@ -17,7 +17,7 @@
     </InteractionDef>
     <InteractionDef>
         <defName>DIL_Mediation</defName>
-        <workerClass>DIL_PositiveConnections.InteractionWorker_Mediation</workerClass>
+        <workerClass>PositiveConnectionsNmSpc.InteractionWorker_Mediation</workerClass>
         <symbol>Things/Mote/SpeechSymbols/BuildRapport</symbol>
         <logRulesInitiator>
             <rulesStrings>
@@ -32,7 +32,7 @@
     </InteractionDef>
     <InteractionDef>
         <defName>DIL_Compliment</defName>
-        <workerClass>DIL_PositiveConnections.InteractionWorker_Compliment</workerClass>
+        <workerClass>PositiveConnectionsNmSpc.InteractionWorker_Compliment</workerClass>
         <symbol>Things/Mote/SpeechSymbols/KindWords</symbol>
         <logRulesInitiator>
             <rulesStrings>
@@ -47,7 +47,7 @@
     </InteractionDef>
     <InteractionDef>
         <defName>DIL_SkillShare</defName>
-        <workerClass>DIL_PositiveConnections.InteractionWorker_SkillShare</workerClass>
+        <workerClass>PositiveConnectionsNmSpc.InteractionWorker_SkillShare</workerClass>
         <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
         <logRulesInitiator>
             <rulesStrings>
@@ -57,7 +57,7 @@
     </InteractionDef>
     <InteractionDef>
         <defName>DIL_DiscussIdeoligion</defName>
-        <workerClass>DIL_PositiveConnections.InteractionWorker_DiscussIdeoligion</workerClass>
+        <workerClass>PositiveConnectionsNmSpc.InteractionWorker_DiscussIdeoligion</workerClass>
         <label>discuss ideoligion</label>
         <description>Pawns discussing their shared ideoligion.</description>
         <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
@@ -77,7 +77,7 @@
     </InteractionDef>
     <InteractionDef>
         <defName>DIL_GiveGift</defName>
-        <workerClass>DIL_PositiveConnections.InteractionWorker_Gift</workerClass>
+        <workerClass>PositiveConnectionsNmSpc.InteractionWorker_Gift</workerClass>
         <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
         <logRulesInitiator>
             <rulesStrings>
@@ -93,7 +93,7 @@
 
   <InteractionDef>
     <defName>DIL_SharedPassion</defName>
-    <workerClass>DIL_PositiveConnections.InteractionWorker_SharedPassion</workerClass>
+    <workerClass>PositiveConnectionsNmSpc.InteractionWorker_SharedPassion</workerClass>
     <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
     <initiatorThought>DIL_SharedPassionActivity</initiatorThought>
     <recipientThought>DIL_SharedPassionActivity</recipientThought>
@@ -111,7 +111,7 @@
 
 <InteractionDef>
     <defName>DIL_Storytelling</defName>
-    <workerClass>DIL_PositiveConnections.InteractionWorker_Storytelling</workerClass>
+    <workerClass>PositiveConnectionsNmSpc.InteractionWorker_Storytelling</workerClass>
     <symbol>Things/Mote/SpeechSymbols/Speech</symbol>
     <logRulesInitiator>
         <rulesStrings>

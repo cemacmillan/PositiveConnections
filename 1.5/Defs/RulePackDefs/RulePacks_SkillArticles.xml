@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <RulePackDef>
+        <defName>PositiveConnections_SkillArticles</defName>
+        <rulePack>
+            <rulesStrings>
+                <!-- Article mapping -->
+                <li>skillArticle->[article_{skillDefName}]</li>
+
+                <!-- Articles for each skill (English) -->
+                <li>article_Animals->Animal Handling</li>
+                <li>article_Artistic->Artistic Skills</li>
+                <li>article_Construction->Construction</li>
+                <li>article_Cooking->Cooking</li>
+                <li>article_Crafting->Crafting</li>
+                <li>article_Intellectual->Intellectual Pursuits</li>
+                <li>article_Medicine->Medicine</li>
+                <li>article_Melee->Melee Combat</li>
+                <li>article_Mining->Mining</li>
+                <li>article_Plants->Plant Work</li>
+                <li>article_Shooting->Shooting</li>
+                <li>article_Social->Social Skills</li>
+                <!-- Default article -->
+                <li>article_default->[skillLabel]</li>
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
+</Defs>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_GiftMessage.rulePack.rulesStrings>
+        <!-- Translated message templates -->
+        <li>giftMessage->[initiator_nameDef] a offert [giftDescription] à [recipient_nameDef] en cadeau.</li>
+        <li>giftMessage->[initiator_nameDef] a présenté [giftDescription] à [recipient_nameDef].</li>
+        <li>giftMessage->[initiator_nameDef] a offert [giftDescription] à [recipient_nameDef].</li>
+        <li>giftMessage->[initiator_nameDef] a surpris [recipient_nameDef] avec [giftDescription].</li>
+        <li>giftMessage->[initiator_nameDef] a partagé [giftDescription] avec [recipient_nameDef].</li>
+        <li>giftMessage->[initiator_nameDef] a remis [giftDescription] à [recipient_nameDef] en cadeau.</li>
+        <li>giftMessage->[initiator_nameDef] a donné [giftDescription] à [recipient_nameDef] pour égayer sa journée.</li>
+        <li>giftMessage->[initiator_nameDef] a offert [giftDescription] à [recipient_nameDef] en signe d'amitié.</li>
+        <li>giftMessage->[initiator_nameDef] a fait sourire [recipient_nameDef] en lui donnant [giftDescription].</li>
+    </PositiveConnections_GiftMessage.rulePack.rulesStrings>
+</LanguageData>

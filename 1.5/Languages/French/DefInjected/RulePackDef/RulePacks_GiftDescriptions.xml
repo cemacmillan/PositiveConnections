@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_GiftDescription.rulePack.rulesStrings>
+        <!-- Gift descriptions in French -->
+        <li>giftDescription->une couronne de gazon</li>
+        <li>giftDescription->une belle plume</li>
+        <li>giftDescription->un peigne finement conçu</li>
+        <li>giftDescription->un bouquet de fleurs sauvages</li>
+        <li>giftDescription->une feuille exquise</li>
+        <li>giftDescription->un caillou en forme de cœur</li>
+        <li>giftDescription->une petite pierre finement sculptée</li>
+        <li>giftDescription->un fruit frais et juteux</li>
+        <li>giftDescription->un bracelet tissé à la main</li>
+        <li>giftDescription->un coquillage intéressant</li>
+        <li>giftDescription->une petite babiole fabriquée à partir de pièces de rechange</li>
+        <li>giftDescription->une sélection de fines herbes cueillies à la main</li>
+    </PositiveConnections_GiftDescription.rulePack.rulesStrings>
+</LanguageData>

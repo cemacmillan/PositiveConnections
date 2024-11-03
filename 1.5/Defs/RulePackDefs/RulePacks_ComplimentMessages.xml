@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <RulePackDef>
+        <defName>PositiveConnections_ComplimentMessage</defName>
+        <rulePack>
+            <rulesStrings>
+                <!-- Compliment message templates -->
+                <li>complimentMessage->[initiator_nameDef] complimented [recipient_nameDef] on their [complimentSubject].</li>
+                <li>complimentMessage->[initiator_nameDef] praised [recipient_nameDef]'s [complimentSubject].</li>
+                <li>complimentMessage->[initiator_nameDef] admired [recipient_nameDef]'s [complimentSubject].</li>
+                <li>complimentMessage->[initiator_nameDef] expressed appreciation for [recipient_nameDef]'s [complimentSubject].</li>
+                <li>complimentMessage->[initiator_nameDef] acknowledged [recipient_nameDef]'s [complimentSubject].</li>
+                <li>complimentMessage->[initiator_nameDef] lauded [recipient_nameDef]'s [complimentSubject].</li>
+                <li>complimentMessage->[initiator_nameDef] commended [recipient_nameDef] for their [complimentSubject].</li>
+                <li>complimentMessage->[initiator_nameDef] told [recipient_nameDef] that they admired their [complimentSubject].</li>
+                <li>complimentMessage->[initiator_nameDef] said they appreciated [recipient_nameDef]'s [complimentSubject].</li>
+                <li>complimentMessage->[initiator_nameDef] mentioned how impressive [recipient_nameDef]'s [complimentSubject] is.</li>
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
+</Defs>

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace DIL_PositiveConnections
+namespace PositiveConnectionsNmSpc
 {
     public class PositiveConnections : Mod
     {
@@ -14,7 +14,7 @@ namespace DIL_PositiveConnections
         {
             Instance = this;
             settings = GetSettings<PositiveConnectionsModSettings>(); // Update the type here
-            Log.Message("<color=#00FF7F>[Positive Connections]</color>v1.5.3 icanzhasfly");
+            Log.Message("<color=#00FF7F>[Positive Connections]</color>v1.5.5 dai mas fraagey");
             IsMindMattersActive = ModsConfig.IsActive("cem.mindmatters");
 
             if(IsMindMattersActive)

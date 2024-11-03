@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_ComfortMessage.rulePack.rulesStrings>
+        <!-- Translated comfort message templates -->
+        <li>comfortMessage->[initiator_nameDef] a réconforté [recipient_nameDef].</li>
+        <li>comfortMessage->[initiator_nameDef] a apporté du réconfort à [recipient_nameDef].</li>
+        <li>comfortMessage->[initiator_nameDef] a consolé [recipient_nameDef] pendant un moment difficile.</li>
+        <li>comfortMessage->[initiator_nameDef] a offert son soutien à [recipient_nameDef].</li>
+        <li>comfortMessage->[initiator_nameDef] a aidé à remonter le moral de [recipient_nameDef].</li>
+        <li>comfortMessage->[initiator_nameDef] était là pour [recipient_nameDef] quand il/elle en avait besoin.</li>
+        <li>comfortMessage->[initiator_nameDef] a écouté les préoccupations de [recipient_nameDef].</li>
+        <li>comfortMessage->[initiator_nameDef] a partagé des paroles encourageantes avec [recipient_nameDef].</li>
+        <li>comfortMessage->[initiator_nameDef] a essayé de remonter le moral de [recipient_nameDef].</li>
+        <li>comfortMessage->[initiator_nameDef] a rassuré [recipient_nameDef] en des temps difficiles.</li>
+    </PositiveConnections_ComfortMessage.rulePack.rulesStrings>
+</LanguageData>

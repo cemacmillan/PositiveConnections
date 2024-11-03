@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_IdeologyDiscussionMessage_IdeoInactive.rulePack.rulesStrings>
+        <!-- Message templates when Ideology is not active -->
+        <li>ideologyDiscussionMessage->[initiator_nameDef] and [recipient_nameDef] had a deep philosophical conversation.</li>
+        <li>ideologyDiscussionMessage->[initiator_nameDef] and [recipient_nameDef] discussed ethics and morality.</li>
+        <li>ideologyDiscussionMessage->[initiator_nameDef] and [recipient_nameDef] shared their thoughts on life and existence.</li>
+        <li>ideologyDiscussionMessage->[initiator_nameDef] and [recipient_nameDef] engaged in a stimulating debate about philosophy.</li>
+        <li>ideologyDiscussionMessage->[initiator_nameDef] and [recipient_nameDef] pondered the meaning of life together.</li>
+    </PositiveConnections_IdeologyDiscussionMessage_IdeoInactive.rulePack.rulesStrings>
+</LanguageData>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <RulePackDef>
+        <defName>PositiveConnections_IdeologyDiscussionMessage_IdeoActive</defName>
+        <rulePack>
+            <rulesStrings>
+                <!-- Message templates when Ideology is active -->
+                <li>ideologyDiscussionMessage->[initiator_nameDef] and [recipient_nameDef] had a meaningful discussion about their ideoligion.</li>
+                <li>ideologyDiscussionMessage->[initiator_nameDef] and [recipient_nameDef] explored philosophical concepts within their ideoligions.</li>
+                <li>ideologyDiscussionMessage->[initiator_nameDef] and [recipient_nameDef] shared thoughts on [ideoName].</li>
+                <li>ideologyDiscussionMessage->[initiator_nameDef] and [recipient_nameDef] connected over their beliefs in [ideoName].</li>
+                <li>ideologyDiscussionMessage->[initiator_nameDef] and [recipient_nameDef] discussed differences in their ideoligions.</li>
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
+</Defs>

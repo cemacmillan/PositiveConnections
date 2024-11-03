@@ -1,8 +1,8 @@
 ﻿using Verse;
 
-namespace DIL_PositiveConnections
+namespace PositiveConnectionsNmSpc
 {
-    public class PositiveConnectionsModSettings : Verse.ModSettings
+    public class PositiveConnectionsModSettings : ModSettings
     {
         public bool EnableGenderAdjustment = true;
         public bool DisableAllMessages = false;

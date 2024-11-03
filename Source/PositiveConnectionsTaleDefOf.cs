@@ -1,6 +1,6 @@
 using RimWorld;
 
-namespace DIL_PositiveConnections
+namespace PositiveConnectionsNmSpc
 {
     [DefOf]
     public static class PositiveConnectionsTaleDefOf

@@ -3,13 +3,13 @@
   <!--
   <JobDef>
     <defName>TellStory</defName>
-    <driverClass>DIL_PositiveConnections.JobDriver_TellStory</driverClass>
+    <driverClass>PositiveConnectionsNmSpc.JobDriver_TellStory</driverClass>
     <reportString>telling a story.</reportString>
     <casualInterruptible>false</casualInterruptible>
   </JobDef>
   <JobDef>
     <defName>ListenToStory</defName>
-    <driverClass>DIL_PositiveConnections.JobDriver_ListenToStory</driverClass>
+    <driverClass>PositiveConnectionsNmSpc.JobDriver_ListenToStory</driverClass>
     <reportString>listening to a story.</reportString>
     <neverShowWeapon>true</neverShowWeapon>
   </JobDef>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_SharedPassionAction.rulePack.rulesStrings>
+        <li>action_Animals->discussing animal husbandry</li>
+        <li>action_Artistic->talking about art and creativity</li>
+        <li>action_Construction->discussing architecture</li>
+        <li>action_Cooking->talking about cooking</li>
+        <li>action_Crafting->discussing crafting techniques</li>
+        <li>action_Plants->talking about agricultural techniques</li>
+        <li>action_Mining->discussing mining and minerals</li>
+        <li>action_Shooting->discussing the ins and outs of marksmanship</li>
+        <li>action_Melee->talking about melee combat</li>
+        <li>action_Intellectual->having an intellectual conversation</li>
+        <li>action_Social->socializing</li>
+        <li>action_Medical->discussing medical practices</li>
+        <!-- Default action phrase -->
+        <li>action_default->sharing their passion</li>
+    </PositiveConnections_SharedPassionAction.rulePack.rulesStrings>
+</LanguageData>
