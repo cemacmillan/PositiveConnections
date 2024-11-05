@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_ComplimentSubject.rulePack.rulesStrings>
+        <!-- 表扬的主题 -->
+        <li>complimentSubject->社交技巧</li>
+        <li>complimentSubject->努力工作</li>
+        <li>complimentSubject->勇气</li>
+        <li>complimentSubject->智慧</li>
+        <li>complimentSubject->优雅</li>
+        <li>complimentSubject->耐心</li>
+        <li>complimentSubject->善良</li>
+        <li>complimentSubject->创造力</li>
+        <li>complimentSubject->幽默感</li>
+        <li>complimentSubject->奉献精神</li>
+        <li>complimentSubject->领导力</li>
+        <li>complimentSubject->解决问题的能力</li>
+    </PositiveConnections_ComplimentSubject.rulePack.rulesStrings>
+</LanguageData>

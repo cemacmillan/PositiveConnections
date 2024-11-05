@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_ComfortMessage.rulePack.rulesStrings>
+    <!-- Comfort message templates -->
+        <li>comfortMessage->[initiator_nameDef] 安慰了 [recipient_nameDef].</li>
+        <li>comfortMessage->[initiator_nameDef] 提供了安慰给 [recipient_nameDef].</li>
+        <li>comfortMessage->[initiator_nameDef] 在艰难时刻安慰了 [recipient_nameDef].</li>
+        <li>comfortMessage->[initiator_nameDef] 提供了支持给 [recipient_nameDef].</li>
+        <li>comfortMessage->[initiator_nameDef] 帮助 [recipient_nameDef] 振作起来.</li>
+        <li>comfortMessage->[initiator_nameDef] 在 [recipient_nameDef] 需要的时候陪伴了 [recipient_nameDef].</li>
+        <li>comfortMessage->[initiator_nameDef] 倾听了 [recipient_nameDef] 的忧虑.</li>
+        <li>comfortMessage->[initiator_nameDef] 与 [recipient_nameDef] 分享了鼓励的话语.</li>
+        <li>comfortMessage->[initiator_nameDef] 试图让 [recipient_nameDef] 开心起来.</li>
+        <li>comfortMessage->[initiator_nameDef] 在困难时期安抚了 [recipient_nameDef].</li>
+    </PositiveConnections_ComfortMessage.rulePack.rulesStrings>
+</LanguageData>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <!-- DIL_ComfortReceived -->
+    <DIL_ComfortReceived.label>安慰</DIL_ComfortReceived.label>
+    <DIL_ComfortReceived.stages.0.label>被安慰</DIL_ComfortReceived.stages.0.label>
+    <DIL_ComfortReceived.stages.0.description>当我感到沮丧时,有人安慰了我。</DIL_ComfortReceived.stages.0.description>
+    
+    <!-- DIL_SuccessfulMediation -->
+    <DIL_SuccessfulMediation.label>调解成功</DIL_SuccessfulMediation.label>
+    <DIL_SuccessfulMediation.stages.0.label>调解成功（轻微）</DIL_SuccessfulMediation.stages.0.label>
+    <DIL_SuccessfulMediation.stages.0.description>我很庆幸争执得到了和平的解决，即使它没有带来很大的改变。</DIL_SuccessfulMediation.stages.0.description>
+    <DIL_SuccessfulMediation.stages.1.label>调解成功（中等）</DIL_SuccessfulMediation.stages.1.label>
+    <DIL_SuccessfulMediation.stages.1.description>这次调解真的帮助了缓和事态。现在相处得更好的感觉真好。</DIL_SuccessfulMediation.stages.1.description>
+    <DIL_SuccessfulMediation.stages.2.label>调解成功（极大）</DIL_SuccessfulMediation.stages.2.label>
+    <DIL_SuccessfulMediation.stages.2.description>这是一次惊人的调解！就像卸下了重担，我们又可以和睦相处了。</DIL_SuccessfulMediation.stages.2.description>
+    <DIL_InMediationWith.label>调解冲突</DIL_InMediationWith.label>
+    <DIL_InMediationWith.stages.0.label>调解冲突</DIL_InMediationWith.stages.0.label>
+    
+    <!-- DIL_InMediationWith -->
+    <DIL_InMediationWith.label>与 {0} 的调解</DIL_InMediationWith.label>
+    <DIL_InMediationWith.description>我很高兴我们有机会在与{0}的调解中把事情说清楚。我觉得我们现在更加了解彼此了。</DIL_InMediationWith.description>
+
+    <!-- DIL_ReceivedGift -->
+    <DIL_ReceivedGift.label>收到礼物</DIL_ReceivedGift.label>
+    <DIL_ReceivedGift.description>有人给了我一个礼物，虽然是一件小事，但我被这个举动感动了。</DIL_ReceivedGift.description>
+
+    <!-- DIL_ReceivedCompliment -->
+    <DIL_ReceivedCompliment.label>收到赞美</DIL_ReceivedCompliment.label>
+    <DIL_ReceivedCompliment.description>我最近收到了赞美。被认可的感觉真好！</DIL_ReceivedCompliment.description>
+
+    <!-- DIL_ReceivedTeaching -->
+    <DIL_ReceivedTeaching.label>收到教学</DIL_ReceivedTeaching.label>
+    <DIL_ReceivedTeaching.description>我今天学到了一些新东西！</DIL_ReceivedTeaching.description>
+
+    <!-- DIL_IdeologicalDiscussion -->
+    <DIL_IdeologicalDiscussion.label>理念讨论</DIL_IdeologicalDiscussion.label>
+    <DIL_IdeologicalDiscussion.description>我进行了一场发人深省的讨论！</DIL_IdeologicalDiscussion.description>
+
+    <!-- DIL_SharedPassionActivity -->
+    <DIL_SharedPassionActivity.label>分享热情</DIL_SharedPassionActivity.label>
+    <DIL_SharedPassionActivity.description>我最近和一个同样热爱这件事的人一起度过了一段愉快的时光。</DIL_SharedPassionActivity.description>
+
+    <!-- DIL_Thought_StorytellingAttendee -->
+    <DIL_Thought_StorytellingAttendee.label>听故事</DIL_Thought_StorytellingAttendee.label>
+    <DIL_Thought_StorytellingAttendee.description>听一个故事感觉真好。我感觉自己和讲故事的人更加亲近了。</DIL_Thought_StorytellingAttendee.description>
+
+    <!-- DIL_Thought_StorytellingOrganizer -->
+    <DIL_Thought_StorytellingOrganizer.label>讲故事</DIL_Thought_StorytellingOrganizer.label>
+    <DIL_Thought_StorytellingOrganizer.description>分享我的故事是一个美好的时刻。希望其他人也喜欢。</DIL_Thought_StorytellingOrganizer.description>
+</LanguageData>
