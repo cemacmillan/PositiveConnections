@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_SharedPassionMessage.rulePack.rulesStrings>
+        <li>sharedPassionMessage->[pawnA_nameDef] 和 [pawnB_nameDef] 一起享受了 [actionPhrase]。</li>
+        <li>sharedPassionMessage->[pawnA_nameDef] 和 [pawnB_nameDef] 一起度过了 [actionPhrase] 的时光。</li>
+        <li>sharedPassionMessage->[pawnA_nameDef] 和 [pawnB_nameDef] 因 [passionSubject] 而变得亲近。</li>
+        <li>sharedPassionMessage->[pawnA_nameDef] 和 [pawnB_nameDef] 共同分享了对 [passionSubject] 的热情。</li>
+        <li>sharedPassionMessage->[pawnA_nameDef] 和 [pawnB_nameDef] 通过 [actionPhrase] 建立了联系。</li>
+        <li>sharedPassionMessage->[pawnA_nameDef] 和 [pawnB_nameDef] 一起度过了愉快的 [actionPhrase] 时光。</li>
+        <li>sharedPassionMessage->[pawnA_nameDef] 和 [pawnB_nameDef] 一起享受了讨论 [passionSubject] 的时光。</li>
+    </PositiveConnections_SharedPassionMessage.rulePack.rulesStrings>
+</LanguageData>

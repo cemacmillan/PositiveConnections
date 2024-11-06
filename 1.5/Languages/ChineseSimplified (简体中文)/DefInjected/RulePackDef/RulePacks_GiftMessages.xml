@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_GiftMessage.rulePack.rulesStrings>
+        <!-- 礼物信息模板 -->
+        <li>giftMessage->[initiator_nameDef] 给了 [recipient_nameDef] 一份礼物: [giftDescription].</li>
+        <li>giftMessage->[initiator_nameDef] 给 [recipient_nameDef] 提供了 [giftDescription].</li>
+        <li>giftMessage->[initiator_nameDef] 赠送了 [giftDescription] 给 [recipient_nameDef].</li>
+        <li>giftMessage->[initiator_nameDef] 提供了 [giftDescription] 给 [recipient_nameDef].</li>
+        <li>giftMessage->[initiator_nameDef] 给 [recipient_nameDef] 一个惊喜: [giftDescription].</li>
+        <li>giftMessage->[initiator_nameDef] 分享了 [giftDescription] 给 [recipient_nameDef].</li>
+        <li>giftMessage->[initiator_nameDef] 把 [giftDescription] 当作礼物递给了 [recipient_nameDef].</li>
+        <li>giftMessage->[initiator_nameDef] 给了 [recipient_nameDef] [giftDescription] 以使他们的日子更加美好.</li>
+        <li>giftMessage->[initiator_nameDef] 作为友谊的象征赠送了 [giftDescription] 给 [recipient_nameDef].</li>
+        <li>giftMessage->[initiator_nameDef] 通过赠送 [giftDescription] 让 [recipient_nameDef] 笑了.</li>
+    </PositiveConnections_GiftMessage.rulePack.rulesStrings>
+</LanguageData>

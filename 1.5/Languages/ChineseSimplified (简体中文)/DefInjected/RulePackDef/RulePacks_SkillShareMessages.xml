@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_SkillShareMessage.rulePack.rulesStrings>
+        <!-- 技能分享信息模板 -->
+        <li>skillShareMessage->[initiator_nameDef] 教了 [recipient_nameDef] [skillArticle].</li>
+        <li>skillShareMessage->[initiator_nameDef] 向 [recipient_nameDef] 分享了 [skillArticle] 的知识。</li>
+        <li>skillShareMessage->[initiator_nameDef] 指导 [recipient_nameDef] [skillArticle] 的方法。</li>
+        <li>skillShareMessage->[initiator_nameDef] 给 [recipient_nameDef] 上了一堂 [skillArticle] 的课。</li>
+        <li>skillShareMessage->[initiator_nameDef] 帮助 [recipient_nameDef] 提升了 [skillLabel] 技能。</li>
+        <li>skillShareMessage->[initiator_nameDef] 花时间教 [recipient_nameDef] [skillArticle]。</li>
+        <li>skillShareMessage->[initiator_nameDef] 为 [recipient_nameDef] 提供了 [skillArticle] 的见解。</li>
+        <li>skillShareMessage->[initiator_nameDef] 和 [recipient_nameDef] 在 [skillArticle] 上进行了富有成效的交流。</li>
+        <li>skillShareMessage->[initiator_nameDef] 指导 [recipient_nameDef] 掌握 [skillArticle]。</li>
+        <li>skillShareMessage->[initiator_nameDef] 和 [recipient_nameDef] 讨论了 [skillArticle] 的高级技巧。</li>
+    </PositiveConnections_SkillShareMessage.rulePack.rulesStrings>
+</LanguageData>

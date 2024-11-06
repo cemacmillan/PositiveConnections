@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_MediationMessage.rulePack.rulesStrings>
+        <!-- 调解信息模板 -->
+        <li>mediationMessage->[initiator_nameDef] 调解了 [recipient_nameDef] 和 [conflictPawn_nameDef] 之间的冲突。</li>
+    </PositiveConnections_MediationMessage.rulePack.rulesStrings>
+</LanguageData>

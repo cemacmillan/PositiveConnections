@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_SkillArticles.rulePack.rulesStrings>
+        <!-- 技能对应 -->
+        <li>skillArticle->[article_{skillDefName}]</li>
+
+        <!-- 各项技能对应的描述 -->
+        <li>article_Animals->驯兽</li>
+        <li>article_Artistic->艺术</li>
+        <li>article_Construction->建造</li>
+        <li>article_Cooking->烹饪</li>
+        <li>article_Crafting->手工</li>
+        <li>article_Intellectual->智力</li>
+        <li>article_Medicine->医疗</li>
+        <li>article_Melee->近战</li>
+        <li>article_Mining->采矿</li>
+        <li>article_Plants->种植</li>
+        <li>article_Shooting->射击</li>
+        <li>article_Social->社交</li>
+        <!-- 默认描述 -->
+        <li>article_default->[skillLabel]</li>
+    </PositiveConnections_SkillArticles.rulePack.rulesStrings>
+</LanguageData>

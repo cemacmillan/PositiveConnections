@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_StorytellingMessage.rulePack.rulesStrings>
+        <!-- 讲故事信息模板 -->
+        <li>storytellingMessage->[initiator_nameDef] 给 [recipient_nameDef] 讲了一个关于 [storySubject] 的故事。</li>
+        <li>storytellingMessage->[initiator_nameDef] 和 [recipient_nameDef] 分享了一个关于 [storySubject] 的故事。</li>
+        <li>storytellingMessage->[initiator_nameDef] 向 [recipient_nameDef] 叙述了 [storySubject]。</li>
+        <li>storytellingMessage->[initiator_nameDef] 用一个关于 [storySubject] 的故事逗乐了 [recipient_nameDef]。</li>
+        <li>storytellingMessage->[initiator_nameDef] 给 [recipient_nameDef] 讲了一个引人入胜的关于 [storySubject] 的故事。</li>
+        <li>storytellingMessage->[initiator_nameDef] 用 [storySubject] 的故事吸引了 [recipient_nameDef]。</li>
+        <li>storytellingMessage->[initiator_nameDef] 通过讲述一个关于 [storySubject] 的故事逗乐了 [recipient_nameDef]。</li>
+        <li>storytellingMessage->[initiator_nameDef] 和 [recipient_nameDef] 分享了一个关于 [storySubject] 的故事。</li>
+        <li>storytellingMessage->[initiator_nameDef] 向 [recipient_nameDef] 讲述了 [storySubject] 的故事。</li>
+        <li>storytellingMessage->[initiator_nameDef] 和 [recipient_nameDef] 谈论了 [storySubject]。</li>
+    </PositiveConnections_StorytellingMessage.rulePack.rulesStrings>
+</LanguageData>
