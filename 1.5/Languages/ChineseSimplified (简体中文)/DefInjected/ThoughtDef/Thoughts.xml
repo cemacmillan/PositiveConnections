@@ -29,7 +29,7 @@
     <DIL_ReceivedCompliment.description>我最近收到了赞美。被认可的感觉真好！</DIL_ReceivedCompliment.description>
 
     <!-- DIL_ReceivedTeaching -->
-    <DIL_ReceivedTeaching.label>收到教学</DIL_ReceivedTeaching.label>
+    <DIL_ReceivedTeaching.label>接受教导</DIL_ReceivedTeaching.label>
     <DIL_ReceivedTeaching.description>我今天学到了一些新东西！</DIL_ReceivedTeaching.description>
 
     <!-- DIL_IdeologicalDiscussion -->
@@ -41,10 +41,10 @@
     <DIL_SharedPassionActivity.description>我最近和一个同样热爱这件事的人一起度过了一段愉快的时光。</DIL_SharedPassionActivity.description>
 
     <!-- DIL_Thought_StorytellingAttendee -->
-    <DIL_Thought_StorytellingAttendee.label>听故事</DIL_Thought_StorytellingAttendee.label>
+    <DIL_Thought_StorytellingAttendee.label>聆听故事</DIL_Thought_StorytellingAttendee.label>
     <DIL_Thought_StorytellingAttendee.description>听一个故事感觉真好。我感觉自己和讲故事的人更加亲近了。</DIL_Thought_StorytellingAttendee.description>
 
     <!-- DIL_Thought_StorytellingOrganizer -->
-    <DIL_Thought_StorytellingOrganizer.label>讲故事</DIL_Thought_StorytellingOrganizer.label>
+    <DIL_Thought_StorytellingOrganizer.label>分享故事</DIL_Thought_StorytellingOrganizer.label>
     <DIL_Thought_StorytellingOrganizer.description>分享我的故事是一个美好的时刻。希望其他人也喜欢。</DIL_Thought_StorytellingOrganizer.description>
 </LanguageData>
