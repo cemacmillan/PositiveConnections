@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_SharedPassionAction.rulePack.rulesStrings>
+        <li>action_Animals->讨论动物饲养</li>
+        <li>action_Artistic->讨论艺术和创造力</li>
+        <li>action_Construction->讨论建筑</li>
+        <li>action_Cooking->讨论烹饪</li>
+        <li>action_Crafting->讨论手工技术</li>
+        <li>action_Plants->讨论农业技术</li>
+        <li>action_Mining->讨论采矿和矿物</li>
+        <li>action_Shooting->讨论射击的细节</li>
+        <li>action_Melee->讨论近战</li>
+        <li>action_Intellectual->讨论知识</li>
+        <li>action_Social->社交</li>
+        <li>action_Medical->讨论医疗实践</li>
+        <!-- 默认的行动短语 -->
+        <li>action_default->分享他们的热情</li>
+    </PositiveConnections_SharedPassionAction.rulePack.rulesStrings>
+</LanguageData>

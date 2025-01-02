@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_ComplimentMessage.rulePack.rulesStrings>
+        <!-- 表扬信息模板 -->
+        <li>complimentMessage->[initiator_nameDef] 赞美了 [recipient_nameDef] 的 [complimentSubject].</li>
+        <li>complimentMessage->[initiator_nameDef] 称赞了 [recipient_nameDef] 的 [complimentSubject].</li>
+        <li>complimentMessage->[initiator_nameDef] 钦佩 [recipient_nameDef] 的 [complimentSubject].</li>
+        <li>complimentMessage->[initiator_nameDef] 表达了对 [recipient_nameDef] 的 [complimentSubject] 的欣赏.</li>
+        <li>complimentMessage->[initiator_nameDef] 认可了 [recipient_nameDef] 的 [complimentSubject].</li>
+        <li>complimentMessage->[initiator_nameDef] 赞扬了 [recipient_nameDef] 的 [complimentSubject].</li>
+        <li>complimentMessage->[initiator_nameDef] 表彰了 [recipient_nameDef] 的 [complimentSubject].</li>
+        <li>complimentMessage->[initiator_nameDef] 告诉 [recipient_nameDef] 他们钦佩他们的 [complimentSubject].</li>
+        <li>complimentMessage->[initiator_nameDef] 说他们欣赏 [recipient_nameDef] 的 [complimentSubject].</li>
+        <li>complimentMessage->[initiator_nameDef] 提到 [recipient_nameDef] 的 [complimentSubject] 是多么令人印象深刻.</li>
+    </PositiveConnections_ComplimentMessage.rulePack.rulesStrings>
+</LanguageData>
