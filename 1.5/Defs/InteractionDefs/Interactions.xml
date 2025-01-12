@@ -1,95 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-    <InteractionDef>
+  <InteractionDef>
     <defName>DIL_GiveComfort</defName>
     <workerClass>PositiveConnectionsNmSpc.InteractionWorker_GiveComfort</workerClass>
     <symbol>Things/Mote/SpeechSymbols/KindWords</symbol>
     <logRulesInitiator>
-        <rulesStrings>
-            <li>r_logentry->I comforted [RECIPIENT_nameDef] when they were feeling down.</li>
-        </rulesStrings>
+      <rulesStrings>
+        <li>r_logentry->I comforted [RECIPIENT_nameDef] when they were feeling down.</li>
+      </rulesStrings>
     </logRulesInitiator>
     <logRulesRecipient>
-        <rulesStrings>
-            <li>r_logentry->[INITIATOR_nameDef] comforted me when I was feeling down.</li>
-        </rulesStrings>
+      <rulesStrings>
+        <li>r_logentry->[INITIATOR_nameDef] comforted me when I was feeling down.</li>
+      </rulesStrings>
     </logRulesRecipient>
-    </InteractionDef>
-    <InteractionDef>
-        <defName>DIL_Mediation</defName>
-        <workerClass>PositiveConnectionsNmSpc.InteractionWorker_Mediation</workerClass>
-        <symbol>Things/Mote/SpeechSymbols/BuildRapport</symbol>
-        <logRulesInitiator>
-            <rulesStrings>
-                <li>r_logentry->I mediated a conflict involving [RECIPIENT_nameDef].</li>
-            </rulesStrings>
-        </logRulesInitiator>
-        <logRulesRecipient>
-            <rulesStrings>
-                <li>r_logentry->[INITIATOR_nameDef] mediated a conflict I was involved in.</li>
-            </rulesStrings>
-        </logRulesRecipient>
-    </InteractionDef>
-    <InteractionDef>
-        <defName>DIL_Compliment</defName>
-        <workerClass>PositiveConnectionsNmSpc.InteractionWorker_Compliment</workerClass>
-        <symbol>Things/Mote/SpeechSymbols/KindWords</symbol>
-        <logRulesInitiator>
-            <rulesStrings>
-                <li>r_logentry->I complimented [RECIPIENT_nameDef].</li>
-            </rulesStrings>
-        </logRulesInitiator>
-        <logRulesRecipient>
-            <rulesStrings>
-                <li>r_logentry->[INITIATOR_nameDef] complimented me. I feel validated.</li>
-            </rulesStrings>
-        </logRulesRecipient>
-    </InteractionDef>
-    <InteractionDef>
-        <defName>DIL_SkillShare</defName>
-        <workerClass>PositiveConnectionsNmSpc.InteractionWorker_SkillShare</workerClass>
-        <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
-        <logRulesInitiator>
-            <rulesStrings>
-                <li>r_logentry->[INITIATOR_nameDef] talked with [RECIPIENT_nameDef] and shared [INITIATOR_possessive] knowledge.</li>
-            </rulesStrings>
-        </logRulesInitiator>
-    </InteractionDef>
-    <InteractionDef>
-        <defName>DIL_DiscussIdeoligion</defName>
-        <workerClass>PositiveConnectionsNmSpc.InteractionWorker_DiscussIdeoligion</workerClass>
-        <label>discuss ideoligion</label>
-        <description>Pawns discussing their shared ideoligion.</description>
-        <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
-        <interactionMote>Mote_Speech</interactionMote>
-        <initiatorThought>DIL_IdeologicalDiscussion</initiatorThought>
-        <recipientThought>DIL_IdeologicalDiscussion</recipientThought>
-        <logRulesInitiator>
-            <rulesStrings>
-                <li>r_logentry->I had a thoughtful discussion about our ideoligion with [RECIPIENT_nameDef]. It was enlightening.</li>
-            </rulesStrings>
-        </logRulesInitiator>
-        <logRulesRecipient>
-            <rulesStrings>
-                <li>r_logentry->[INITIATOR_nameDef] and I had a deep conversation about our ideoligion. I feel a sense of belonging.</li>
-            </rulesStrings>
-        </logRulesRecipient>
-    </InteractionDef>
-    <InteractionDef>
-        <defName>DIL_GiveGift</defName>
-        <workerClass>PositiveConnectionsNmSpc.InteractionWorker_Gift</workerClass>
-        <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
-        <logRulesInitiator>
-            <rulesStrings>
-                <li>r_logentry->I gave a small gift to [RECIPIENT_nameDef].</li>
-            </rulesStrings>
-        </logRulesInitiator>
-        <logRulesRecipient>
-            <rulesStrings>
-                <li>r_logentry->[INITIATOR_nameDef] gave me a gift.</li>
-            </rulesStrings>
-        </logRulesRecipient>
-    </InteractionDef>
+  </InteractionDef>
+
+  <InteractionDef>
+    <defName>DIL_Mediation</defName>
+    <workerClass>PositiveConnectionsNmSpc.InteractionWorker_Mediation</workerClass>
+    <symbol>Things/Mote/SpeechSymbols/BuildRapport</symbol>
+    <logRulesInitiator>
+      <rulesStrings>
+        <li>r_logentry->I mediated a conflict involving [RECIPIENT_nameDef].</li>
+      </rulesStrings>
+    </logRulesInitiator>
+    <logRulesRecipient>
+      <rulesStrings>
+        <li>r_logentry->[INITIATOR_nameDef] mediated a conflict I was involved in.</li>
+      </rulesStrings>
+    </logRulesRecipient>
+  </InteractionDef>
+
+  <InteractionDef>
+    <defName>DIL_Compliment</defName>
+    <workerClass>PositiveConnectionsNmSpc.InteractionWorker_Compliment</workerClass>
+    <symbol>Things/Mote/SpeechSymbols/KindWords</symbol>
+    <logRulesInitiator>
+      <rulesStrings>
+        <li>r_logentry->I complimented [RECIPIENT_nameDef].</li>
+      </rulesStrings>
+    </logRulesInitiator>
+    <logRulesRecipient>
+      <rulesStrings>
+        <li>r_logentry->[INITIATOR_nameDef] complimented me. I feel validated.</li>
+      </rulesStrings>
+    </logRulesRecipient>
+  </InteractionDef>
+
+  <InteractionDef>
+    <defName>DIL_SkillShare</defName>
+    <workerClass>PositiveConnectionsNmSpc.InteractionWorker_SkillShare</workerClass>
+    <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
+    <logRulesInitiator>
+      <rulesStrings>
+        <li>r_logentry->[INITIATOR_nameDef] talked with [RECIPIENT_nameDef] and shared [INITIATOR_possessive] knowledge.</li>
+      </rulesStrings>
+    </logRulesInitiator>
+  </InteractionDef>
+
+  <InteractionDef>
+    <defName>DIL_DiscussIdeoligion</defName>
+    <workerClass>PositiveConnectionsNmSpc.InteractionWorker_DiscussIdeoligion</workerClass>
+    <label>discuss ideoligion</label>
+    <description>Pawns discussing their shared ideoligion.</description>
+    <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
+    <interactionMote>Mote_Speech</interactionMote>
+    <initiatorThought>DIL_IdeologicalDiscussion</initiatorThought>
+    <recipientThought>DIL_IdeologicalDiscussion</recipientThought>
+    <logRulesInitiator>
+      <rulesStrings>
+        <li>r_logentry->I had a thoughtful discussion about our ideoligion with [RECIPIENT_nameDef]. It was enlightening.</li>
+      </rulesStrings>
+    </logRulesInitiator>
+    <logRulesRecipient>
+      <rulesStrings>
+        <li>r_logentry->[INITIATOR_nameDef] and I had a deep conversation about our ideoligion. I feel a sense of belonging.</li>
+      </rulesStrings>
+    </logRulesRecipient>
+  </InteractionDef>
+
+  <InteractionDef>
+    <defName>DIL_GiveGift</defName>
+    <workerClass>PositiveConnectionsNmSpc.InteractionWorker_Gift</workerClass>
+    <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
+    <logRulesInitiator>
+      <rulesStrings>
+        <li>r_logentry->I gave a small gift to [RECIPIENT_nameDef].</li>
+      </rulesStrings>
+    </logRulesInitiator>
+    <logRulesRecipient>
+      <rulesStrings>
+        <li>r_logentry->[INITIATOR_nameDef] gave me a gift.</li>
+      </rulesStrings>
+    </logRulesRecipient>
+  </InteractionDef>
 
   <InteractionDef>
     <defName>DIL_SharedPassion</defName>
@@ -97,32 +102,31 @@
     <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
     <initiatorThought>DIL_SharedPassionActivity</initiatorThought>
     <recipientThought>DIL_SharedPassionActivity</recipientThought>
-     <logRulesInitiator>
-            <rulesStrings>
-                <li>r_logentry->I discussed a shared passion with [RECIPIENT_nameDef].</li>
-            </rulesStrings>
-        </logRulesInitiator>
-        <logRulesRecipient>
-            <rulesStrings>
-                <li>r_logentry->[INITIATOR_nameDef] and I talked about a shared passion.</li>
-            </rulesStrings>
-        </logRulesRecipient>
+    <logRulesInitiator>
+      <rulesStrings>
+        <li>r_logentry->I discussed a shared passion with [RECIPIENT_nameDef].</li>
+      </rulesStrings>
+    </logRulesInitiator>
+    <logRulesRecipient>
+      <rulesStrings>
+        <li>r_logentry->[INITIATOR_nameDef] and I talked about a shared passion.</li>
+      </rulesStrings>
+    </logRulesRecipient>
   </InteractionDef>
 
-<InteractionDef>
+  <InteractionDef>
     <defName>DIL_Storytelling</defName>
     <workerClass>PositiveConnectionsNmSpc.InteractionWorker_Storytelling</workerClass>
     <symbol>Things/Mote/SpeechSymbols/Speech</symbol>
     <logRulesInitiator>
-        <rulesStrings>
-            <li>r_logentry->I told a story to [RECIPIENT_nameDef].</li>
-        </rulesStrings>
+      <rulesStrings>
+        <li>r_logentry->I told a story to [RECIPIENT_nameDef].</li>
+      </rulesStrings>
     </logRulesInitiator>
     <logRulesRecipient>
-        <rulesStrings>
-            <li>r_logentry->[INITIATOR_nameDef] told me a story.</li>
-        </rulesStrings>
+      <rulesStrings>
+        <li>r_logentry->[INITIATOR_nameDef] told me a story.</li>
+      </rulesStrings>
     </logRulesRecipient>
-</InteractionDef>
-
+  </InteractionDef>
 </Defs>
