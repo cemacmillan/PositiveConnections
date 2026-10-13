@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_IdeologyDiscussionMessage_IdeoActive.rulePack.rulesStrings>
+        <!-- Translated messages when Ideology is active -->
+        <li>ideologyDiscussionMessage->[initiator_nameDef] et [recipient_nameDef] ont eu une discussion significative sur leur idéoligion.</li>
+        <li>ideologyDiscussionMessage->[initiator_nameDef] et [recipient_nameDef] ont exploré des concepts philosophiques au sein de leurs idéoligions.</li>
+        <li>ideologyDiscussionMessage->[initiator_nameDef] et [recipient_nameDef] ont partagé leurs pensées sur [ideoName].</li>
+        <li>ideologyDiscussionMessage->[initiator_nameDef] et [recipient_nameDef] se sont rapprochés grâce à leurs croyances en [ideoName].</li>
+        <li>ideologyDiscussionMessage->[initiator_nameDef] et [recipient_nameDef] ont discuté des différences dans leurs idéoligions.</li>
+    </PositiveConnections_IdeologyDiscussionMessage_IdeoActive.rulePack.rulesStrings>
+</LanguageData>

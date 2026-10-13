@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Verse;
 using RimWorld;
 
@@ -45,7 +45,7 @@ public class RoomRoleWorker_Den : RoomRoleWorker
         return 0f;
     }
 
-    private int CountDoors(Room room)
+    private static int CountDoors(Room room)
     {
         tmpRegions.Clear();
         tmpDoors.Clear();
@@ -76,7 +76,7 @@ public class RoomRoleWorker_Den : RoomRoleWorker
         return tmpDoors.Count;
     }
 
-    private bool IsJoyGiver(Thing thing)
+    private static bool IsJoyGiver(Thing thing)
     {
         List<JoyGiverDef> allDefsListForReading = DefDatabase<JoyGiverDef>.AllDefsListForReading;
         for (int j = 0; j < allDefsListForReading.Count; j++)

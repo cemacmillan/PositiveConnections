@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using RimWorld;
 using Verse;
-
 namespace PositiveConnectionsNmSpc;
 
 public class InteractionWorker_Compliment : InteractionWorker
@@ -18,7 +17,7 @@ public class InteractionWorker_Compliment : InteractionWorker
     public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
     {
         // Check if the pawns are relevant (player-controlled)
-        if (!PositiveConnectionsUtility.ArePawnsRelevant(initiator, recipient))
+        if (!PositiveConnectionsUtility.IsEligibleForRandomSocial(initiator, recipient))
         {
             return 0f;
         }
@@ -66,6 +65,16 @@ public class InteractionWorker_Compliment : InteractionWorker
   
     public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks, out string letterText, out string letterLabel, out LetterDef letterDef, out LookTargets lookTargets)
     {
+        letterText = null;
+        letterLabel = null;
+        letterDef = null;
+        lookTargets = null;
+
+        if (PositiveConnectionsUtility.ShouldSkipRandomSocialInteraction(initiator, recipient))
+        {
+            return;
+        }
+
         string complimentMessage = PositiveConnectionsUtility.GenerateComplimentMessage(initiator, recipient);
 
         if (!modSettings.DisableAllMessages)
@@ -77,11 +86,6 @@ public class InteractionWorker_Compliment : InteractionWorker
         memory.moodPowerFactor = 1f;
         recipient.needs.mood.thoughts.memories.TryGainMemory(memory, initiator);
 
-        letterText = null;
-        letterLabel = null;
-        letterDef = null;
-        lookTargets = null;
-
         // Update relationship between initiator and recipient
         Faction factionA = initiator.Faction;
         Faction factionB = recipient.Faction;
@@ -91,8 +95,12 @@ public class InteractionWorker_Compliment : InteractionWorker
             PositiveConnectionsUtility.ChangeFactionRelations(factionA, factionB, 10);
         }
 
+        /* old system
         OnPositiveInteraction?.Invoke(initiator, 0.05f, "PositiveInteraction", (int)ExperienceValency.Positive);
-
+       */
+        // new system
+        PositiveConnectionsExperienceHandler.HandlePositiveExperience(initiator, recipient, "Compliment", 0.05f, "Positive");
+        PositiveConnectionsExperienceHandler.HandlePositiveExperience(initiator, recipient, "ComplimentValidation", 1f, "Affirming");
         // New logging
         if (modSettings.EnableLogging)
         {

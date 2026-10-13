@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <RulePackDef>
+        <defName>PositiveConnections_SharedPassionMessage</defName>
+        <rulePack>
+            <rulesStrings>
+                <!-- Message templates -->
+                <li>sharedPassionMessage->[pawnA_nameDef] and [pawnB_nameDef] enjoyed [actionPhrase] together.</li>
+                <li>sharedPassionMessage->[pawnA_nameDef] spent time with [pawnB_nameDef] [actionPhrase].</li>
+                <li>sharedPassionMessage->[pawnA_nameDef] and [pawnB_nameDef] bonded over [actionPhrase].</li>
+                <li>sharedPassionMessage->[pawnA_nameDef] and [pawnB_nameDef] shared their passion for [passionSubject].</li>
+                <li>sharedPassionMessage->[pawnA_nameDef] and [pawnB_nameDef] connected by [actionPhrase].</li>
+                <!-- Add more templates as desired -->
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
+</Defs>

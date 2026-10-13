@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_SkillShareMessage.rulePack.rulesStrings>
+        <!-- SkillShare message templates -->
+        <li>skillShareMessage->[initiator_nameDef] taught [recipient_nameDef] [skillArticle].</li>
+        <li>skillShareMessage->[initiator_nameDef] shared knowledge of [skillArticle] with [recipient_nameDef].</li>
+        <li>skillShareMessage->[initiator_nameDef] instructed [recipient_nameDef] in the ways of [skillArticle].</li>
+        <li>skillShareMessage->[initiator_nameDef] gave a lesson in [skillArticle] to [recipient_nameDef].</li>
+        <li>skillShareMessage->[initiator_nameDef] helped [recipient_nameDef] improve their [skillLabel] skills.</li>
+        <li>skillShareMessage->[initiator_nameDef] spent time teaching [recipient_nameDef] about [skillArticle].</li>
+        <li>skillShareMessage->[initiator_nameDef] provided insight into [skillArticle] for [recipient_nameDef].</li>
+        <li>skillShareMessage->[initiator_nameDef] and [recipient_nameDef] had a productive session on [skillArticle].</li>
+        <li>skillShareMessage->[initiator_nameDef] guided [recipient_nameDef] in mastering [skillArticle].</li>
+        <li>skillShareMessage->[initiator_nameDef] and [recipient_nameDef] discussed advanced techniques in [skillArticle].</li>
+    </PositiveConnections_SkillShareMessage.rulePack.rulesStrings>
+</LanguageData>

@@ -32,6 +32,97 @@ public static class PositiveConnectionsUtility
         return initiator.Faction == Faction.OfPlayer || recipient.Faction == Faction.OfPlayer;
     }
 
+    /// <summary>
+    /// Whether a pawn may take part in PC random social interactions (initiator, recipient, or mediation conflict party).
+    /// Aligns with vanilla social gates where practical; excludes colony prisoners, cryptosleep, enclosed containers, etc.
+    /// </summary>
+    public static bool IsEligibleSocialParticipant(Pawn pawn)
+    {
+        if (pawn == null || pawn.Dead)
+        {
+            return false;
+        }
+
+        if (!pawn.RaceProps.Humanlike || !pawn.Spawned)
+        {
+            return false;
+        }
+
+        // Explicit crypto / enclosed: Spawned alone is not enough when pods / holders confuse visibility.
+        if (pawn.InCryptosleep || pawn.InContainerEnclosed)
+        {
+            return false;
+        }
+
+        if (pawn.DevelopmentalStage.Baby())
+        {
+            return false;
+        }
+
+        if (pawn.Downed || pawn.InAggroMentalState || pawn.InMentalState)
+        {
+            return false;
+        }
+
+        if (!pawn.Awake() || pawn.Deathresting)
+        {
+            return false;
+        }
+
+        if (pawn.IsPrisonerOfColony)
+        {
+            return false;
+        }
+
+        if (pawn.health?.capacities != null && !pawn.health.capacities.CapableOf(PawnCapacityDefOf.Talking))
+        {
+            return false;
+        }
+
+        if (pawn.needs?.mood == null)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Pair-level gate for random social selection and Interacted execution (e.g. when Hospitality widens the recipient pool).
+    /// </summary>
+    public static bool IsEligibleForRandomSocial(Pawn initiator, Pawn recipient)
+    {
+        if (!ArePawnsRelevant(initiator, recipient))
+        {
+            return false;
+        }
+
+        if (!IsEligibleSocialParticipant(initiator) || !IsEligibleSocialParticipant(recipient))
+        {
+            return false;
+        }
+
+        if (initiator.Map != recipient.Map)
+        {
+            return false;
+        }
+
+        if (initiator.HostileTo(recipient))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// When true, Interacted should no-op (selection weight may have been zero in a prior tick or another mod forced the pair).
+    /// </summary>
+    public static bool ShouldSkipRandomSocialInteraction(Pawn initiator, Pawn recipient)
+    {
+        return !IsEligibleForRandomSocial(initiator, recipient);
+    }
+
     // Calculate base weight for interaction selection
     public static float CalculateBaseWeight(Pawn initiator, float baseSelectionWeight,
         PositiveConnectionsModSettings settings, bool applyMoodModifier = false)

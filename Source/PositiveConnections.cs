@@ -1,21 +1,24 @@
-﻿using UnityEngine;
+﻿
+using RimWorld;
 using Verse;
+using UnityEngine;
 
 namespace PositiveConnectionsNmSpc
 {
     public class PositiveConnections : Mod
     {
-        public static PositiveConnections Instance;
-        public static bool IsMindMattersActive;
+        internal static PositiveConnections Instance;
+        // ReSharper disable once MemberCanBePrivate.Global - useful for debugging at present
+        internal static bool IsMindMattersActive;
 
-        public PositiveConnectionsModSettings settings; // Update the type here
+        internal static PositiveConnectionsModSettings settings;
 
         public PositiveConnections(ModContentPack content) : base(content)
         {
             Instance = this;
             settings = GetSettings<PositiveConnectionsModSettings>(); // Update the type here
-            Log.Message("<color=#00FF7F>[Positive Connections]</color>v1.5.5 dai mas fraagey");
-            IsMindMattersActive = ModsConfig.IsActive("cem.mindmatters");
+            Log.Message("<color=#00FF7F>[Positive Connections]</color>v1.6.1.1 someday-we-relax-corrective");
+            IsMindMattersActive = ModsConfig.IsActive("cem.mindmatterspr") || ModsConfig.IsActive("cem.mindmatters");
 
             if(IsMindMattersActive)
             {
@@ -32,7 +35,7 @@ namespace PositiveConnectionsNmSpc
             }
 
             // Open the settings window
-            var settingsWindow = new PositiveConnectionsModSettingsWindow(settings);
+            PositiveConnectionsModSettingsWindow settingsWindow = new PositiveConnectionsModSettingsWindow(settings);
             settingsWindow.DoWindowContents(inRect);
         }
 

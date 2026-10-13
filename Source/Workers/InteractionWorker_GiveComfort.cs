@@ -17,7 +17,7 @@ public class InteractionWorker_GiveComfort : InteractionWorker
     public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
     {
         // 1. Ensure the initiator and recipient are relevant to the player's colony
-        if (!PositiveConnectionsUtility.ArePawnsRelevant(initiator, recipient))
+        if (!PositiveConnectionsUtility.IsEligibleForRandomSocial(initiator, recipient))
         {
             return 0f;
         }
@@ -80,6 +80,11 @@ public class InteractionWorker_GiveComfort : InteractionWorker
         letterDef = null;
         lookTargets = null;
 
+        if (PositiveConnectionsUtility.ShouldSkipRandomSocialInteraction(initiator, recipient))
+        {
+            return;
+        }
+
         // Create a memory of the comforting interaction
         ThoughtDef thoughtDef = ThoughtDef.Named("DIL_ComfortReceived");
         recipient.needs.mood.thoughts.memories.TryGainMemory(thoughtDef, initiator);
@@ -92,8 +97,17 @@ public class InteractionWorker_GiveComfort : InteractionWorker
             Messages.Message(comfortMessage, new LookTargets(new Pawn[] { initiator, recipient }), MessageTypeDefOf.PositiveEvent);
         }
 
-        OnPositiveInteraction?.Invoke(initiator, 0.1f, "PositiveInteraction", (int)ExperienceValency.Positive);
-
+        /* old system
+        OnPositiveInteraction?.Invoke(initiator, 0.05f, "PositiveInteraction", (int)ExperienceValency.Positive);
+       */
+        // new system
+        PositiveConnectionsExperienceHandler.HandlePositiveExperience(initiator, recipient, "GiveComfort", 0.15f, "Positive");
+        PositiveConnectionsExperienceHandler.HandlePositiveExperience(initiator, recipient, "GiveComfortValidation", 0.5f, "Affirming");
+        // 0.3 it is validating for the comforter, swap recipient and initiator
+        // PositiveConnectionsExperienceHandler.HandlePositiveExperience(recipient, initiator, "GiveComfortValidation", 0.3f, "Affirming");
+        // I just make these numbers up you know!
+        
+        
         // Enhanced logging without calling RandomSelectionWeight
         if (_modSettings.EnableLogging)
         {

@@ -12,7 +12,7 @@
         <LangVersion>preview</LangVersion> <!-- This is the C# version. Preview is the newest version with the most features -->
         <!-- Details here: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/configure-language-version -->
 
-        <OutDir>..\1.5\Assemblies\</OutDir> <!-- The output path for dll files  -->
+        <OutDir>..\1.6\Assemblies\</OutDir> <!-- The output path for dll files  -->
 
         <!-- <Nullable>enable</Nullable> --> <!-- Optional nullable analysis. -->
         <!-- Details here: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-reference-types -->
@@ -27,13 +27,13 @@
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>5</WarningLevel>
         <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-        <ReleaseVersion>1.5</ReleaseVersion>
+        <ReleaseVersion>1.6</ReleaseVersion>
     </PropertyGroup>
 
     <!-- Down here we have references to dependencies -->
     <ItemGroup>
         <!-- RimWorld itself -->
-        <PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4104" /> <!-- Version="1.4.*" targets the newest stable 1.4 build. -->
+        <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4871" /> <!-- No Krafs 1.7 package yet; Ludeon says 1.6 refs are fine for 1.7. -->
         <!-- To include beta builds, append -* to the version, like this: Version="1.4.*-*" -->
         <!-- To target a beta version of 1.5, as an example, you'd write this: Version="1.5.*-*" -->
 
@@ -61,43 +61,10 @@
         <!-- <PackageReference Include="Zetrith.Prepatcher" Version="1.*" /> -->
         <!-- Details with wiki here: https://github.com/Zetrith/Prepatcher -->
     </ItemGroup>
-    <ItemGroup>
-      <Compile Remove="Properties\AssemblyInfo.cs" />
-      <Compile Remove="Lords\LordJob_Joinable_Storytelling.cs" />
-      <Compile Remove="Lords\LordToil_Storytelling.cs" />
-      <Compile Remove="Workers\GatheringWorker_Storytelling.cs" />
-      <Compile Remove="Workers\JobDriver_ListenToStory.cs" />
-      <Compile Remove="Workers\JobDriver_TellStory.cs" />
-      <Compile Remove="Workers\JobGiver_ListenToStory.cs" />
-      <Compile Remove="Workers\JobGiver_TellStory.cs" />
-      <Compile Remove="DutyDefOfPositiveConnections.cs" />
-      <Compile Remove="GatheringDefOf.cs" />
-      <Compile Remove="StorytellingUtility.cs" />
-      <Compile Remove="StorytellingGameComponent.cs" />
-    </ItemGroup>
-    <ItemGroup>
-        <Compile Include="PositiveConnections.cs" />
-        <Compile Include="HarmonyPatches\MarriageProposalPatch.cs" />
-        <Compile Include="ModSettings.cs" />
-        <Compile Include="ModSettingsWindow.cs" />
-        <Compile Include="PositiveConnectionsTraitMgr.cs" />
-        <Compile Include="PositiveConnectionsUtility.cs" />
-        <Compile Include="PositiveConnectionsTraitDefOf.cs" />
-        <Compile Include="Workers\InteractionWorker_Compliment.cs" />
-        <Compile Include="Workers\InteractionWorker_DiscussIdeoligion.cs" />
-        <Compile Include="Workers\InteractionWorker_Gift.cs" />
-        <Compile Include="Workers\InteractionWorker_GiveComfort.cs" />
-        <Compile Include="Workers\InteractionWorker_Mediation.cs" />
-        <Compile Include="Workers\InteractionWorker_SharedPassion.cs" />
-        <Compile Include="Workers\InteractionWorker_SkillShare.cs" />
-        <Compile Include="Workers\RoomRoleWorker_Den.cs" />
-        <Compile Include="PositiveConnectionsTaleDefOf.cs" />
-        <Compile Include="PositiveConnectionsThoughtDefOf.cs" />
-        <Compile Include="Workers\InteractionWorker_Storytelling.cs" />
-        <Compile Include="PositiveConnectionsTuning.cs" />
-    </ItemGroup>
+    <Import Project="PositiveConnections.sources.props" />
     <ItemGroup>
       <None Remove=".gitignore" />
     </ItemGroup>
-    
+    <!-- MindMattersInterface: no compile-time reference; we call via reflection when MindMatters is active (see PositiveConnectionsExperienceHandler). -->
+
 </Project>

@@ -21,7 +21,7 @@ public class InteractionWorker_Mediation : InteractionWorker
     public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
     {
         // 1. Ensure the initiator and recipient are relevant to the player's colony
-        if (!PositiveConnectionsUtility.ArePawnsRelevant(initiator, recipient))
+        if (!PositiveConnectionsUtility.IsEligibleForRandomSocial(initiator, recipient))
         {
             return 0f;
         }
@@ -47,18 +47,19 @@ public class InteractionWorker_Mediation : InteractionWorker
         }
         
         // The initiator and recipient must be in the same faction
-        if (initiator.Faction != recipient.Faction)
+        if (initiator?.Faction != recipient?.Faction)
         {
             return 0f;
         }
 
-        // 3. Check for potential conflicts
-        // Get the list of all colony pawns
-        IEnumerable<Pawn> colonyPawns = recipient.Map.mapPawns.FreeColonists;
+        // 3. Check for potential conflicts among socially present colonists only.
+        // FreeColonists includes cryptosleep / non-spawned; that inflated mediation weight and
+        // could surface podded pawns as conflict parties under odd visibility (caravan form, etc.).
+        IEnumerable<Pawn> colonyPawns = recipient?.Map.mapPawns.FreeColonistsSpawned;
 
-        // Look for potential conflicts that the initiator could mediate
-        bool conflictExists = colonyPawns.Any(pawn =>
+        bool conflictExists = colonyPawns != null && colonyPawns.Any(pawn =>
             recipient != pawn &&
+            PositiveConnectionsUtility.IsEligibleSocialParticipant(pawn) &&
             recipient.relations.OpinionOf(pawn) < PositiveConnectionsTuning.NegativeRelationshipThreshold_Mediation);
 
         if (!conflictExists)
@@ -100,6 +101,11 @@ public class InteractionWorker_Mediation : InteractionWorker
         letterDef = null;
         lookTargets = null;
 
+        if (PositiveConnectionsUtility.ShouldSkipRandomSocialInteraction(initiator, recipient))
+        {
+            return;
+        }
+
         // Locate a suitable conflict for the initiator to mediate
         Pawn conflictPawn = FindConflictPawn(recipient);
 
@@ -123,7 +129,9 @@ public class InteractionWorker_Mediation : InteractionWorker
             Messages.Message(mediationMessage, new LookTargets(new Pawn[] { initiator, recipient, conflictPawn }), MessageTypeDefOf.PositiveEvent);
         }
 
-        OnPositiveInteraction?.Invoke(initiator, 0.25f, "PositiveInteraction", (int)ExperienceValency.Positive);
+        PositiveConnectionsExperienceHandler.HandlePositiveExperience(initiator, recipient, "Mediation", 0.15f, "Positive");
+        PositiveConnectionsExperienceHandler.HandlePositiveExperience(initiator, conflictPawn, "Mediation", 0.15f, "Positive");
+        PositiveConnectionsExperienceHandler.HandlePositiveExperience(recipient, initiator, "MediationValidation", 0.3f, "Affirming");
 
         // Enhanced logging without calling RandomSelectionWeight
         if (_modSettings.EnableLogging)
@@ -133,13 +141,27 @@ public class InteractionWorker_Mediation : InteractionWorker
         }
     }
 
-    private Pawn FindConflictPawn(Pawn recipient)
+    private static Pawn FindConflictPawn(Pawn recipient)
     {
-        IEnumerable<Pawn> colonyPawns = recipient.Map.mapPawns.FreeColonists;
+        IEnumerable<Pawn> colonyPawns = recipient.Map.mapPawns.FreeColonistsSpawned;
+        if (colonyPawns == null)
+        {
+            return null;
+        }
 
         foreach (Pawn pawn in colonyPawns)
         {
-            if (recipient != pawn && recipient.relations.OpinionOf(pawn) < PositiveConnectionsTuning.NegativeRelationshipThreshold_Mediation)
+            if (recipient == pawn)
+            {
+                continue;
+            }
+
+            if (!PositiveConnectionsUtility.IsEligibleSocialParticipant(pawn))
+            {
+                continue;
+            }
+
+            if (recipient.relations.OpinionOf(pawn) < PositiveConnectionsTuning.NegativeRelationshipThreshold_Mediation)
             {
                 return pawn;
             }
@@ -148,7 +170,7 @@ public class InteractionWorker_Mediation : InteractionWorker
         return null;
     }
 
-    private int CalculateMediationBonus(Pawn initiator)
+    private static int CalculateMediationBonus(Pawn initiator)
     {
         int socialSkill = initiator.skills.GetSkill(SkillDefOf.Social).Level;
         float randomFactor = Rand.Value;
@@ -161,7 +183,7 @@ public class InteractionWorker_Mediation : InteractionWorker
         return mediationBonus;
     }
 
-    private void ApplyMediationOutcome(Pawn initiator, Pawn recipient, Pawn conflictPawn, int mediationBonus)
+    private static void ApplyMediationOutcome(Pawn initiator, Pawn recipient, Pawn conflictPawn, int mediationBonus)
     {
         int convertedBonus = (int)Mathf.Round(mediationBonus / (PositiveConnectionsTuning.MaxMediationBonus / 2f));
         convertedBonus = Mathf.Clamp(convertedBonus, 0, 2);

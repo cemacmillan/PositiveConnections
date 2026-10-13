@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_ComplimentMessage.rulePack.rulesStrings>
+        <!-- Translated compliment message templates -->
+        <li>complimentMessage->[initiator_nameDef] a complimenté [recipient_nameDef] sur leur [complimentSubject].</li>
+        <li>complimentMessage->[initiator_nameDef] a loué [complimentSubject] de [recipient_nameDef].</li>
+        <li>complimentMessage->[initiator_nameDef] a admiré [complimentSubject] de [recipient_nameDef].</li>
+        <li>complimentMessage->[initiator_nameDef] a exprimé son appréciation pour [complimentSubject] de [recipient_nameDef].</li>
+        <li>complimentMessage->[initiator_nameDef] a reconnu [complimentSubject] de [recipient_nameDef].</li>
+        <li>complimentMessage->[initiator_nameDef] a félicité [recipient_nameDef] pour leur [complimentSubject].</li>
+        <li>complimentMessage->[initiator_nameDef] a dit qu'ils admiraient [complimentSubject] de [recipient_nameDef].</li>
+        <li>complimentMessage->[initiator_nameDef] a mentionné à quel point [complimentSubject] de [recipient_nameDef] est impressionnant(e).</li>
+    </PositiveConnections_ComplimentMessage.rulePack.rulesStrings>
+</LanguageData>

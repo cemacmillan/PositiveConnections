@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_StorytellingMessage.rulePack.rulesStrings>
+        <!-- Translated storytelling message templates -->
+        <li>storytellingMessage->[initiator_nameDef] a raconté une histoire sur [storySubject] à [recipient_nameDef].</li>
+        <li>storytellingMessage->[initiator_nameDef] a partagé un récit avec [recipient_nameDef] sur [storySubject].</li>
+        <li>storytellingMessage->[initiator_nameDef] a conté [storySubject] à [recipient_nameDef].</li>
+        <li>storytellingMessage->[initiator_nameDef] a diverti [recipient_nameDef] avec une histoire sur [storySubject].</li>
+        <li>storytellingMessage->[initiator_nameDef] a raconté une histoire captivante sur [storySubject] à [recipient_nameDef].</li>
+        <li>storytellingMessage->[initiator_nameDef] a captivé [recipient_nameDef] avec une histoire de [storySubject].</li>
+        <li>storytellingMessage->[initiator_nameDef] a amusé [recipient_nameDef] en racontant une histoire sur [storySubject].</li>
+        <li>storytellingMessage->[initiator_nameDef] et [recipient_nameDef] ont partagé une histoire sur [storySubject].</li>
+        <li>storytellingMessage->[initiator_nameDef] a narré un récit de [storySubject] à [recipient_nameDef].</li>
+        <li>storytellingMessage->[initiator_nameDef] a parlé à [recipient_nameDef] de [storySubject].</li>
+    </PositiveConnections_StorytellingMessage.rulePack.rulesStrings>
+</LanguageData>

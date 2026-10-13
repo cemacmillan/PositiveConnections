@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_MediationMessage.rulePack.rulesStrings>
+        <!-- Mediation message template -->
+        <li>mediationMessage->[initiator_nameDef] mediated a conflict between [recipient_nameDef] and [conflictPawn_nameDef].</li>
+    </PositiveConnections_MediationMessage.rulePack.rulesStrings>
+</LanguageData>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+    <ItemGroup>
+        <Compile Remove="Properties\AssemblyInfo.cs" />
+        <Compile Remove="Lords\LordJob_Joinable_Storytelling.cs" />
+        <Compile Remove="Lords\LordToil_Storytelling.cs" />
+        <Compile Remove="Workers\GatheringWorker_Storytelling.cs" />
+        <Compile Remove="Workers\JobDriver_ListenToStory.cs" />
+        <Compile Remove="Workers\JobDriver_TellStory.cs" />
+        <Compile Remove="Workers\JobGiver_ListenToStory.cs" />
+        <Compile Remove="Workers\JobGiver_TellStory.cs" />
+        <Compile Remove="DutyDefOfPositiveConnections.cs" />
+        <Compile Remove="GatheringDefOf.cs" />
+        <Compile Remove="StorytellingUtility.cs" />
+        <Compile Remove="StorytellingGameComponent.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="PositiveConnections.cs" />
+        <Compile Include="HarmonyPatches\MarriageProposalPatch.cs" />
+        <Compile Include="ModSettings.cs" />
+        <Compile Include="ModSettingsWindow.cs" />
+        <Compile Include="PositiveConnectionsExperienceHandler.cs" />
+        <Compile Include="PositiveConnectionsTraitMgr.cs" />
+        <Compile Include="PositiveConnectionsUtility.cs" />
+        <Compile Include="PositiveConnectionsTraitDefOf.cs" />
+        <Compile Include="Workers\InteractionWorker_Compliment.cs" />
+        <Compile Include="Workers\InteractionWorker_DiscussIdeoligion.cs" />
+        <Compile Include="Workers\InteractionWorker_Gift.cs" />
+        <Compile Include="Workers\InteractionWorker_GiveComfort.cs" />
+        <Compile Include="Workers\InteractionWorker_Mediation.cs" />
+        <Compile Include="Workers\InteractionWorker_SharedPassion.cs" />
+        <Compile Include="Workers\InteractionWorker_SkillShare.cs" />
+        <Compile Include="Workers\RoomRoleWorker_Den.cs" />
+        <Compile Include="PositiveConnectionsTaleDefOf.cs" />
+        <Compile Include="PositiveConnectionsThoughtDefOf.cs" />
+        <Compile Include="Workers\InteractionWorker_Storytelling.cs" />
+        <Compile Include="PositiveConnectionsTuning.cs" />
+    </ItemGroup>
+</Project>

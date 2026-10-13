@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using RimWorld;
 using Verse;
@@ -18,7 +18,7 @@ public class InteractionWorker_SkillShare : InteractionWorker
 public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
 {
     // Ensure the initiator and recipient are relevant to the player's colony
-    if (!PositiveConnectionsUtility.ArePawnsRelevant(initiator, recipient))
+    if (!PositiveConnectionsUtility.IsEligibleForRandomSocial(initiator, recipient))
     {
         //Log.Message("SkillShare: Initiator or recipient is not relevant to the player's colony.");
         return 0f;
@@ -105,6 +105,16 @@ public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
     public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks,
         out string letterText, out string letterLabel, out LetterDef letterDef, out LookTargets lookTargets)
     {
+        letterText = null;
+        letterLabel = null;
+        letterDef = null;
+        lookTargets = null;
+
+        if (PositiveConnectionsUtility.ShouldSkipRandomSocialInteraction(initiator, recipient))
+        {
+            return;
+        }
+
         var highestSkill = initiator.skills.skills.MaxBy(s => s.Level);
 
         if (highestSkill != null)
@@ -122,7 +132,9 @@ public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
             recipient.needs.mood.thoughts.memories.TryGainMemory(PositiveConnectionsThoughtDefOf.DIL_ReceivedTeaching,
                 initiator);
 
-            OnPositiveInteraction?.Invoke(initiator, 0.2f, "PositiveInteraction", (int)ExperienceValency.Positive);
+            PositiveConnectionsExperienceHandler.HandlePositiveExperience(initiator, recipient, "SkillShare", 0.25f, "Positive");
+            PositiveConnectionsExperienceHandler.HandlePositiveExperience(initiator, recipient, "SkillShareValidation", 0.3f, "Affirming");
+            PositiveConnectionsExperienceHandler.HandlePositiveExperience(recipient, initiator, "SkillShare", 0.5f, "Positive");
 
             // New logging
             if (_modSettings.EnableLogging)
@@ -132,10 +144,5 @@ public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
                 Log.Message(logMessage);
             }
         }
-
-        letterText = null;
-        letterLabel = null;
-        letterDef = null;
-        lookTargets = null;
     }
 }

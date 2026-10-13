@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_SkillArticles.rulePack.rulesStrings>
+        <!-- Article mapping -->
+        <li>skillArticle->[article_{skillDefName}]</li>
+
+        <!-- Articles for each skill -->
+        <li>article_Animals->animal handling</li>
+        <li>article_Artistic->artistic skills</li>
+        <li>article_Construction->construction</li>
+        <li>article_Cooking->cooking</li>
+        <li>article_Crafting->crafting</li>
+        <li>article_Intellectual->intellectual pursuits</li>
+        <li>article_Medicine->medicine</li>
+        <li>article_Melee->melee combat</li>
+        <li>article_Mining->mining</li>
+        <li>article_Plants->plant work</li>
+        <li>article_Shooting->shooting</li>
+        <li>article_Social->social skills</li>
+        <!-- Default article -->
+        <li>article_default->[skillLabel]</li>
+    </PositiveConnections_SkillArticles.rulePack.rulesStrings>
+</LanguageData>

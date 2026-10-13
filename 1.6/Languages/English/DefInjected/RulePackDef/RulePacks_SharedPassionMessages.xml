@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_SharedPassionMessage.rulePack.rulesStrings>
+        <li>sharedPassionMessage->[pawnA_nameDef] and [pawnB_nameDef] enjoyed [actionPhrase] together.</li>
+        <li>sharedPassionMessage->[pawnA_nameDef] spent time with [pawnB_nameDef] [actionPhrase].</li>
+        <li>sharedPassionMessage->[pawnA_nameDef] and [pawnB_nameDef] bonded over [passionSubject].</li>
+        <li>sharedPassionMessage->[pawnA_nameDef] and [pawnB_nameDef] shared their passion for [passionSubject].</li>
+        <li>sharedPassionMessage->[pawnA_nameDef] and [pawnB_nameDef] connected by [actionPhrase].</li>
+        <li>sharedPassionMessage->[pawnA_nameDef] and [pawnB_nameDef] had a great time [actionPhrase].</li>
+        <li>sharedPassionMessage->[pawnA_nameDef] and [pawnB_nameDef] enjoyed discussing [passionSubject] together.</li>
+    </PositiveConnections_SharedPassionMessage.rulePack.rulesStrings>
+</LanguageData>

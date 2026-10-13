@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <RulePackDef>
+        <defName>PositiveConnections_ComfortMessage</defName>
+        <rulePack>
+            <rulesStrings>
+                <!-- Comfort message templates -->
+                <li>comfortMessage->[initiator_nameDef] comforted [recipient_nameDef].</li>
+                <li>comfortMessage->[initiator_nameDef] provided comfort to [recipient_nameDef].</li>
+                <li>comfortMessage->[initiator_nameDef] consoled [recipient_nameDef] during a tough time.</li>
+                <li>comfortMessage->[initiator_nameDef] offered support to [recipient_nameDef].</li>
+                <li>comfortMessage->[initiator_nameDef] helped lift [recipient_nameDef]'s spirits.</li>
+                <li>comfortMessage->[initiator_nameDef] was there for [recipient_nameDef] when they needed it.</li>
+                <li>comfortMessage->[initiator_nameDef] listened to [recipient_nameDef]'s concerns.</li>
+                <li>comfortMessage->[initiator_nameDef] shared encouraging words with [recipient_nameDef].</li>
+                <li>comfortMessage->[initiator_nameDef] tried to cheer up [recipient_nameDef].</li>
+                <li>comfortMessage->[initiator_nameDef] reassured [recipient_nameDef] during difficult times.</li>
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
+</Defs>

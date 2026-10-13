@@ -18,7 +18,7 @@ public class InteractionWorker_SharedPassion : InteractionWorker
     public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
     {
         // 1. Ensure the initiator and recipient are relevant to the player's colony
-        if (!PositiveConnectionsUtility.ArePawnsRelevant(initiator, recipient))
+        if (!PositiveConnectionsUtility.IsEligibleForRandomSocial(initiator, recipient))
         {
             return 0f;
         }
@@ -73,6 +73,16 @@ public class InteractionWorker_SharedPassion : InteractionWorker
     public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks,
         out string letterText, out string letterLabel, out LetterDef letterDef, out LookTargets lookTargets)
     {
+        letterText = null;
+        letterLabel = null;
+        letterDef = null;
+        lookTargets = null;
+
+        if (PositiveConnectionsUtility.ShouldSkipRandomSocialInteraction(initiator, recipient))
+        {
+            return;
+        }
+
         // Find the shared passion skill
         var sharedPassionSkill = initiator.skills.skills
             .FirstOrDefault(s =>
@@ -110,9 +120,11 @@ public class InteractionWorker_SharedPassion : InteractionWorker
                 int relationImpact = (int)(memoryInitiator.moodPowerFactor * 10);
                 PositiveConnectionsUtility.ChangeFactionRelations(factionA, factionB, relationImpact);
             }
-
-            OnPositiveInteraction?.Invoke(initiator, 0.2f, "PositiveInteraction", (int)ExperienceValency.Positive);
-
+            
+            PositiveConnectionsExperienceHandler.HandlePositiveExperience(initiator, recipient, "SharedPassion", 0.125f, "Positive");
+            PositiveConnectionsExperienceHandler.HandlePositiveExperience(initiator, recipient, "SharedPassionValidation", 0.3f, "Affirming");
+            PositiveConnectionsExperienceHandler.HandlePositiveExperience(recipient, initiator, "SharedPassion", 0.125f, "Positive");
+            PositiveConnectionsExperienceHandler.HandlePositiveExperience(recipient, initiator, "SharedPassionValidation", 0.3f, "Affirming");
             // Enhanced logging
             if (_modSettings.EnableLogging)
             {
@@ -120,10 +132,5 @@ public class InteractionWorker_SharedPassion : InteractionWorker
                 Log.Message(logMessage);
             }
         }
-
-        letterText = null;
-        letterLabel = null;
-        letterDef = null;
-        lookTargets = null;
     }
 }

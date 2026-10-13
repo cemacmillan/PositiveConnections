@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_IdeologyDiscussionMessage_IdeoActive.rulePack.rulesStrings>
+        <!-- 理念激活时的信息模板 -->
+        <li>ideologyDiscussionMessage->[initiator_nameDef] 和 [recipient_nameDef] 就他们的理念进行了有意义的讨论。</li>
+        <li>ideologyDiscussionMessage->[initiator_nameDef] 和 [recipient_nameDef] 探讨了各自理念中的哲学。</li>
+        <li>ideologyDiscussionMessage->[initiator_nameDef] 和 [recipient_nameDef] 分享了对 [ideoName] 的想法。</li>
+        <li>ideologyDiscussionMessage->[initiator_nameDef] 和 [recipient_nameDef] 在 [ideoName] 上找到了共鸣。</li>
+        <li>ideologyDiscussionMessage->[initiator_nameDef] 和 [recipient_nameDef] 讨论了他们理念的差异。</li>
+    </PositiveConnections_IdeologyDiscussionMessage_IdeoActive.rulePack.rulesStrings>
+</LanguageData>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_IdeologyDiscussionMessage_IdeoInactive.rulePack.rulesStrings>
+        <!-- 理念未激活时的信息模板 -->
+        <li>ideologyDiscussionMessage->[initiator_nameDef] 和 [recipient_nameDef] 进行了一次深入的哲学对话。</li>
+        <li>ideologyDiscussionMessage->[initiator_nameDef] 和 [recipient_nameDef] 讨论了伦理和道德。</li>
+        <li>ideologyDiscussionMessage->[initiator_nameDef] 和 [recipient_nameDef] 分享了他们对生活和存在的看法。</li>
+        <li>ideologyDiscussionMessage->[initiator_nameDef] 和 [recipient_nameDef] 进行了关于哲学的激烈辩论。</li>
+        <li>ideologyDiscussionMessage->[initiator_nameDef] 和 [recipient_nameDef] 一起思考了生命的意义。</li>
+    </PositiveConnections_IdeologyDiscussionMessage_IdeoInactive.rulePack.rulesStrings>
+</LanguageData>

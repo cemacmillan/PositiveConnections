@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using RimWorld;
 using Verse;
@@ -20,7 +20,7 @@ public class InteractionWorker_DiscussIdeoligion : InteractionWorker
     public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
     {
         // Ensure the initiator and recipient are relevant to the player's colony
-        if (!PositiveConnectionsUtility.ArePawnsRelevant(initiator, recipient))
+        if (!PositiveConnectionsUtility.IsEligibleForRandomSocial(initiator, recipient))
         {
             //Log.Message("DiscussIdeoligion: Initiator or recipient is not relevant to the player's colony.");
             return 0f;
@@ -120,6 +120,11 @@ public class InteractionWorker_DiscussIdeoligion : InteractionWorker
         letterDef = null;
         lookTargets = null;
 
+        if (PositiveConnectionsUtility.ShouldSkipRandomSocialInteraction(initiator, recipient))
+        {
+            return;
+        }
+
         // Determine which thought to use
         ThoughtDef thoughtDef = ThoughtDef.Named("DIL_IdeologicalDiscussion");
 
@@ -135,9 +140,10 @@ public class InteractionWorker_DiscussIdeoligion : InteractionWorker
             Messages.Message(message, recipient, MessageTypeDefOf.PositiveEvent);
         }
 
-        // Invoke the positive interaction event
-        OnPositiveInteraction?.Invoke(initiator, 0.1f, "PositiveInteraction", (int)ExperienceValency.Positive);
-
+        PositiveConnectionsExperienceHandler.HandlePositiveExperience(initiator, recipient, "DiscussIdeoligion", 0.125f, "Positive");
+        PositiveConnectionsExperienceHandler.HandlePositiveExperience(initiator, recipient, "DiscussIdeoligionValidation", 0.3f, "Affirming");
+        PositiveConnectionsExperienceHandler.HandlePositiveExperience(recipient, initiator, "DiscussIdeoligion", 0.125f, "Positive");
+        PositiveConnectionsExperienceHandler.HandlePositiveExperience(recipient, initiator, "DiscussIdeoligionValidation", 0.3f, "Affirming");
         // Enhanced logging without calling RandomSelectionWeight
         if (_modSettings.EnableLogging)
         {

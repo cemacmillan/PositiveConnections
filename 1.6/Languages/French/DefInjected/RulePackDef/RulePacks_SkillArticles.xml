@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_SkillArticles.rulePack.rulesStrings>
+        <!-- Article mapping -->
+        <li>skillArticle->[article_{skillDefName}]</li>
+
+        <!-- Articles for each skill with gender agreement -->
+        <li>article_Animals->l'élevage des animaux</li> <!-- Masculine -->
+        <li>article_Artistic->l'art</li> <!-- Masculine -->
+        <li>article_Construction->la construction</li> <!-- Feminine -->
+        <li>article_Cooking->la cuisine</li> <!-- Feminine -->
+        <li>article_Crafting->l'artisanat</li> <!-- Masculine -->
+        <li>article_Intellectual->les activités intellectuelles</li> <!-- Plural -->
+        <li>article_Medicine->la médecine</li> <!-- Feminine -->
+        <li>article_Melee->le combat rapproché</li> <!-- Masculine -->
+        <li>article_Mining->l'exploitation minière</li> <!-- Feminine -->
+        <li>article_Plants->le travail des plantes</li> <!-- Masculine -->
+        <li>article_Shooting->le tir</li> <!-- Masculine -->
+        <li>article_Social->les compétences sociales</li> <!-- Plural -->
+        <!-- Default article -->
+        <li>article_default>[skillLabel]</li>
+    </PositiveConnections_SkillArticles.rulePack.rulesStrings>
+</LanguageData>

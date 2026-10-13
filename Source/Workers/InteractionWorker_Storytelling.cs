@@ -16,7 +16,7 @@ public class InteractionWorker_Storytelling : InteractionWorker
     public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
     {
         // 1. Ensure the initiator and recipient are relevant to the player's colony
-        if (!PositiveConnectionsUtility.ArePawnsRelevant(initiator, recipient))
+        if (!PositiveConnectionsUtility.IsEligibleForRandomSocial(initiator, recipient))
         {
             return 0f;
         }
@@ -78,6 +78,11 @@ public class InteractionWorker_Storytelling : InteractionWorker
         letterDef = null;
         lookTargets = null;
 
+        if (PositiveConnectionsUtility.ShouldSkipRandomSocialInteraction(initiator, recipient))
+        {
+            return;
+        }
+
         // Apply thoughts to the storyteller (initiator) and the audience (recipient)
         ApplyStorytellingThoughts(initiator, recipient);
 
@@ -89,7 +94,7 @@ public class InteractionWorker_Storytelling : InteractionWorker
             Messages.Message(storytellingMessage, new LookTargets(new Pawn[] { initiator, recipient }), MessageTypeDefOf.PositiveEvent);
         }
 
-        OnPositiveInteraction?.Invoke(initiator, 0.25f, "PositiveInteraction", (int)ExperienceValency.Positive);
+        PositiveConnectionsExperienceHandler.HandlePositiveExperience(initiator, recipient, "StoryTelling", 0.25f, "Positive");
         
         if (_modSettings.EnableLogging)
         {
@@ -99,12 +104,12 @@ public class InteractionWorker_Storytelling : InteractionWorker
 
     }
 
-    private bool IsInStorytellingRange(Pawn initiator, Pawn recipient)
+    private static bool IsInStorytellingRange(Pawn initiator, Pawn recipient)
     {
         return (initiator.Position - recipient.Position).LengthHorizontalSquared <= PositiveConnectionsTuning.StorytellingRange * PositiveConnectionsTuning.StorytellingRange;
     }
 
-    private bool HasSufficientListeners(Pawn initiator)
+    private static bool HasSufficientListeners(Pawn initiator)
     {
         int listenerCount = 0;
 
@@ -121,7 +126,7 @@ public class InteractionWorker_Storytelling : InteractionWorker
         return listenerCount >= 2;
     }
 
-    private void ApplyStorytellingThoughts(Pawn initiator, Pawn recipient)
+    private static void ApplyStorytellingThoughts(Pawn initiator, Pawn recipient)
     {
         // Apply a positive thought to the storyteller (initiator)
         Thought_Memory storyTellerThought = (Thought_Memory)ThoughtMaker.MakeThought(PositiveConnectionsThoughtDefOf.DIL_Thought_StorytellingOrganizer);

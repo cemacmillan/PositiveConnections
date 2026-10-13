@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Verse;
 using RimWorld;
@@ -17,7 +17,7 @@ public class InteractionWorker_Gift : InteractionWorker
     public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
     {
         // Ensure the initiator and recipient are relevant to the player's colony
-        if (!PositiveConnectionsUtility.ArePawnsRelevant(initiator, recipient))
+        if (!PositiveConnectionsUtility.IsEligibleForRandomSocial(initiator, recipient))
         {
             return 0f;
         }
@@ -64,6 +64,16 @@ public class InteractionWorker_Gift : InteractionWorker
     public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks,
         out string letterText, out string letterLabel, out LetterDef letterDef, out LookTargets lookTargets)
     {
+        letterText = null;
+        letterLabel = null;
+        letterDef = null;
+        lookTargets = null;
+
+        if (PositiveConnectionsUtility.ShouldSkipRandomSocialInteraction(initiator, recipient))
+        {
+            return;
+        }
+
         // Generate the gift description using RulePack
         string giftDescription = PositiveConnectionsUtility.GenerateGiftDescription(initiator, recipient);
 
@@ -76,11 +86,6 @@ public class InteractionWorker_Gift : InteractionWorker
         memory.moodPowerFactor = 1f;
         recipient.needs.mood.thoughts.memories.TryGainMemory(memory, initiator);
 
-        letterText = null;
-        letterLabel = null;
-        letterDef = null;
-        lookTargets = null;
-
         // Update relationship between initiator and recipient
         Faction factionA = initiator.Faction;
         Faction factionB = recipient.Faction;
@@ -90,8 +95,10 @@ public class InteractionWorker_Gift : InteractionWorker
             PositiveConnectionsUtility.ChangeFactionRelations(factionA, factionB, 10);
         }
 
-        OnPositiveInteraction?.Invoke(initiator, 0.25f, "PositiveInteraction", (int)ExperienceValency.Positive);
+        // OnPositiveInteraction?.Invoke(initiator, 0.25f, "PositiveInteraction", (int)ExperienceValency.Positive);
 
+        PositiveConnectionsExperienceHandler.HandlePositiveExperience(initiator, recipient, "Gift", 0.05f, "Positive");
+        PositiveConnectionsExperienceHandler.HandlePositiveExperience(initiator, recipient, "GiftValidation", 1f, "Affirming");
         // New logging using the encapsulated property
         if (_modSettings.EnableLogging)
         {

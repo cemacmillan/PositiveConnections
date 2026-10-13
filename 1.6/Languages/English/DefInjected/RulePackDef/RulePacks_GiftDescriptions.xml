@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_GiftDescription.rulePack.rulesStrings>
+        <!-- Gift descriptions -->
+        <li>giftDescription->a grass crown</li>
+        <li>giftDescription->a beautiful feather</li>
+        <li>giftDescription->a finely crafted comb</li>
+        <li>giftDescription->a bouquet of wildflowers</li>
+        <li>giftDescription->an exquisite leaf</li>
+        <li>giftDescription->a heart-shaped pebble</li>
+        <li>giftDescription->a small, intricately carved stone</li>
+        <li>giftDescription->a fresh, juicy fruit</li>
+        <li>giftDescription->a hand-woven bracelet</li>
+        <li>giftDescription->an interesting shell</li>
+        <li>giftDescription->a small trinket made from spare parts</li>
+        <li>giftDescription->a hand-picked selection of herbs</li>
+    </PositiveConnections_GiftDescription.rulePack.rulesStrings>
+</LanguageData>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PositiveConnections_GiftDescription.rulePack.rulesStrings>
+        <!-- 礼物描述 -->
+        <li>giftDescription->一个草编的皇冠</li>
+        <li>giftDescription->一根漂亮的羽毛</li>
+        <li>giftDescription->一个精美制作的梳子</li>
+        <li>giftDescription->一束野花</li>
+        <li>giftDescription->一片精致的叶子</li>
+        <li>giftDescription->一块心形的鹅卵石</li>
+        <li>giftDescription->一块精细雕刻的小石头</li>
+        <li>giftDescription->一个新鲜多汁的水果</li>
+        <li>giftDescription->一个手织的手链</li>
+        <li>giftDescription->一个有趣的贝壳</li>
+        <li>giftDescription->一个零件制作的小饰品</li>
+        <li>giftDescription->一把手工采摘的草药</li>
+    </PositiveConnections_GiftDescription.rulePack.rulesStrings>
+</LanguageData>
